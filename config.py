@@ -1,11 +1,7 @@
-"""
-Configuration for Text→Cypher demo.
-Pick provider = "groq" (cloud, free tier, faster) or "ollama" (local, slower on CPU).
-"""
 import os
 
 # --- Choose LLM provider ---
-PROVIDER = "groq"   # "groq" or "ollama"
+PROVIDER = "groq"
 
 # --- Neo4j ---
 NEO4J_URI = os.getenv("NEO4J_URI")
@@ -22,46 +18,56 @@ TEMPERATURE = 0
 
 # --- Schema primer & few-shot examples ---
 SCHEMA_PRIMER = """
-Labels & key properties:
-  Movie(title: STRING UNIQUE, released: INT?, imdbId: STRING?)
-  User(id: INT? | STRING?)
-  Genre(name: STRING)
-  Actor(name: STRING)
-  Director(name: STRING)
-  Person(name: STRING)
+Labels & key properties (property variants handled via coalesce):
+  Course(name|Name: STRING?, id|Id|ID|Number|`Course ID`: STRING?)
+  Department(name|Name|Department: STRING UNIQUE)
+  Professor(name|Name: STRING UNIQUE)
 
 Relationships (directional):
-  (:User)-[:RATED {rating: INT, timestamp: INT?}]->(:Movie)
-  (:Movie)-[:IN_GENRE]->(:Genre)
-  (:Actor)-[:ACTED_IN]->(:Movie)
-  (:Director)-[:DIRECTED]->(:Movie)
-  (:Person)-[:ACTED_IN|:DIRECTED]->(:Movie)
+  (:Course)-[:BELONGS_TO]->(:Department)
+  (:Professor)-[:TAUGHT]->(:Course)
 
-Guidelines:
+Notes:
+  - Ignore legacy labels: Movie, Genre, Person, User, Actor.
   - Read-only Cypher (MATCH/WHERE/RETURN/ORDER/LIMIT).
-  - Prefer concise outputs (movie title, avg rating, counts).
-  - If user asks for "similar movies to <title>", use co-rating pattern via users.
-  - For actor queries, use (:Actor {name:'...'})-[:ACTED_IN]->(:Movie).
+  - Prefer concise outputs (course name, department, professor, counts).
+  - Use coalesce(...) for property key variants; compare names case-insensitively with toUpper(...).
   - Default LIMIT 20 if not specified.
 """
 
 T2C_EXAMPLES = [
-  "USER INPUT: Recommend movies similar to 'The Matrix'. "
-  "QUERY: MATCH (:Movie {title:'The Matrix'})<-[:RATED]-(u:User)-[:RATED]->(rec:Movie) "
-  "WHERE rec.title <> 'The Matrix' "
-  "RETURN DISTINCT rec.title AS title LIMIT 20",
+# List all courses taught by Professor Smith.
+"USER INPUT: List all courses taught by Professor Smith."
+"QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
+"WHERE toUpper(coalesce(p.name, p.Name)) = toUpper('Professor Smith') "
+"RETURN coalesce(c.name, c.Name) AS course, "
+"       coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) AS courseId "
+"ORDER BY course LIMIT 20",
 
-  "USER INPUT: Top 10 Sci-Fi movies by average rating. "
-  "QUERY: MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name:'Sci-Fi'})<-[:IN_GENRE]-(:Movie) "
-  "MATCH (m)<-[r:RATED]-(:User) "
-  "RETURN m.title AS title, round(avg(r.rating),2) AS avgRating, count(r) AS ratings "
-  "ORDER BY avgRating DESC, ratings DESC LIMIT 10",
+# Which department does CS101 belong to?
+"USER INPUT: Which department does CS101 belong to?"
+"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
+"WHERE coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) = 'CS101' "
+"RETURN coalesce(d.name, d.Name, d.Department) AS department",
 
-  "USER INPUT: What did user 42 give 5 stars? "
-  "QUERY: MATCH (:User {id:42})-[r:RATED {rating:5}]->(m:Movie) "
-  "RETURN m.title AS title ORDER BY m.title LIMIT 25"
+# Professors teaching in the Computer Science department.
+"USER INPUT: Show professors teaching in the Computer Science department."
+"QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course)-[:BELONGS_TO]->(d:Department) "
+"WHERE toUpper(coalesce(d.name, d.Name, d.Department)) = toUpper('Computer Science') "
+"RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
+"ORDER BY professor LIMIT 20",
 
-  "USER INPUT: What movies did Tom Cruise act in? "
-  "QUERY: MATCH (a:Actor {name:'Tom Cruise'})-[:ACTED_IN]->(m:Movie) "
-  "RETURN m.title AS title ORDER BY m.title LIMIT 20"
+# Find courses in the ECE department.
+"USER INPUT: Find courses in the ECE department."
+"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
+"WHERE toUpper(coalesce(d.name, d.Name, d.Department)) = toUpper('ECE') "
+"RETURN coalesce(c.name, c.Name) AS course, "
+"       coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) AS courseId "
+"ORDER BY course LIMIT 20",
+
+# How many courses are in each department?
+"USER INPUT: How many courses are in each department?"
+"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
+"RETURN coalesce(d.name, d.Name, d.Department) AS department, count(c) AS numCourses "
+"ORDER BY numCourses DESC LIMIT 20",
 ]

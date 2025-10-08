@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 from neo4j import GraphDatabase
-import config
+import config as config
 
 # LLM adapters from neo4j-graphrag
 from neo4j_graphrag.retrievers import Text2CypherRetriever

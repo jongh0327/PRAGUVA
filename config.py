@@ -18,56 +18,68 @@ TEMPERATURE = 0
 
 # --- Schema primer & few-shot examples ---
 SCHEMA_PRIMER = """
-Labels & key properties (property variants handled via coalesce):
-  Course(name|Name: STRING?, id|Id|ID|Number|`Course ID`: STRING?)
-  Department(name|Name|Department: STRING UNIQUE)
-  Professor(name|Name: STRING UNIQUE)
+Labels & key properties (use coalesce for variants):
+  Course( name|Name: STRING?, ID|Id|id|Number: STRING? )
+  Department( Department|name|Name: STRING UNIQUE )
+  Professor( name|Name: STRING UNIQUE )
 
-Relationships (directional):
-  (:Course)-[:BELONGS_TO]->(:Department)
+Relationships (only these exist right now):
+  (:Professor)-[:BELONGS_TO]->(:Department)
   (:Professor)-[:TAUGHT]->(:Course)
 
 Notes:
-  - Ignore legacy labels: Movie, Genre, Person, User, Actor.
-  - Read-only Cypher (MATCH/WHERE/RETURN/ORDER/LIMIT).
-  - Prefer concise outputs (course name, department, professor, counts).
-  - Use coalesce(...) for property key variants; compare names case-insensitively with toUpper(...).
+  - Read-only Cypher (MATCH/WHERE/RETURN/ORDER/LIMIT) only.
+  - Prefer concise outputs (course, department, professor, counts).
+  - Use coalesce(...) for property variants; compare case-insensitively via toUpper(...).
+  - There is NO direct Course→Department edge; to reach a course's department,
+    go Course <-[:TAUGHT]- Professor -[:BELONGS_TO]-> Department.
   - Default LIMIT 20 if not specified.
 """
 
 T2C_EXAMPLES = [
-# List all courses taught by Professor Smith.
-"USER INPUT: List all courses taught by Professor Smith."
-"QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
-"WHERE toUpper(coalesce(p.name, p.Name)) = toUpper('Professor Smith') "
-"RETURN coalesce(c.name, c.Name) AS course, "
-"       coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) AS courseId "
-"ORDER BY course LIMIT 20",
+    # 1) Courses taught by a given professor (simple TAUGHT edge)
+    "USER INPUT: List all courses taught by Professor Smith.\n"
+    "QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
+    "WHERE toUpper(coalesce(p.name, p.Name)) = toUpper('Professor Smith') "
+    "RETURN coalesce(c.name, c.Name) AS course, "
+    "       coalesce(c.ID, c.Id, c.id, c.Number) AS courseId "
+    "ORDER BY course LIMIT 20",
 
-# Which department does CS101 belong to?
-"USER INPUT: Which department does CS101 belong to?"
-"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
-"WHERE coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) = 'CS101' "
-"RETURN coalesce(d.name, d.Name, d.Department) AS department",
+    # 2) Departments of a given course ID (must go via professors)
+    "USER INPUT: Which department does CS101 belong to?\n"
+    "QUERY: MATCH (c:Course)<-[:TAUGHT]-(p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE coalesce(c.ID, c.Id, c.id, c.Number) = 'CS101' "
+    "RETURN DISTINCT coalesce(d.Department, d.name, d.Name) AS department "
+    "ORDER BY department LIMIT 20",
 
-# Professors teaching in the Computer Science department.
-"USER INPUT: Show professors teaching in the Computer Science department."
-"QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course)-[:BELONGS_TO]->(d:Department) "
-"WHERE toUpper(coalesce(d.name, d.Name, d.Department)) = toUpper('Computer Science') "
-"RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
-"ORDER BY professor LIMIT 20",
+    # 3) Professors in a given department
+    "USER INPUT: What professors are in the ECE department?\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE toUpper(coalesce(d.Department, d.name, d.Name)) = toUpper('ECE') "
+    "RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
+    "ORDER BY professor LIMIT 20",
 
-# Find courses in the ECE department.
-"USER INPUT: Find courses in the ECE department."
-"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
-"WHERE toUpper(coalesce(d.name, d.Name, d.Department)) = toUpper('ECE') "
-"RETURN coalesce(c.name, c.Name) AS course, "
-"       coalesce(c.`Course ID`, c.CourseID, c.ID, c.Id, c.Number, c.id) AS courseId "
-"ORDER BY course LIMIT 20",
+    # 4) Courses in a given department (via department’s professors)
+    "USER INPUT: Find courses in the ECE department.\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE toUpper(coalesce(d.Department, d.name, d.Name)) = toUpper('ECE') "
+    "MATCH (p)-[:TAUGHT]->(c:Course) "
+    "RETURN DISTINCT coalesce(c.name, c.Name) AS course, "
+    "       coalesce(c.ID, c.Id, c.id, c.Number) AS courseId "
+    "ORDER BY course LIMIT 20",
 
-# How many courses are in each department?
-"USER INPUT: How many courses are in each department?"
-"QUERY: MATCH (c:Course)-[:BELONGS_TO]->(d:Department) "
-"RETURN coalesce(d.name, d.Name, d.Department) AS department, count(c) AS numCourses "
-"ORDER BY numCourses DESC LIMIT 20",
+    # 5) How many courses per department (count distinct courses taught by that dept’s professors)
+    "USER INPUT: How many courses are in each department?\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "MATCH (p)-[:TAUGHT]->(c:Course) "
+    "RETURN coalesce(d.Department, d.name, d.Name) AS department, "
+    "       count(DISTINCT c) AS numCourses "
+    "ORDER BY numCourses DESC, department LIMIT 20",
+
+    # 6) What professor teaches CS01
+    "USER INPUT: What professor teaches CS01?\n"
+    "QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
+    "WHERE toUpper(toString(coalesce(c.ID, c.Id, c.id, c.Number))) = toUpper('CS01') "
+    "RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
+    "ORDER BY professor LIMIT 20",
 ]

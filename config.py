@@ -13,7 +13,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_BASE = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+GEMINI_MODEL = "gemini-flash-latest"
 
 # --- LLM settings ---
 TEMPERATURE = 0
@@ -92,3 +92,20 @@ GEMINI_SYSTEM_PROMPT = (
     "and NEVER invent facts that aren’t present. If results are empty, "
     "state that plainly and suggest a more specific follow-up."
 )
+
+GEMINI_USER_PROMPT = """\
+Question:
+{question}
+
+Cypher used:
+{cypher}
+
+Rows from Neo4j (JSON, up to 50):
+{rows_preview}
+
+Write a concise, well-structured answer based ONLY on the rows above:
+- 3–8 sentences, specific and grounded (no fabrication).
+- Summarize key findings; include counts when relevant.
+- Mention a few concrete examples if there are many.
+- If no rows, state that and suggest a refined follow-up query.
+"""

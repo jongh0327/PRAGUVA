@@ -12,6 +12,8 @@ NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_BASE = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "llama-3.3-70b-versatile"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 
 # --- LLM settings ---
 TEMPERATURE = 0
@@ -83,3 +85,10 @@ T2C_EXAMPLES = [
     "RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
     "ORDER BY professor LIMIT 20",
 ]
+
+GEMINI_SYSTEM_PROMPT = (
+    "You are a precise, helpful assistant for natural-language graph Q&A. "
+    "Explain results clearly, cite concrete entities from the provided rows, "
+    "and NEVER invent facts that aren’t present. If results are empty, "
+    "state that plainly and suggest a more specific follow-up."
+)

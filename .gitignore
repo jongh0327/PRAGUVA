@@ -1,3 +1,26 @@
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Python compiled files
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Project specific
 connection_check.py
+
+# OS
+.DS_Store
+Thumbs.db

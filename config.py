@@ -1,11 +1,7 @@
-"""
-Configuration for Text→Cypher demo.
-Pick provider = "groq" (cloud, free tier, faster) or "ollama" (local, slower on CPU).
-"""
 import os
 
 # --- Choose LLM provider ---
-PROVIDER = "groq"   # "groq" or "ollama"
+PROVIDER = "groq"
 
 # --- Neo4j ---
 NEO4J_URI = os.getenv("NEO4J_URI")
@@ -16,52 +12,100 @@ NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_API_BASE = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "llama-3.3-70b-versatile"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = "gemini-flash-latest"
 
 # --- LLM settings ---
 TEMPERATURE = 0
 
 # --- Schema primer & few-shot examples ---
 SCHEMA_PRIMER = """
-Labels & key properties:
-  Movie(title: STRING UNIQUE, released: INT?, imdbId: STRING?)
-  User(id: INT? | STRING?)
-  Genre(name: STRING)
-  Actor(name: STRING)
-  Director(name: STRING)
-  Person(name: STRING)
+Labels & key properties (use coalesce for variants):
+  Course( name|Name: STRING?, ID|Id|id|Number: STRING? )
+  Department( Department|name|Name: STRING UNIQUE )
+  Professor( name|Name: STRING UNIQUE )
 
-Relationships (directional):
-  (:User)-[:RATED {rating: INT, timestamp: INT?}]->(:Movie)
-  (:Movie)-[:IN_GENRE]->(:Genre)
-  (:Actor)-[:ACTED_IN]->(:Movie)
-  (:Director)-[:DIRECTED]->(:Movie)
-  (:Person)-[:ACTED_IN|:DIRECTED]->(:Movie)
+Relationships (only these exist right now):
+  (:Professor)-[:BELONGS_TO]->(:Department)
+  (:Professor)-[:TAUGHT]->(:Course)
 
-Guidelines:
-  - Read-only Cypher (MATCH/WHERE/RETURN/ORDER/LIMIT).
-  - Prefer concise outputs (movie title, avg rating, counts).
-  - If user asks for "similar movies to <title>", use co-rating pattern via users.
-  - For actor queries, use (:Actor {name:'...'})-[:ACTED_IN]->(:Movie).
+Notes:
+  - Read-only Cypher (MATCH/WHERE/RETURN/ORDER/LIMIT) only.
+  - Prefer concise outputs (course, department, professor, counts).
+  - Use coalesce(...) for property variants; compare case-insensitively via toUpper(...).
+  - There is NO direct Course→Department edge; to reach a course's department,
+    go Course <-[:TAUGHT]- Professor -[:BELONGS_TO]-> Department.
   - Default LIMIT 20 if not specified.
 """
 
 T2C_EXAMPLES = [
-  "USER INPUT: Recommend movies similar to 'The Matrix'. "
-  "QUERY: MATCH (:Movie {title:'The Matrix'})<-[:RATED]-(u:User)-[:RATED]->(rec:Movie) "
-  "WHERE rec.title <> 'The Matrix' "
-  "RETURN DISTINCT rec.title AS title LIMIT 20",
+    # 1) Courses taught by a given professor (simple TAUGHT edge)
+    "USER INPUT: List all courses taught by Professor Smith.\n"
+    "QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
+    "WHERE toUpper(coalesce(p.name, p.Name)) = toUpper('Professor Smith') "
+    "RETURN coalesce(c.name, c.Name) AS course, "
+    "       coalesce(c.ID, c.Id, c.id, c.Number) AS courseId "
+    "ORDER BY course LIMIT 20",
 
-  "USER INPUT: Top 10 Sci-Fi movies by average rating. "
-  "QUERY: MATCH (m:Movie)-[:IN_GENRE]->(:Genre {name:'Sci-Fi'})<-[:IN_GENRE]-(:Movie) "
-  "MATCH (m)<-[r:RATED]-(:User) "
-  "RETURN m.title AS title, round(avg(r.rating),2) AS avgRating, count(r) AS ratings "
-  "ORDER BY avgRating DESC, ratings DESC LIMIT 10",
+    # 2) Departments of a given course ID (must go via professors)
+    "USER INPUT: Which department does CS101 belong to?\n"
+    "QUERY: MATCH (c:Course)<-[:TAUGHT]-(p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE coalesce(c.ID, c.Id, c.id, c.Number) = 'CS101' "
+    "RETURN DISTINCT coalesce(d.Department, d.name, d.Name) AS department "
+    "ORDER BY department LIMIT 20",
 
-  "USER INPUT: What did user 42 give 5 stars? "
-  "QUERY: MATCH (:User {id:42})-[r:RATED {rating:5}]->(m:Movie) "
-  "RETURN m.title AS title ORDER BY m.title LIMIT 25"
+    # 3) Professors in a given department
+    "USER INPUT: What professors are in the ECE department?\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE toUpper(coalesce(d.Department, d.name, d.Name)) = toUpper('ECE') "
+    "RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
+    "ORDER BY professor LIMIT 20",
 
-  "USER INPUT: What movies did Tom Cruise act in? "
-  "QUERY: MATCH (a:Actor {name:'Tom Cruise'})-[:ACTED_IN]->(m:Movie) "
-  "RETURN m.title AS title ORDER BY m.title LIMIT 20"
+    # 4) Courses in a given department (via department’s professors)
+    "USER INPUT: Find courses in the ECE department.\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "WHERE toUpper(coalesce(d.Department, d.name, d.Name)) = toUpper('ECE') "
+    "MATCH (p)-[:TAUGHT]->(c:Course) "
+    "RETURN DISTINCT coalesce(c.name, c.Name) AS course, "
+    "       coalesce(c.ID, c.Id, c.id, c.Number) AS courseId "
+    "ORDER BY course LIMIT 20",
+
+    # 5) How many courses per department (count distinct courses taught by that dept’s professors)
+    "USER INPUT: How many courses are in each department?\n"
+    "QUERY: MATCH (p:Professor)-[:BELONGS_TO]->(d:Department) "
+    "MATCH (p)-[:TAUGHT]->(c:Course) "
+    "RETURN coalesce(d.Department, d.name, d.Name) AS department, "
+    "       count(DISTINCT c) AS numCourses "
+    "ORDER BY numCourses DESC, department LIMIT 20",
+
+    # 6) What professor teaches CS01
+    "USER INPUT: What professor teaches CS01?\n"
+    "QUERY: MATCH (p:Professor)-[:TAUGHT]->(c:Course) "
+    "WHERE toUpper(toString(coalesce(c.ID, c.Id, c.id, c.Number))) = toUpper('CS01') "
+    "RETURN DISTINCT coalesce(p.name, p.Name) AS professor "
+    "ORDER BY professor LIMIT 20",
 ]
+
+GEMINI_SYSTEM_PROMPT = (
+    "You are a precise, helpful assistant for natural-language graph Q&A. "
+    "Explain results clearly, cite concrete entities from the provided rows, "
+    "and NEVER invent facts that aren’t present. If results are empty, "
+    "state that plainly and suggest a more specific follow-up."
+)
+
+GEMINI_USER_PROMPT = """\
+Question:
+{question}
+
+Cypher used:
+{cypher}
+
+Rows from Neo4j (JSON, up to 50):
+{rows_preview}
+
+Write a concise, well-structured answer based ONLY on the rows above:
+- 3–8 sentences, specific and grounded (no fabrication).
+- Summarize key findings; include counts when relevant.
+- Mention a few concrete examples if there are many.
+- If no rows, state that and suggest a refined follow-up query.
+"""

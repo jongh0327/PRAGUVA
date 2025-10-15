@@ -1,5 +1,5 @@
 """
-Ceeates embeddings for course descriptions. Adds them t darabase nodes.
+Creates embeddings for course descriptions. Adds them to database nodes.
 """
 
 from neo4j import GraphDatabase

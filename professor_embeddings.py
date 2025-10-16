@@ -5,10 +5,11 @@ Creates embeddings for professor descriptions. Adds them to database nodes.
 from neo4j import GraphDatabase
 from sentence_transformers import SentenceTransformer
 import numpy as np
+import config
 
-NEO4J_URI = "key"
-NEO4J_USER = "key"
-NEO4J_PASS = "key"
+NEO4J_URI = config.NEO4J_URI
+NEO4J_USER = config.NEO4J_USERNAME
+NEO4J_PASS = config.NEO4J_PASSWORD
 
 print("Loading embedding model...")
 model = SentenceTransformer("all-MiniLM-L6-v2")

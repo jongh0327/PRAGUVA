@@ -2,6 +2,7 @@ import os
 
 # --- Choose LLM provider ---
 PROVIDER = "groq"
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # --- Neo4j ---
 NEO4J_URI = os.getenv("NEO4J_URI")

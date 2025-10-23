@@ -4,12 +4,58 @@ import json
 from neo4j import GraphDatabase
 import config
 from typing import Any, Dict, List
+from sentence_transformers import SentenceTransformer
 
 # LLM adapters from neo4j-graphrag
 from neo4j_graphrag.retrievers import Text2CypherRetriever
 from neo4j_graphrag.generation import GraphRAG
 from neo4j_graphrag.llm import OpenAILLM, OllamaLLM
 import google.generativeai as genai
+
+"""
+Begin embedding similarity code
+"""
+
+def build_embedding_model():
+    model_name = getattr(config, "EMBEDDING_MODEL", "all-MiniLM-L6-v2")
+    return SentenceTransformer(model_name)
+
+def search_by_embedding(driver, embedding_model, query_text: str, index_name: str, top_k: int = 6):
+    user_embedding = embedding_model.encode(query_text).toList()
+
+    cypher = """
+    CALL db.index.vector.queryNodes($index_name, $top_k, $user_embedding)
+    YIELD node, score
+    RETURN node, score
+    ORDER BY score DESC
+    """
+
+    try:
+        with driver.session() as session:
+            result = session.run(
+                cypher,
+                index_name = index_name,
+                top_k = top_k,
+                user_embedding = user_embedding
+            )
+            rows = result.data()
+            return rows
+    except Exception as e:
+        print(f"Vector search error: {e}")
+        return []
+
+def search_professors_and_courses(driver, embedding_model, query_text: str, top_k: int = 6):
+    professors = search_by_embedding(driver, embedding_model, query_text, "professor_embeddings", top_k)
+    courses = search_by_embedding(driver, embedding_model, query_text, "course embeddings", top_k)
+    return {
+        "professors": professors,
+        "courses": courses
+    }
+
+
+"""
+End embedding similarity code
+"""
 
 def resolve_provider() -> str:
     if config.PROVIDER:

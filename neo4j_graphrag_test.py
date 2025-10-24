@@ -46,7 +46,7 @@ def search_by_embedding(driver, embedding_model, query_text: str, index_name: st
 
 def search_professors_and_courses(driver, embedding_model, query_text: str, top_k: int = 6):
     professors = search_by_embedding(driver, embedding_model, query_text, "professor_embeddings", top_k)
-    courses = search_by_embedding(driver, embedding_model, query_text, "course embeddings", top_k)
+    courses = search_by_embedding(driver, embedding_model, query_text, "course_embeddings", top_k)
     return {
         "professors": professors,
         "courses": courses

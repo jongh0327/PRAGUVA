@@ -9,11 +9,8 @@ NEO4J_URI = os.environ.get("NEO4J_URI")
 NEO4J_USERNAME = os.environ.get("NEO4J_USERNAME")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD")
 
-# --- Groq (OpenAI-compatible) ---
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-GROQ_API_BASE = "https://api.groq.com/openai/v1"
-GROQ_MODEL = "llama-3.3-70b-versatile"
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# --- Gemini ---
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-flash-latest"
 
 GEMINI_SYSTEM_PROMPT = (

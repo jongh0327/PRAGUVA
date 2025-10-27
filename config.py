@@ -26,4 +26,7 @@ GEMINI_USER_PROMPT = """Question: {question}
     {results}
 
     Please provide a helpful, natural language answer to the user's question based on these search results.
-    Focus on the most relevant items (highest similarity scores) and explain how they relate to the question."""
+    Focus on the most relevant items (highest similarity scores) and explain how they relate to the question.
+
+    Also, note that 1000~4000 level courses are undergrad level and those over 5000s are graduate courses.    
+"""

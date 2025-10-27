@@ -5,12 +5,14 @@ from neo4j import GraphDatabase
 import config
 from typing import Any, Dict, List
 from sentence_transformers import SentenceTransformer
+import argparse
 
 # LLM adapters from neo4j-graphrag
 from neo4j_graphrag.retrievers import Text2CypherRetriever
 from neo4j_graphrag.generation import GraphRAG
 from neo4j_graphrag.llm import OpenAILLM, OllamaLLM
 import google.generativeai as genai
+from google.generativeai.types import Tool, GoogleSearch
 
 """
 Begin embedding similarity code
@@ -107,8 +109,41 @@ def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], cours
     except Exception as e:
         print(f"\n--- Answer ---\nGEMINI ERROR: {e}")
 
-    
+def build_gemini_with_search():
+    """
+    Create a Gemini model that can use its own Google Search grounding.
+    Works with the legacy google.generativeai SDK (>= 0.5.0).
+    """
+    genai.configure(api_key=config.GEMINI_API_KEY)
+    model_name = getattr(config, "GEMINI_MODEL", "gemini-1.5-flash")
+    return genai.GenerativeModel(model_name)
+
+
+def generate_NL_response_with_search(gemini_with_search, q: str):
+    """Generate an answer using Gemini with built-in web search grounding."""
+    try:
+        tools = [
+            Tool(google_search=GoogleSearch())
+        ]
+        response = gemini_with_search.generate_content(q, tools=tools)
+        print("\n--- Answer (Gemini + Google Search) ---")
+        print(response.text or "(no text returned)")
+
+        # # Optional: show sources if available
+        # if hasattr(response, "candidates") and response.candidates:
+        #     md = getattr(response.candidates[0], "grounding_metadata", None)
+        #     if md and getattr(md, "search_entry_point", None):
+        #         print("\n[Sources may include Google Search results]")
+    except Exception as e:
+        print(f"\n--- Answer (Gemini + Google Search) ---\nGEMINI SEARCH ERROR: {e}")
+
+
 def main():
+    #For Test Options(Comparing with Raw Gemini Output)
+    parser = argparse.ArgumentParser(description="Neo4j + Gemini assistant")
+    parser.add_argument("-t", "--test", action="store_true", help="Run both Gemini models (GraphRAG and Search-based)")
+    args = parser.parse_args()
+
     # Connect to Neo4j
     driver = GraphDatabase.driver(
         config.NEO4J_URI,
@@ -118,10 +153,14 @@ def main():
     # Build embedding model and Gemini for NL generation
     embedding_model = build_embedding_model()
     gemini = build_gemini()
+    if(args.test):
+        gemini_search = build_gemini_with_search()
 
     print("Embedding-based search for Professors and Courses. Type 'exit' to quit.")
     print(f"Embedding Model: {getattr(config, 'EMBEDDING_MODEL', 'all-MiniLM-L6-v2')}")
     print(f"NL Generation (Gemini): {config.GEMINI_MODEL}")
+    if args.test:
+        print("Test mode: Comparing GraphRAG vs. Gemini-with-Search")
 
     while True:
         try:
@@ -145,10 +184,13 @@ def main():
                 score = row['score']
                 # Extract node properties
                 if hasattr(node, '_properties'):
-                    props = dict(node._properties)
+                    props = {key: value for key, value in dict(node._properties).items() if key != 'descriptionEmbedding'}
                 else:
-                    props = dict(node)
-                print(f"{i}. [Score: {score:.4f}] {props}")
+                    props = {key: value for key, value in dict(node).items() if key != 'descriptionEmbedding'}
+                print(f"{i}. [Score: {score:.4f}]")
+                for key,value in props.items():
+                    print(f"{key}: {value}")
+                print()
         else:
             print("(no results)")
         
@@ -162,12 +204,18 @@ def main():
                     props = {key: value for key, value in dict(node._properties).items() if key != 'descriptionEmbedding'}
                 else:
                     props = {key: value for key, value in dict(node).items() if key != 'descriptionEmbedding'}
-                print(f"{i}. [Score: {score:.4f}] {props}")
+                print(f"{i}. [Score: {score:.4f}]")
+                for key,value in props.items():
+                    print(f"{key}: {value}")
+                print()
         else:
             print("(no results)")
 
         # Generate natural language answer with Gemini
         generate_NL_response(gemini, q, professors, courses)
+        if(args.test):
+            print("#######################################################################################################" )
+            generate_NL_response_with_search(gemini_search, q)
 
     driver.close()
 

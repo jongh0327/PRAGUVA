@@ -11,8 +11,9 @@ import argparse
 from neo4j_graphrag.retrievers import Text2CypherRetriever
 from neo4j_graphrag.generation import GraphRAG
 from neo4j_graphrag.llm import OpenAILLM, OllamaLLM
-import google.generativeai as genai
-from google.generativeai.types import Tool, GoogleSearch
+
+from google import genai
+from google.genai import types
 
 """
 Begin embedding similarity code
@@ -59,19 +60,24 @@ def search_professors_and_courses(driver, embedding_model, query_text: str, top_
 End embedding similarity code
 """
 
-def build_gemini():
-    """Create a Gemini model for NL generation from Neo4j results."""
-    genai.configure(api_key=config.GEMINI_API_KEY)
-    return genai.GenerativeModel(
-        getattr(config, "GEMINI_MODEL", "gemini-flash-latest"),
-        system_instruction=getattr(config, "GEMINI_SYSTEM_PROMPT", "You are a helpful assistant.")
-    )
+def build_genai_client() -> genai.Client:
+    """Create the GenAI client (new SDK)."""
+    return genai.Client(api_key=config.GEMINI_API_KEY)
 
-def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], courses: List[Dict[str, Any]]) -> None:
+def get_model_name(default: str = "gemini-2.5-flash") -> str:
+    """Choose model; default to a current 2.x model for new SDK."""
+    return getattr(config, "GEMINI_MODEL", default)
+
+def generate_NL_response(client: genai.Client, q: str,
+                         professors: List[Dict[str, Any]],
+                         courses: List[Dict[str, Any]]) -> None:
+    """
+    Plain NL generation (GraphRAG-style summarization) using NEW SDK.
+    No search grounding here; just system instruction + prompt.
+    """
     try:
-        # Combine results for Gemini
+        # Flatten Neo4j rows for the LLM
         all_rows = []
-
         for row in professors:
             node = row['node']
             props = dict(node._properties) if hasattr(node, '_properties') else dict(node)
@@ -80,7 +86,6 @@ def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], cours
                 "score": row['score'],
                 **props
             })
-
         for row in courses:
             node = row['node']
             props = dict(node._properties) if hasattr(node, '_properties') else dict(node)
@@ -90,18 +95,25 @@ def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], cours
                 **props
             })
 
-        # Create a custom prompt for embedding-based results
         json_rows = json.dumps(all_rows, ensure_ascii=False, indent=2)
 
+        # Fill user prompt from your config template
         user_prompt = config.GEMINI_USER_PROMPT.format(
             question=q,
             results=json_rows
         )
 
-        # Generate Gemini response
-        resp = gemini.generate_content(user_prompt)
-        answer = (resp.text or "").strip()
+        # Build generation config (system instruction supported in new SDK)
+        cfg = types.GenerateContentConfig(
+            system_instruction=getattr(config, "GEMINI_SYSTEM_PROMPT", "You are a helpful assistant.")
+        )
 
+        resp = client.models.generate_content(
+            model=get_model_name(),
+            contents=user_prompt,
+            config=cfg,
+        )
+        answer = (resp.text or "").strip()
         if answer:
             print("\n--- Answer ---")
             print(answer)
@@ -109,34 +121,68 @@ def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], cours
     except Exception as e:
         print(f"\n--- Answer ---\nGEMINI ERROR: {e}")
 
-def build_gemini_with_search():
-    """
-    Create a Gemini model that can use its own Google Search grounding.
-    Works with the legacy google.generativeai SDK (>= 0.5.0).
-    """
-    genai.configure(api_key=config.GEMINI_API_KEY)
-    model_name = getattr(config, "GEMINI_MODEL", "gemini-1.5-flash")
-    return genai.GenerativeModel(model_name)
+# def generate_NL_response(gemini, q: str, professors: List[Dict[str, Any]], courses: List[Dict[str, Any]]) -> None:
+#     try:
+#         # Combine results for Gemini
+#         all_rows = []
+
+#         for row in professors:
+#             node = row['node']
+#             props = dict(node._properties) if hasattr(node, '_properties') else dict(node)
+#             all_rows.append({
+#                 "type": "Professor",
+#                 "score": row['score'],
+#                 **props
+#             })
+
+#         for row in courses:
+#             node = row['node']
+#             props = dict(node._properties) if hasattr(node, '_properties') else dict(node)
+#             all_rows.append({
+#                 "type": "Course",
+#                 "score": row['score'],
+#                 **props
+#             })
+
+#         # Create a custom prompt for embedding-based results
+#         json_rows = json.dumps(all_rows, ensure_ascii=False, indent=2)
+
+#         user_prompt = config.GEMINI_USER_PROMPT.format(
+#             question=q,
+#             results=json_rows
+#         )
+
+#         # Generate Gemini response
+#         resp = gemini.generate_content(user_prompt)
+#         answer = (resp.text or "").strip()
+
+#         if answer:
+#             print("\n--- Answer ---")
+#             print(answer)
+
+#     except Exception as e:
+#         print(f"\n--- Answer ---\nGEMINI ERROR: {e}")
 
 
-def generate_NL_response_with_search(gemini_with_search, q: str):
-    """Generate an answer using Gemini with built-in web search grounding."""
+def generate_NL_response_with_search(client: genai.Client, q: str) -> None:
+    """
+    Search-grounded generation using NEW SDK.
+    Falls back to plain generation if your key isn’t entitled to Google Search grounding.
+    """
     try:
-        tools = [
-            Tool(google_search=GoogleSearch())
-        ]
-        response = gemini_with_search.generate_content(q, tools=tools)
+        cfg = types.GenerateContentConfig(
+            tools=[types.Tool(google_search=types.GoogleSearch())]
+        )
+        resp = client.models.generate_content(
+            model=get_model_name(),
+            contents=q,
+            config=cfg,
+        )
         print("\n--- Answer (Gemini + Google Search) ---")
-        print(response.text or "(no text returned)")
+        print(resp.text or "(no text returned)")
 
-        # # Optional: show sources if available
-        # if hasattr(response, "candidates") and response.candidates:
-        #     md = getattr(response.candidates[0], "grounding_metadata", None)
-        #     if md and getattr(md, "search_entry_point", None):
-        #         print("\n[Sources may include Google Search results]")
     except Exception as e:
-        print(f"\n--- Answer (Gemini + Google Search) ---\nGEMINI SEARCH ERROR: {e}")
-
+        print(f"\n--- Answer (Gemini + Google Search) ---\nGEMINI ERROR: {e}")
 
 def main():
     #For Test Options(Comparing with Raw Gemini Output)
@@ -152,15 +198,13 @@ def main():
 
     # Build embedding model and Gemini for NL generation
     embedding_model = build_embedding_model()
-    gemini = build_gemini()
-    if(args.test):
-        gemini_search = build_gemini_with_search()
+    client = build_genai_client()
 
     print("Embedding-based search for Professors and Courses. Type 'exit' to quit.")
     print(f"Embedding Model: {getattr(config, 'EMBEDDING_MODEL', 'all-MiniLM-L6-v2')}")
     print(f"NL Generation (Gemini): {config.GEMINI_MODEL}")
     if args.test:
-        print("Test mode: Comparing GraphRAG vs. Gemini-with-Search")
+        print("Test mode: Comparing GraphRAG-style NL vs. Search-grounded NL")
 
     while True:
         try:
@@ -212,10 +256,12 @@ def main():
             print("(no results)")
 
         # Generate natural language answer with Gemini
-        generate_NL_response(gemini, q, professors, courses)
+        generate_NL_response(client, q, professors, courses)
+        
+        # Optional search-based NL generation
         if(args.test):
-            print("#######################################################################################################" )
-            generate_NL_response_with_search(gemini_search, q)
+            print("#" * 100)
+            generate_NL_response_with_search(client, q)
 
     driver.close()
 

@@ -137,7 +137,6 @@ def generate_NL_response(client: genai.Client, q: str,
     try:
         graph_payload = {"nodes": nodes, "relationships": relationships}
         graph_json = json.dumps(graph_payload, ensure_ascii=False, indent=2)
-        print_payload_size("Graph JSON prompt", graph_json)
 
         user_prompt = config.GEMINI_USER_PROMPT.format(
             question=q,

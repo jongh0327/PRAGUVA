@@ -1,0 +1,151 @@
+NodeID,NodeName,ParentID
+10101,Medical Imaging & Diagnostics,101
+10102,Biomechanics & Injury Science,101
+10103,Medical Devices & Instrumentation,101
+10104,Clinical Applications,101
+10201,Drug Delivery & Therapeutics,102
+10202,Biomolecular Engineering,102
+10203,Synthetic Biology,102
+10204,Bioprocessing & Bioseparations,102
+10301,Tissue Engineering,103
+10302,Regenerative Medicine,103
+10303,Biomaterials,103
+10304,Cell & Molecular Engineering,103
+10401,Systems Biology,104
+10402,Bioinformatics & Computational Biology,104
+10403,Immunology & Immunoengineering,104
+10404,Neuroscience & Neural Engineering,104
+20101,Core AI/ML,201
+20102,Deep Learning & Neural Networks,201
+20103,Computer Vision & Image Processing,201
+20104,Natural Language Processing,201
+20201,Computer Architecture,202
+20202,High Performance Computing,202
+20203,Distributed & Cloud Computing,202
+20204,Embedded Systems,202
+20301,Software Engineering,203
+20302,Formal Methods & Verification,203
+20303,Database Systems,203
+20401,Networking,204
+20402,Cybersecurity,204
+20403,Cryptography,204
+20404,Privacy & Trust,204
+20501,HCI & User Experience,205
+20502,VR/AR/MR,205
+20503,Ubiquitous Computing,205
+20504,Digital Well-being,205
+20601,Data Mining & Analytics,206
+20603,Scientific Computing,206
+20604,Visualization,206
+20701,CS Education,207
+20702,Educational Technology,207
+20703,Broadening Participation,207
+30101,Materials Synthesis,301
+30102,Additive Manufacturing,301
+30103,Thin Films & Coatings,301
+30104,Nanomaterials,301
+30201,Microscopy & Imaging,302
+30202,Spectroscopy,302
+30203,In-situ Characterization,302
+30204,Computational Materials,302
+30301,Electronic Materials,303
+30302,Magnetic Materials,303
+30303,Optical Materials,303
+30304,Energy Materials,303
+30401,Polymer Science,304
+30402,Soft Materials,304
+30404,Biomaterials,304
+30501,Metals & Alloys,305
+30503,Composites,305
+30504,Materials Degradation,305
+40101,Semiconductor Devices,401
+40102,Nanoelectronics,401
+40103,VLSI & Circuits,401
+40104,Memory & Storage,401
+40201,Photonics,402
+40202,Optical Communications,402
+40203,Quantum Optics,402
+40204,Laser Technology,402
+40301,Wireless Communications,403
+40302,Signal Processing,403
+40303,Image Processing,403
+40304,Communication Systems,403
+40402,Energy Storage,404
+40501,Control Systems,405
+40502,Robotics,405
+40503,Autonomous Systems,405
+40504,Cyber-Physical Systems,405
+50101,Structural Mechanics,501
+50102,Computational Mechanics,501
+50103,Fracture & Fatigue,501
+50104,Smart Structures,501
+50201,Fluid Dynamics,502
+50202,Heat Transfer,502
+50203,Thermodynamics,502
+50204,Combustion,502
+50301,Aerodynamics,503
+50302,Propulsion,503
+50303,Flight Mechanics,503
+50401,Engineering Design,504
+50403,Rapid Prototyping,504
+50404,CAD/CAM,504
+50501,Structural Dynamics,505
+50502,Vibration Control,505
+50504,Multibody Dynamics,505
+60101,Structural Analysis,601
+60102,Earthquake Engineering,601
+60103,Structural Health Monitoring,601
+60104,Construction Materials,601
+60201,Transportation Systems,602
+60203,Intelligent Transportation,602
+60301,Water Resources,603
+60302,Water Treatment,603
+60303,Environmental Engineering,603
+60304,Climate & Sustainability,603
+60401,Soil Mechanics,604
+60403,Geohazards,604
+60501,Construction Management,605
+60502,Smart Infrastructure,605
+60503,Building Systems,605
+70101,Reaction Engineering,701
+70102,Separations,701
+70104,Transport Phenomena,701
+70201,Nuclear Materials,702
+70202,Radiation Effects,702
+70204,Plasma Physics,702
+70301,Energy Systems,703
+70302,Sustainable Processes,703
+80102,Stochastic Systems,801
+80103,Simulation,801
+80104,Decision Analysis,801
+80201,Systems Analysis,802
+80202,Systems Design,802
+80203,Complex Systems,802
+80204,Reliability Engineering,802
+80301,Manufacturing Systems,803
+80401,Human Factors,804
+80402,Safety Engineering,804
+80404,Human-System Integration,804
+90101,Applied Mathematics,901
+90102,Computational Mathematics,901
+90103,Statistics,901
+90104,Mathematical Modeling,901
+90201,Condensed Matter Physics,902
+90203,Quantum Systems,902
+90204,Statistical Physics,902
+90301,Engineering Education,903
+90302,Educational Innovation,903
+90303,STEM Education,903
+90304,Professional Development,903
+90401,Technology & Society,904
+90402,Ethics & Policy,904
+90403,Innovation Studies,904
+90404,History of Technology,904
+90501,Digital Health,905
+90502,Healthcare Systems,905
+90503,Medical Informatics,905
+90504,Public Health,905
+90601,Business Analytics,906
+90602,Financial Engineering,906
+90603,Economic Analysis,906
+90604,Industrial Organization,906

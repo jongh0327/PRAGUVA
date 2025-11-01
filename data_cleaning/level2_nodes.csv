@@ -1,0 +1,45 @@
+NodeID,NodeName,ParentID
+101,Biomedical Engineering,1
+102,Biotechnology & Biomolecular Engineering,1
+103,Tissue Engineering & Regenerative Medicine,1
+104,Systems Biology & Bioinformatics,1
+201,Artificial Intelligence & Machine Learning,2
+202,Computer Systems & Architecture,2
+203,Software Engineering & Systems,2
+204,Networks & Security,2
+205,Human-Computer Interaction,2
+206,Data Science & Analytics,2
+207,CS Education & Research,2
+301,Materials Synthesis & Processing,3
+302,Materials Characterization,3
+303,Materials Properties & Applications,3
+304,Polymers & Soft Matter,3
+305,Structural Materials,3
+401,Microelectronics & Nanoelectronics,4
+402,Photonics & Optoelectronics,4
+403,Communications & Signal Processing,4
+404,Power & Energy Systems,4
+405,Control Systems & Robotics,4
+501,Solid Mechanics & Materials,5
+502,Fluid Mechanics & Thermal Sciences,5
+503,Aerospace Engineering,5
+504,Design & Manufacturing,5
+505,Dynamics & Vibrations,5
+601,Structural Engineering,6
+602,Transportation Engineering,6
+603,Water Resources & Environmental,6
+604,Geotechnical Engineering,6
+605,Construction & Infrastructure,6
+701,Chemical Engineering,7
+702,Nuclear Engineering,7
+703,Energy & Sustainability,7
+801,Operations Research,8
+802,Systems Engineering,8
+803,Manufacturing Systems,8
+804,Human Factors & Ergonomics,8
+901,Mathematics & Computational Sciences,9
+902,Physics & Applied Physics,9
+903,Engineering Education & Research,9
+904,Science Technology & Society,9
+905,Health & Medical Applications,9
+906,Business & Economics Applications,9

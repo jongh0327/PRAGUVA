@@ -1,0 +1,511 @@
+TopicID,TopicName,ParentID
+3,Fibroblast Biology,10304
+4,Regenerative Medicine Tissue Repair Wound Healing,10302
+5,Human Factors,80401
+8,Quantitative Biosciences,10402
+10,Cell And Developmental Biology,10304
+12,Stem Cells & Regeneration,10302
+14,Translational Science,10104
+15,Mechanotransduction,10304
+18,Fibrosis,10401
+20,Inclusive And Equitable Student Support,90303
+23,Biotechnology,10202
+24,Biofilms,10401
+25,Biomineralization,10303
+26,Biosurfactants,10203
+27,Biosensors,10103
+28,Structural Biology,10402
+30,Musculoskeletal Diseases,10301
+34,Mechanobiology,10304
+38,Entrepreneurship,90601
+45,Immunoengineering,10403
+46,Maternal And Placental Immune Regulation,10403
+48,Image Reconstruction And Processing,20103
+51,Systems Biology,10401
+55,Tumor Heterogeneity,10401
+56,Targeted Drug And Gene Delivery,10201
+60,Drug And Cell Delivery,10201
+64,Tissue Regeneration,10301
+65,Bioprinting,10303
+67,Theranostics And Image-Guided Therapies,10101
+69,Cancer Immunotherapy,10403
+70,Cell Signaling And Cellular Decision-Making,10304
+72,Targeted Therapeutics For Cancer,10201
+75,Signal And Image Processing,40303
+81,Cancer,10401
+82,Biotechnology And Biomolecular Engineering,10202
+87,Biotechnology Engineering,10202
+88,Drug And Gene Delivery,10201
+90,Computer Graphics And Vision,20103
+93,Inflammation-Fibrosis,10401
+94,Advanced Immunotherapies,10403
+95,Nanotechnology,30104
+97,Precision Medicine,90501
+105,Catalysis,70101
+106,Electrocatalysis,70101
+107,Materials Synthesis,30101
+111,Statistical Physics & Biophysics,90204
+112,Protein Separations,10204
+115,Bioengineering,10202
+130,Materials Microstructure Control,30204
+132,Reaction Engineering,70101
+138,Therapeutic Peptide Delivery,10201
+146,Soft Materials,30402
+148,Peptide Self-Assembly,10202
+152,Safety,80402
+154,Negative Emissions,70302
+160,Intelligent Transportation Systems,60203
+166,Hydroinformatics,60301
+167,Stormwater,60301
+168,Flooding,60301
+169,Smart Cities,60502
+171,Infrastructure Condition Assessment,60103
+173,Digital Twins,80202
+179,Construction Automation,60501
+180,Design,50401
+181,Behavioral Science,80401
+184,Hydrological Extremes,60301
+186,Risk Management,80204
+188,Multiphysics And Multiscale Modeling,50102
+189,Intelligent Infrastructure Systems,60502
+190,Geomechanics And Geomaterials,60401
+191,Field Instrumentation,60501
+192,Energy Geotechnics,60401
+194,Structural Dynamics And Control,50501
+195,Innovative Materials For Civil Infrastructure,60104
+198,Internet Of Things,20204
+199,Computational Statistics,90103
+200,Climate Change,60304
+202,Life Cycle Assessment,70302
+204,Water Resources Management,60301
+207,Risk Analysis,80204
+208,Uncertainty Analysis,80201
+216,Connected And Automated Vehicles,60203
+218,Polio Eradication,90504
+219,Tracking Immunity Virus Shedding,90504
+221,Artificial Intelligence And Machine Learning,20101
+225,Audience Interaction,20501
+226,Informal Learning With Technology,20702
+236,Theoretical And Applied Research Intelligent Systems,20101
+250,Data Mining Machine Learning Computational Epidemiology,20601
+257,Programming Languages And Compilers,20201
+260,Threshold Signatures,20403
+261,Zero-Knowledge Proofs,20403
+265,Intelligent Human-Centered Computing,20501
+274,Information And Coding Theory,20403
+275,Stochastic Modeling,80102
+282,Algorithms,20301
+285,AI For Science,20101
+286,Deep Learning Data Analytics,20102
+287,The Interface Of Data Engineering And Data Science,20601
+288,Cyber Security,20402
+289,Embedded Systems,20204
+292,Digital Humanities,90401
+297,CS In Humanities,90401
+301,Computer Science Education,20701
+303,Programmable Networks,20401
+307,Natural Language Processing,20104
+309,Cryptography,20403
+312,Software Reliability,20301
+313,Network Science,80203
+318,High-Performance Computing,20202
+321,Theoretical Computer Science,20302
+323,Increasing K-12 Access To Computing,20703
+328,Behavioral Sensing,20503
+329,Ubiquitous Computing,20503
+330,Social Computing,20501
+332,Digital Well-Being,20504
+333,Positive Computing,20504
+334,Wireless Networking,20401
+336,Mobile Computing,20503
+339,Design And Analysis Of Algorithms,20301
+341,Complexity Theory,20302
+342,Compiler Construction,20201
+345,Software Engineering,20301
+351,Computer Game Design,20501
+355,Compilers,20201
+357,Randomized Algorithms,20301
+365,Reinforcement Learning,20101
+366,Game Theory,80104
+367,Algorithmic Economics,90603
+374,Computer Architecture And Compilers,20201
+377,Bioimage Analysis,10101
+378,Millimeter-Wave And Terahertz,40204
+382,Sensors And Instrumentation,40101
+383,Optoelectronic Devices,40201
+386,Resilience In Cps,40504
+390,Low Power Design,40103
+392,Microscale Heat Transfer,50202
+395,Computation Materials Science,30204
+399,Devices And Sensors,40101
+404,Biometrics,20404
+405,Thin-Film And Flexible Devices,40102
+407,Neuromorphic Computing,40102
+408,Superconducting Materials And Devices,90203
+410,Number Theory,90101
+411,Fluid-Structure Interactions,50201
+414,Machine Learning Transformers,20102
+416,Emerging Solid-State Devices,40101
+417,Device And Circuit Solutions For Large-Scale Data Storage,40104
+418,Integration Of Novel Materials,40102
+427,Cyber-Physical Systems,40504
+429,Mechatronics,40502
+443,Optical Microresonators,40201
+444,Optical Frequency Combs,40204
+454,Cultural Anthropology,90401
+457,Ethnography,90401
+459,Engineering Anthropology,90401
+461,Critical Methodologies,90401
+463,Disability Studies Cyborg-Technology,90401
+465,Media Studies Speculative Fiction,90401
+467,Technology And Industrialization,90404
+470,The Anthropocene And Climate Change,60304
+473,Material Cultures,90401
+483,Technology And Science Fiction,90401
+484,The Lego(R) Group'S Design Values,50401
+495,Technology And Literature,90401
+496,Global Cultural Studies,90401
+498,Scientific Practice,90401
+502,Behavioral Decision-Making,80104
+505,Bio-Inspired Robotics,40502
+507,Density Functional Theory,30204
+508,Materials Informatics,30204
+510,Ferroic Materials,30301
+515,Advanced Characterization Of Quantum Nanophotonic Systems,40203
+518,Hydrogen Embrittlement,30504
+523,Materials Discovery Automation,30204
+524,Electron Microscopy In-Situ Techniques 4D-STEM,30201
+529,Magnetic Materials,30302
+541,Critical Materials,30304
+544,Electronic Structures,30301
+545,Multifunctional Materials,30303
+547,Orthopaedic Implants,10103
+549,Energy Conversion,70301
+555,Lead Pipe,60302
+560,Materials Synthesis And Processing,30101
+561,Combinatorial Synthesis,30101
+564,Opal Crystal Growth,30101
+565,Impact/Shock Mitigation,50103
+568,Solar Power,30304
+571,First-Principles Alloy Theory,30501
+572,Phase Transformation,30501
+578,Geometric Data Analysis,20601
+581,Data-Driven Design And Engineering,50401
+582,Digital Human Modeling,80401
+583,Energy Transport And Conversion,50203
+584,Material Properties,303
+586,Hypersonics,50301
+598,Fire Initiation Propagation,60503
+602,Computational Plasma Physics,70204
+605,Coherent Anti-Stokes Raman Scattering,30202
+606,Optical-Based Measurement,30202
+609,Morphing Structures/Biomimetics,50104
+611,Mechanisms Prediction Pedestrian,10102
+615,Anthropomorphic Test Device,10102
+621,Development Of High-Order CFD Methods,50201
+629,Occupant Safety,80402
+630,Human Body Modeling,10102
+631,Haptics,20501
+634,Biomechanics Of Cardiopulmonary Resuscitation,10102
+637,Trauma Biomechanics,10102
+638,Scramjets,50302
+641,Flight Testing,50303
+642,Controls,40501
+644,Rotating Machinery,50502
+646,Student Assessment,90301
+647,Injury Biomechanics,10102
+652,Biological And Bio-Inspired Materials,30404
+653,Micro/Nanomechanics,50102
+655,Tribology,50103
+658,Turbulence Multiphase Flow,50201
+659,Application Of Optical Measurement,30202
+662,Tomography,30201
+663,Three-Dimensional Measurements And Visualization,20604
+668,Design Of Personnel Protective Equipment,80402
+671,Microfabrication And Mems,40101
+674,Occupant Kinematics,10102
+677,Post Mortem Human Subject Training,10104
+682,Structure-Function Relationships,30301
+684,Biomineralizing Tissues,10301
+686,Bone Cartilage Tendon,10301
+688,High-Speed Flow Physics,50301
+689,Fluid-Structure Interactions,50201
+691,Engineering Mechanics,50101
+694,Soft-Hard Integration Mechanics,50102
+699,Human Performance Modeling,80401
+703,Complex Systems Failure,80203
+704,Psychophysics And Psychometrics,90204
+706,Technology And Democracy,90402
+708,Data Fusion,20601
+709,Knowledge Discovery,20601
+710,Simulation Optimization,80103
+712,Financial Engineering And Modeling,90602
+713,Asset Management And Portfolio Design,90602
+716,Multimodal Machine Learning For Public Health,90504
+717,Human Behavior Modeling,80401
+719,Infectious Disease Modeling,90504
+726,The Generic Structure And Mathematics Of Simulation Models,80103
+727,Discrete And Continuous Dynamical Systems,90104
+733,Sports Analytics,90601
+734,Structure Analysis,60101
+741,Intelligent Materials And Structures,50104
+744,Applied Mathematics,90101
+745,Geophysical Mass Flows,60403
+746,Computational Fluid Dynamics,50201
+747,Numerical Simulation,90102
+748,Data Assimilation Adjoints,90102
+750,Motivation,80401
+751,Person-Situation Dynamics,80401
+753,Leadership,90304
+754,Materials Science And Engineering,30101
+755,Mental Health,90504
+762,Dynamic Programming,20301
+764,Material Science,30101
+766,Semiconductors,40101
+767,X-Ray Photoelectron Spectroscopy,30202
+768,Molecular Beam Epitaxy,30103
+770,Indoor Environmental Quality,60503
+771,Digital Twin,80202
+773,Generative AI In Computer Science Courses,20701
+774,Computer Science 1,20701
+775,Automated Assessment Tools,20702
+777,Error Messages,20301
+786,Biolocomotion,10102
+788,Vehicle Stability,50303
+790,Magnesium,30501
+791,Uranium,70201
+793,Texture,30201
+794,Dislocations,30501
+796,Extreme Nanomanufacturing,30104
+797,Solid-Liquid Interaction,70104
+799,Data Science,20601
+800,Event Prediction,20101
+802,Crime Linkage,20601
+803,Transplant Analytics,90503
+805,Water Chemistry,60302
+807,Complex Fluids,50201
+809,Neurodevelopmental Disorders,10404
+813,Algorithm Development,20301
+817,Water Resources Management,60301
+822,Bio-Inspired Flow,50201
+826,Fish Swimming,50201
+827,Infectious Disease,90504
+828,Signal Transduction,10304
+833,Networking,20401
+837,Transhumanism,90404
+838,Microresonators,40201
+839,Microcavities,40201
+841,Photonics,40201
+842,Computer Science,20101
+845,Security And Privacy,20402
+846,Computer Science Education Scholarship/Research,20701
+847,Graph Dynamical Systems,90104
+848,Modeling,90104
+849,System Architectures,80202
+850,Massively Interacting Systems,80203
+851,Coupled,50102
+853,Optical Diagnostics,30202
+855,Flow Instrumentation,50201
+857,Thermal Management,50202
+859,Construction Engineering And Management,60501
+860,Environmental Fluid Mechanics,50201
+861,Coastal Oceanography,60303
+862,Marine Ecosystems,60303
+863,Optoelectronics,40201
+864,Fatigue,50103
+865,Environment Assisted Cracking,30504
+866,Stress Corrosion Cracking,30504
+867,Hydrogen,70302
+869,Image Analysis,20103
+870,Shape Analysis,20103
+874,Governance,90402
+876,Futures Studies,90403
+880,Radiation-Solid Interactions,70202
+885,Earthquake Engineering,60102
+888,Structural Health Monitorin,60103
+891,Vehicle Crashworthiness,10102
+892,Sports Injuries,10102
+894,Human-Robot Interaction,80404
+895,Secure Internet Of Things,20402
+897,Bridge Engineering,60101
+898,Condition Assessment,60103
+899,Digital Image Correlation,20103
+900,Terahertz,40204
+901,Microwave,40301
+902,Millimeter-Wave,40301
+907,Mems,40101
+908,Rf-Mems,40101
+909,Computer Science,20101
+912,Social Networks,80203
+914,Language Models,20104
+919,First-Principles,30204
+921,Multi-Agent Systems,20203
+924,In-Situ/Operando Characterization,30203
+925,X-Ray Absorption Fine Structure,30202
+926,Serious Games,20501
+930,Orthopaedics,10104
+931,Structural Design,60101
+937,Science And Technology Studies,90401
+938,Laboratory Ethnography,90401
+939,Construction Of Expertise,90301
+944,Tyrosine Phosphorylation,10304
+949,Economics Of Information,90603
+950,Muscle,10301
+951,Computer Modeling,20603
+954,Optical Fiber Communication,40202
+956,Visible Light Communications,40301
+957,Optical,40201
+960,Cell Signaling,10304
+961,Cancer Biology,10401
+962,Cyber-Physical Systems,40504
+963,Emergency Medicine,10104
+964,Pediatric Trauma,10102
+965,Machine Learning,20101
+967,Electronic Structure,30301
+971,Wash,60302
+972,Social Equity In Stem,90303
+974,Rural Development,90403
+976,Investment Management,90602
+978,Asset Management,90602
+984,Photodetector,40201
+987,Chromatography,70102
+988,Econometrics,90603
+989,Theory Of Computation,20302
+990,Industrial Organization,90604
+995,Software-Defined Networking,20401
+999,Material Thermophysics,50203
+1003,Human-Technology Interaction,20501
+1005,Biofabrication,10303
+1011,Bayesian Theory,90103
+1012,Decision Theory,80104
+1013,Forecasting Theory,80104
+1019,III-Nitride,40101
+1021,Ethics,90402
+1022,Environmental Sustainability,60304
+1025,Integrated Antennas,40301
+1033,Secure Computation,20402
+1034,Flipping Frenemies,20702
+1035,Internet Of Things,20204
+1045,Reinforcement Learning,20101
+1048,Trauma,10102
+1050,Life Saving Techniques,10104
+1059,Formal Methods,20302
+1061,Lean,80301
+1071,Generative Modeling,20102
+1073,Industrial Ecology,70302
+1074,Mechanical Engineering,50101
+1077,Collaborative Learning,20702
+1078,Inclusive Teaching,90303
+1079,Alternative Grading,90302
+1080,Mechanobiology,10304
+1081,Vascular Biology,10401
+1085,Geophysical Mass Flows,60403
+1088,Immunotherapy,10403
+1089,Autonomy,40503
+1094,Transportation Engineering,60201
+1095,Operations,80301
+1096,Information Technology,20203
+1097,Computer-Aided Design,50404
+1100,Stochastic Approximation,80102
+1101,Systems Engineering,80201
+1103,Electrochemistry,70301
+1105,Inhibitors,70101
+1107,Predictive Modeling,20101
+1109,Space-Time Modeling,90104
+1111,Polymers And Soft Matter,30401
+1112,Advanced (Bio)Manufacturing,30102
+1113,Intelligent Built Environments,60503
+1115,Behavioral Modeling,80401
+1123,Microfluidics,10103
+1124,Dielectrophoresis,40101
+1125,Bioimpedance,10101
+1127,Cytometry,10101
+1128,Nano-Bio-Info-Cogno Convergence,90403
+1129,Technology Studies,90401
+1130,Science Fiction,90401
+1132,Heat Transport,50202
+1133,Thermoelectrics,40402
+1134,Rapid Prototyping,50403
+1137,Labor,90604
+1138,Culture,90401
+1139,Information Theory,20403
+1140,Coding Theory,20403
+1142,Flexible Electronics,40102
+1145,Human-Robot Collaboration,80404
+1148,Thin Films,30103
+1149,Epitaxy,30103
+1150,Ion Conductors,30304
+1151,Angiogenesis,10401
+1152,Agent-Based Modeling,80103
+1154,Microcirculation,10401
+1155,Heterogeneous Catalysis,70101
+1162,Materials,30101
+1166,Signal Processing,40302
+1167,Communications,40304
+1168,Data Science,20601
+1169,Tensor Decomposition,90102
+1170,Surveillance,20404
+1173,Engineering Studies,90301
+1176,Silicene And Graphene,40102
+1179,American Math Soc,90101
+1183,Drug Discovery,10201
+1186,Occupant Protection,80402
+1188,Cyberinfrastructure,20203
+1190,Parallel Computing,20202
+1194,Soot,50204
+1198,Scalable Computing,20202
+1201,Health Informatics,90503
+1202,Health Equity,90502
+1204,Gene Therapy,10201
+1209,Edge Computing,20203
+1210,Bone,10301
+1212,Skeletal Development And Evolution,10301
+1217,Data Provenance,20303
+1218,Intrusion Detection,20402
+1219,Forensics,90503
+1224,Remote Sensing,60301
+1225,Materials Physics,90201
+1228,Deliberative Democracy,90402
+1229,Tech Ethics,90402
+1231,Conflict Resolution,90402
+1233,Single-Cell Biology,10304
+1237,Electroconvection,50201
+1238,Nanoscience,30104
+1240,Engineering Pedagogy,90302
+1241,Materials For Extreme Environments,30503
+1242,GW-BSE Method,90203
+1243,Data-Driven Decision-Making,90601
+1244,Infectious Diseases Modeling,90504
+1254,Multimodal Displays,20501
+1255,Tactile,20501
+1256,Eye Tracking,20501
+1257,Virtual Reality/Augmented Reality/Mixed Reality,20502
+1258,Precision Health,90501
+1260,Cancer Screening,10104
+1267,Sub-Threshold,40103
+1270,Water Quality,60302
+1272,Groundwater,60301
+1273,Catalysis,70101
+1275,Socialization,90303
+1276,Sense Of Belonging,90303
+1278,Identity,90303
+1280,Low Power,40103
+1283,Electrochemical Materials Science,30304
+1284,Electrodeposition,30103
+1285,Photoelectrochemistry,30304
+1286,Functional Materials,303
+1290,Image Processing,20103
+1291,Engineering,90301
+1292,Medicine,10104
+1300,Multibody Mechanics,50504
+1302,Corrosion Science,30504
+1303,Service Life Prediction,30504
+1305,Phase Transformations,30501
+1308,Cell Motility,10304
+1310,Computer Architecture,20201
+1314,Heterogeneous Computing,20201
+1319,Cultural Anthropology,90401
+1323,Resuscitation,10104
+1324,Shock,50103
+1327,Diabetes Technology,10104
+1332,Magnetic Resonance Imaging,10101

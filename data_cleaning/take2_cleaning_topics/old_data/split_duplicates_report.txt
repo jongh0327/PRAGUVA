@@ -1,0 +1,78 @@
+================================================================================
+DUPLICATE DETECTION REPORT (AFTER SPLITTING)
+================================================================================
+
+EXACT DUPLICATES: 11 groups
+================================================================================
+
+Duplicate Group (normalized: machine learning):
+  ID 91: Machine Learning
+  ID 1338: Machine Learning
+  ID 1340: Machine Learning
+
+Duplicate Group (normalized: data mining):
+  ID 102: Data Mining
+  ID 250: Data Mining
+  ID 1341: Data Mining
+
+Duplicate Group (normalized: robotics):
+  ID 241: Robotics
+  ID 249: Robotics
+
+Duplicate Group (normalized: autonomous driving):
+  ID 1336: Autonomous Driving
+  ID 922: Autonomous Driving
+
+Duplicate Group (normalized: multi robot systems):
+  ID 1337: Multi-robot Systems
+  ID 920: Multi-robot Systems
+
+Duplicate Group (normalized: computational epidemiology):
+  ID 1339: Computational Epidemiology
+  ID 1196: Computational Epidemiology
+
+Duplicate Group (normalized: autonomous vehicles):
+  ID 1344: Autonomous Vehicles
+  ID 852: Autonomous Vehicles
+
+Duplicate Group (normalized: reinforcement learning):
+  ID 1346: Reinforcement Learning
+  ID 365: Reinforcement Learning
+
+Duplicate Group (normalized: cancer screening):
+  ID 1351: Cancer Screening
+  ID 1260: Cancer Screening
+
+Duplicate Group (normalized: bone):
+  ID 686: Bone
+  ID 1210: Bone
+
+Duplicate Group (normalized: cartilage):
+  ID 1362: Cartilage
+  ID 1211: Cartilage
+
+
+================================================================================
+other DUPLICATES to be merged
+================================================================================
+
+Similarity: 98.04%
+  ID 42: Advanced Biomanufacturing
+  ID 114: Advanced (bio)manufacturing
+
+Similarity: 96.97%
+  ID 764: Material Science
+  ID 918: Materials Science
+
+Similarity: 96.67%
+  ID 395: Computation Materials Science
+  ID 445: Computational Materials Science
+
+Similarity: 95.38%
+  ID 78: Machine Learning And Data Science
+  ID 92: Machine Learning / Ai / Data Science
+
+Similarity: 95.08%
+  ID 47: Biomedical And Molecular Imaging
+  ID 74: Medical And Molecular Imaging
+

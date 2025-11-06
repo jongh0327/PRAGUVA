@@ -1,0 +1,173 @@
+Similarity: 95.08%
+  ID   47: Biomedical and Molecular Imaging
+  ID   74: Medical and Molecular Imaging
+
+Similarity: 93.88%
+  ID  666: Computational Biomechanics
+  ID  740: Computational Mechanics
+
+Similarity: 93.62%
+  ID   42: Advanced Biomanufacturing
+  ID  643: Advanced manufacturing
+
+Similarity: 91.89%
+  ID   96: Biomaterials Science
+  ID  927: Materials science
+
+Similarity: 90.32%
+  ID  377: Bioimage Analysis
+  ID  869: Image Analysis
+
+Similarity: 89.47%
+  ID  747: Numerical Simulation
+  ID 1002: Medical Simulation
+
+Similarity: 89.47%
+  ID 1002: Medical Simulation
+  ID 1235: Numerical simulation
+
+Similarity: 88.89%
+  ID   96: Biomaterials Science
+  ID  764: Material Science
+
+Similarity: 88.89%
+  ID  545: Multifunctional Materials
+  ID 1286: functional materials
+
+Similarity: 88.46%
+  ID  735: Computational Solid Mechanics
+  ID  740: Computational Mechanics
+
+Similarity: 88.00%
+  ID  115: Bioengineering
+  ID 1291: Engineering
+
+Similarity: 88.00%
+  ID  375: Biomedical Image Analysis
+  ID 1158: Biological Image Analysis
+
+Similarity: 86.36%
+  ID   60: Drug and Cell Delivery
+  ID   88: Drug and Gene Delivery
+
+Similarity: 86.67%
+  ID  592: Fluid Mechanics
+  ID  795: Solid mechanics
+
+Similarity: 86.67%
+  ID  795: Solid mechanics
+  ID 1084: Fluid mechanics
+
+Similarity: 86.49%
+  ID 1103: electrochemistry
+  ID 1285: photoelectrochemistry
+
+
+Similarity: 88.00%
+  ID 1090: bioengineering
+  ID 1291: Engineering
+
+Similarity: 87.80%
+  ID  191: Field Instrumentation
+  ID  855: flow instrumentation
+
+Similarity: 87.80%
+  ID  351: Computer Game Design
+  ID  438: Computer-Aided Design
+
+Similarity: 87.50%
+  ID  288: Cyber Security
+  ID  384: CPS Cyber-security
+
+Similarity: 87.27%
+  ID  666: Computational Biomechanics
+  ID  735: Computational Solid Mechanics
+
+Similarity: 87.18%
+  ID  452: Engineering Ethics
+  ID  691: Engineering mechanics
+
+Similarity: 87.18%
+  ID  691: Engineering mechanics
+  ID  707: Engineering ethics
+
+Similarity: 87.18%
+  ID  691: Engineering mechanics
+  ID 1316: engineering ethics
+
+Similarity: 86.96%
+  ID   23: Biotechnology
+  ID 1136: technology
+
+Similarity: 86.96%
+  ID  830: geotechnical engineering
+  ID 1074: mechanical engineering
+
+Similarity: 86.42%
+  ID 1257: VR/AR/MR
+  ID 1296: VR/AR Interaction
+
+Similarity: 85.71%
+  ID    2: Biomaterials
+  ID 1162: Materials
+
+Similarity: 85.71%
+  ID  696: Engineering Design Education
+  ID  831: engineering education
+
+Similarity: 85.71%
+  ID  696: Engineering Design Education
+  ID 1306: Engineering education
+
+Similarity: 85.71%
+  ID 1004: biomaterials
+  ID 1162: Materials
+
+Similarity: 85.33%
+  ID  608: Hypersonic propulsion and aerodynamics
+  ID  657: Aerospace Propulsion and Aerodynamics
+
+Similarity: 85.19%
+  ID  221: Artificial Intelligence and Machine Learning
+  ID 1118: AI systems
+
+Similarity: 85.19%
+  ID  238: Artificial Intelligence
+  ID 1118: AI systems
+
+Similarity: 85.19%
+  ID  276: Artificial intelligence
+  ID 1118: AI systems
+
+Similarity: 85.19%
+  ID  361: AI
+  ID 1118: AI systems
+
+Similarity: 85.19%
+  ID  421: Wireless Communications
+  ID  955: optical wireless communications
+
+Similarity: 85.19%
+  ID 1020: artificial intelligence
+  ID 1118: AI systems
+
+Similarity: 85.11%
+  ID   11: Computational Biology
+  ID 1196: Computational Epidemiology
+
+Similarity: 85.11%
+  ID  201: Energy Sustainability
+  ID  945: Engineering Sustainability
+
+Similarity: 85.11%
+  ID 1042: computational biology
+  ID 1196: Computational Epidemiology
+
+Similarity: 85.00%
+  ID  508: Materials Informatics
+  ID 1029: medical informatics
+
+Similarity: 85.00%
+  ID  607: Clean energy conversion
+  ID 1274: energy conversion
+

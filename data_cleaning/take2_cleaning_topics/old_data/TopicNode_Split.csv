@@ -1,0 +1,1197 @@
+Id,Name
+1,Molecular Immunology
+2,Biomaterials
+3,Fibroblast Biology
+4,"Regenerative Medicine Tissue Repair, Wound Healing"
+5,Human Factors
+6,Biomedical Data Sciences
+7,Computational Systems Biology
+8,Quantitative Biosciences
+9,Bioinformatics And Genomics
+10,Cell And Developmental Biology
+11,Computational Biology
+12,Stem Cells & Regeneration
+13,Neuroscience
+14,Translational Science
+15,Mechanotransduction
+16,Cell And Molecular Biomechanics
+17,Regenerative Medicine
+18,Fibrosis
+19,Engineering Education
+20,Inclusive And Equitable Student Support
+21,Synthetic Biology
+22,Biomanufacturing
+23,Biotechnology
+24,Biofilms
+25,Biomineralization
+26,Biosurfactants
+27,Biosensors
+28,Structural Biology
+29,Biomechanics
+30,Musculoskeletal Diseases
+31,Structural Bioinformatics
+32,Biomedical Data Science And Systems Biology
+33,Systems Pharmacology
+34,Mechanobiology
+35,Musculoskeletal Tissue Engineering
+36,Materials And Advanced Manufacturing For Biological Applications
+37,Translational Research
+38,Entrepreneurship
+39,Technology Transfer
+40,Innovation
+41,Student Industry Preparedness
+42,Advanced Biomanufacturing
+43,Engineered Soft Biomaterials
+44,Systems Immunology
+45,Immunoengineering
+46,Maternal And Placental Immune Regulation
+47,Biomedical And Molecular Imaging
+48,Image Reconstruction And Processing
+49,Imaging System Engineering
+50,Cardiovascular Disease
+51,Systems Biology
+52,Cancer Biology
+53,Cellular And Molecular Bioengineering
+54,Quantitative Pharmacology
+55,Tumor Heterogeneity
+56,Targeted Drug And Gene Delivery
+57,Biomedical Imaging
+58,Tissue Engineering And Biomaterials
+59,Novel Biomaterial Development
+60,Drug And Cell Delivery
+61,"Molecular Biomechanics Intermolecular Bond Mechanics, Molecular Motors, And The Motility Of Single Cells"
+62,Design Of Clinical Instruments
+63,"Scholarship Of Teaching And Learning Self-concept, Self-efficacy, And Other Psychometrics That Might Be Influenced By Hands-on Experiences"
+64,Tissue Regeneration
+65,Bioprinting
+66,Drug Development
+67,Theranostics And Image-guided Therapies
+68,Multi-functional Nanoconstructs And Cellular Engineering
+69,Cancer Immunotherapy
+70,Cell Signaling And Cellular Decision-making
+72,Targeted Therapeutics For Cancer
+73,Computational Modeling Of Biological Phenomena
+74,Medical And Molecular Imaging
+75,Signal And Image Processing
+76,Biomechanics/injury Biomechanics Or Biomechanics And Mechanobiology
+77,Cardiovascular Engineering
+78,Machine Learning And Data Science
+79,Bioinformatics And Computational Biology
+81,Cancer
+82,"Biotechnology And Biomolecular Engineering Biomolecular Design, Cellular And Molecular Bioengineering"
+83,Systems Bioengineering
+84,Tissue Engineering
+85,Advanced Biomanufacturing 3d Bioprinting
+86,Cardiovascular Genetics
+87,Biotechnology Engineering
+88,Drug And Gene Delivery
+89,Biomechanics And Mechanobiology
+90,Computer Graphics And Vision
+91,Machine Learning
+92,Machine Learning / Ai / Data Science
+93,Inflammation-fibrosis
+94,Advanced Immunotherapies
+95,Nanotechnology
+96,Biomaterials Science
+97,Precision Medicine
+99,Biomaterials And Biofunctional Materials
+100,Biosynthesis
+101,Nanotechnology And Tissue Engineering
+102,Data Mining
+103,Bioinformatics
+104,Health Informatics
+105,Catalysis
+106,Electrocatalysis
+107,Materials Synthesis
+108,Materials Characterization
+109,Molecular Simulations
+110,Machine Learning & Artificial Intelligence
+111,Statistical Physics & Biophysics
+112,Protein Separations
+113,Polymers And Soft Matter
+114,Advanced (bio)manufacturing
+115,Bioengineering
+116,Surface And Interface Science And Engineering
+118,Environmental Engineering
+119,Water Resources
+120,Membrane Separations
+121,Polymers
+122,Redox Flow Battery / Fuel Cell Membranes
+123,Desalination Membranes
+124,Microwave Dielectric Relaxation Spectroscopy
+125,Colloids And Interfaces
+126,Assembly And Rheology
+127,Soft Materials And Soft Matter
+128,Batteries And Energy Storage
+129,Particle Engineering And Characterization
+130,Materials Microstructure Control And Characterization
+131,Colloid And Surface Science
+132,Reaction Engineering
+133,Tissue Engineering And Regenerative Medicine
+134,Drug Delivery
+135,Biotechnology And Biomolecular Engineering
+136,Polymer Synthesis And Characterization
+137,Peptide Binding And Assembly
+138,Therapeutic Peptide Delivery
+139,Computational Catalysis
+140,Quantum Chemical Calculations
+141,Modeling Of Material Synthesis And Deactivation
+142,Molecular Dynamics And Monte Carlo Simulations
+143,Cardiovascular Tissue Engineering & Regenerative Medicine
+144,Targeted Drug Delivery
+146,Soft Materials
+147,Polymer Physics
+148,Peptide Self-assembly
+149,Sustainable Transportation Systems
+150,Transportation Economics
+151,Transportation Demand Modeling
+152,Safety
+153,Carbon Capture And Sequestration
+154,Negative Emissions
+155,Smart Buildings/cities
+156,Risk And Decision Analysis
+157,Optimization Models And Methods
+158,Systems Integration
+159,Autonomy And Controls/control Systems
+160,Intelligent Transportation Systems
+161,Wireless Health
+162,Structures And Mechanics (sustainable Infrastructure Systems)
+163,Advanced Materials For Transportation Applications
+164,Infrastructure Engineering/transportation Studies
+165,Water Resources Engineering
+166,Hydroinformatics
+167,Stormwater
+168,Flooding
+169,Smart Cities
+171,Infrastructure Condition Assessment
+172,Structural Health Monitoring
+173,Digital Twins
+174,Applied Machine Learning
+175,Intelligent Built Environments (smart Buildings)
+176,"Infrastructure Design To Enhance Mobility, Safety, And Comfort (mobility)"
+177,User-centered Autonomous Vehicles And Smart Transportation Systems (smart Transportation)
+178,Data-driven Mixed Reality (vr/ar)
+179,Construction Automation
+180,Design
+181,Behavioral Science
+182,Sustainability
+183,Global Hydrology And Water Resources
+184,"Hydrological Extremes - Floods, Droughts, Landslides, Wildfires And Permafrost Thaw"
+185,Harnessing Big Data In Hydrology Using Ai/ml
+186,Risk Management
+187,Human Machine Interface
+188,Multiphysics And Multiscale Modeling
+189,Intelligent Infrastructure Systems
+190,Geomechanics And Geomaterials
+191,Field Instrumentation
+192,Energy Geotechnics
+193,Geohazards
+194,Structural Dynamics And Control
+195,Innovative Materials For Civil Infrastructure
+196,Sustainable Infrastructure Systems
+197,Cybersecurity
+198,Internet Of Things
+199,Computational Statistics And Simulation/statistical Modeling
+200,Climate Change
+201,Energy Sustainability
+202,Life Cycle Assessment
+203,Water And Wastewater Treatment
+204,Water Resources Management
+205,Multi-objective Control
+206,Stochastic Hydrology
+207,Risk Analysis
+208,Uncertainty Analysis
+209,Climate Risk Management
+210,Modeling Of Coupled Human-natural Systems
+211,Resilience In Complex Systems
+212,"Water Resources Systems Analysis, Planning, And Management"
+213,Forecast-informed Decision Making
+214,Controlled Decision-making Experiments
+215,Nanomaterials And Nanomanufacturing
+216,Connected And Automated Vehicles
+217,Molecular Diagnostics
+218,Polio Eradication
+219,Tracking Immunity And Virus Shedding After Oral Polio Vaccination In Resource-challenged Countries
+220,Dependable And Secure Computing
+221,Artificial Intelligence And Machine Learning
+222,Robotics And Cyber-physical Systems
+223,Smart And Connected Health
+224,Hci
+225,Audience Interaction
+226,Informal Learning With Technology
+227,3d User Interfaces
+228,User Experience Design
+229,Computer Science Education
+230,Computational Thinking
+231,"Large Multi-scale, High-performance Modeling And Simulation Systems Grounded In Computational And Information Sciences Spanning Mathematical, Biological, Psychological And Social Sciences."
+232,Dynamical Networks Called Sequential/graphical Systems Grounded In Topics Ranging From Rna To Social Dynamics And Policy.
+233,Theoretical And Applied Research In Intelligent Systems.
+234,Translational Research-to-application Analytics And Machine Intelligence.
+235,Dynamical Networks
+237,Translational Research-to-application Analytics
+240,Machine Learning / Artificial Intelligence Including Data Mining And Pattern Recognition
+241,Robotics
+242,Cyber-physical Systems
+243,Autonomous Systems
+244,Software Engineering
+245,Operating Systems
+246,Computer Networks
+247,Architecture
+248,Embedded Operating Systems
+249,Robotics
+1336,Autonomous Driving
+1337,Multi-robot Systems
+250,Data Mining
+1338,Machine Learning
+1339,Computational Epidemiology
+251,Foundations Of Machine Learning
+252,Understanding Neural Networks
+253,Optimization For Machine Learning
+254,Analyzing Stochastic Processes With Applications In Machine Learning
+255,Computer Architecture
+256,Grid/cloud/high-performance Computing
+257,Programming Languages And Compilers
+258,Theoretical And Applied Cryptography
+259,Multiparty Computation
+260,Threshold Signatures
+261,Zero-knowledge Proofs
+262,Computational Behavior Modeling
+263,Ubiquitous And Mobile Computing
+264,Ai
+1340,Machine Learning
+1341,Data Mining
+265,Intelligent Human-centered Computing
+266,Smart Health And Smart Cities
+267,Parallel And Distributed Computing
+269,"Interaction And Interface Between The Compiler, Runtime/operating System, And Underlying Architecture"
+270,"Software Verification And Validation, Software Engineering, Program Analysis"
+271,Software Engineering And Autonomous Systems
+272,Software Testing
+273,Software Security
+274,Information And Coding Theory
+275,Stochastic Modeling
+277,Generative Ai And Its Use For Scientific And Engineering Resarch
+278,Responsible Ai
+279,Neuro-symbolic Ai
+280,Differential Privacy
+281,Algorithmic Fairness
+282,Algorithms
+283,Network Systems Science
+284,High Performance Computing And Clouds
+285,Ai For Science
+286,Deep Learning Data Analytics And Simulation Surrogates
+287,The Interface Of Data Engineering And Data Science With Data Systems
+289,Embedded Systems
+290,Wireless Sensor Networks
+291,Computing Education
+292,Digital Humanities
+294,Evolving Networks
+295,Social Network Analysis
+296,Data Visualization
+297,Cs In Humanities
+298,Computer Architecture Performance
+1342,Energy Efficiency
+1343,Memory Systems
+299,Graphics Processing Units (gpus) Cloud
+1344,Autonomous Vehicles
+1345,Gpus For Ai
+300,"Hardware Security And Reliability Gpus, Accelerators"
+302,Biomedical Engineering
+303,Programmable Networks
+304,Software-defined Networking
+305,Network Measurement
+306,Network Security
+307,Natural Lanaguage Processing
+308,"Systems Software At The Intersection Of Os, Compilers, And Architecture"
+309,"Cryptography Theoretical Cryptography And Its Intersection With Algorithms, With A Focus On Private Accesses On Big Data"
+310,Distributed Systems
+311,Cloud Computing
+312,Software Reliability
+313,Network Science
+315,Discrete Graphical Dynamical Systems And Multi-agent Systems
+316,"Computational Epidemiology, Computational Economics, Computational Immunology, And Computational Sustainability"
+317,Modeling And Simulation
+318,High-performance Computing
+319,"Developing Innovative Computing Technologies For Reliable, Secure, And Sustainable Socially Coupled Systems"
+320,Data Analytics
+321,"Theoretical Computer Science, Including Complexity Theory And Algorithmics"
+322,Broadening Participation In Computing
+323,Increasing K-12 Access To Qualified Computing Teachers
+324,Computational Methods Of Industrial Organization
+325,Structural Economics For Big Data
+326,Human-centered Ai
+327,Mental & Digital Health
+328,Behavioral Sensing
+329,Ubiquitous Computing
+330,Social Computing
+331,Human-centered Computing
+332,Digital Well-being
+333,Positive Computing
+334,Wireless Networking
+335,Smart Sensing And Intelligent Systems
+336,Mobile Computing
+338,Computer Science Systems
+339,Design And Analysis Of Algorithms
+340,Database Systems
+341,Complexity Theory
+342,Compiler Construction
+344,Discrete Dynamical Systems
+346,Distributed Systems And Networks
+348,Distributed Machine Learning
+349,Machine Learning Applications
+350,Smart City/building
+351,Computer Game Design
+352,Memory Architecture And Processing In And Near Memory (pim/pnm)
+353,Automata Processing And Pattern Matching
+354,Design Verification
+355,Compilers
+356,Computer Security
+357,Randomized Algorithms
+358,Combinatorial Optimization
+359,Distributed Computing
+362,"Software Engineering Software Reliability (including Ml Systems), Software Verification And Validation, Software Testing"
+363,Machine Learning Graph Neural Networks
+1346,Reinforcement Learning
+1347,Llm
+364,"Formal Methods Automated Reasoning (e.g., Sat/smt Solving, Model Counting)"
+365,Reinforcement Learning
+366,Game Theory
+367,Algorithmic Economics
+368,Multi-agent Ai
+369,Security
+370,Cryptography
+371,Machine Learning Transformers And Large Language Models (llms); Reinforcement Learning; Privacy-preserving Machine Learning
+372,Wireless Communications And Networking Ml For Wireless Networks; Signal Processing For Communications; Mimo.
+373,High-performance Computing With A Particular Interest In Performance Optimization And Analysis
+374,Computer Architecture And Compilers
+375,Biomedical Image Analysis
+376,Statistical Shape Analysis
+377,Bioimage Analysis
+378,Millimeter-wave And Terahertz Electronics
+379,Wireless And Optical Communication Systems
+380,Radio-frequency Microelectromechanical Systems (rf-mems)
+381,Stem Pedagogy
+382,Sensors And Instrumentation
+383,Optoelectronic Devices
+384,Cps Cyber-security
+385,Autonomous Mobile Robots (aerial And Ground Robotics)
+386,Resilience In Cps
+387,Heterogeneous Robotic Systems
+388,Co-design And Rapid Prototyping Of Robotic Systems
+389,Human-robot Interaction
+390,Low Power Design
+391,Vlsi Design
+392,Microscale Heat Transfer
+393,Nanoelectronics And 2-d Materials
+394,Magnetic Materials
+395,Computation Materials Science
+396,Photon Processing Of Materials
+397,Photovoltaics
+398,Nanomaterials
+399,Devices And Sensors
+400,Image Reconstruction And Inverse Problems
+401,Ultrahigh Resolution Brain Mri
+402,Cardiac And Pulmonary Mri
+403,Metabolic Imaging
+404,Biometrics
+405,Thin-film And Flexible Devices
+406,Smart Sensor And Aiot
+407,Neuromorphic Computing
+408,Superconducting Materials And Devices
+409,"Mm-wave And Thz Devices, Circuits And Metrology"
+410,Number Theory
+411,Fluid-structure Interactions
+412,Bio-inspired Robotics
+413,Energy-harvesting
+414,Machine Learning Transformers And In-context Learning; Distributed Learning And Optimization; Reinforcement Learning; Federated Learning
+415,Wireless Communications Mimo; Signal Processing For Communications; Ml For Wireless; Communication Systems
+416,Emerging Solid-state Devices For Boolean And Non-boolean Computing
+417,Device And Circuit Solutions For Large-scale Data Storage
+418,Integration Of Novel Materials And Conventional Devices For Functional Diversification
+419,"Co-design Of Emerging Devices, Circuits And System Architecture To Enable New Computing Paradigms"
+420,"Signals, Systems, And Data Science"
+421,Wireless Communications
+422,Processing In Memory
+423,Ai Hardware
+424,Wearable Sensors And Electronics
+425,Wearable Robotics
+429,Mechatronics
+430,Bio-inspired Systems
+431,Battery/fuel Cell Technologies/energy Harvesting
+432,"Science, Technology And Society"
+433,Control Systems
+434,Intelligent Systems
+435,Wearable Technology For Healthcare And Athletic Performance
+436,In-memory Computing
+437,Hardware-software Co-design
+438,Computer-aided Design
+439,Emerging Algorithm And Hardware
+440,Integrated Photonics
+441,Quantum Optics
+442,Microwave Photonics
+443,Optical Microresonators
+444,Optical Frequency Combs
+445,Computational Materials Science
+446,Solar Power And Waste Heat Recovery
+447,Mixed-signal Vlsi Design Data Converters
+1348,Frequency Synthesizers
+1349,Transceivers
+448,Electronic Design Automation Machine Learning Based Design Automation
+449,"Mixed-signal Computing Neural Network Accelerators, Combinatorial Optimization Accelerators"
+450,Ai-assisted Bioelectronics Medical Patch
+1350,Implants
+1351,Cancer Screening
+451,"Haptic Suits For Rehabilitation Smart Textiles, Cardiovascular Diseases"
+452,Engineering Ethics
+453,Animal Welfare
+454,Cultural Anthropology
+455,Sts
+456,Feminism
+457,Ethnography
+458,Medical Anthropology
+459,Engineering Anthropology
+460,Broadening Participation
+461,Critical Methodologies
+462,"Philosophy Of Technology Postphenomenology, Agential Realism"
+463,Disability Studies Cyborg-technology Relations
+464,"History Of Biology And Medicine Eugenics, Genetic Medicine, Regenerative Medicine, And Xenotransplantation"
+465,Media Studies Speculative Fiction
+466,Military-environmental History
+467,Technology And Industrialization
+468,The History Of Biological And Chemical Weapons
+469,The History Of Airborne Disease And Airborne Infection/public Health History
+470,The Anthropocene And Climate Change
+472,Ethics And Information Technology
+473,Material Cultures
+474,Autonomous And Smart Consumer Technologies
+475,"Sustainability Energy Materials, E-micromobility"
+476,"Engineering Ethics Climate Change, People, And The Planet, Particularly In The Mid-atlantic Region"
+477,"Design Thinking Values-based Design, Including Social And Environmental Sustainability"
+478,"Engineering And Peacebuilding Peace Engineering, Environmental Peacebuilding And Energy Transition Governance"
+479,"Engineering Ethics Education Cultivating Character Strengths In Engineering Education, The Situated Ethical Deliberation And Action Framework (sedaf)"
+480,"Technology And Public Deliberation Social Movements And Deliberative Systems, An Orientations Approach To Public Deliberation, Deliberative Cartographies Of Ai And Environmental Justice"
+482,Sustainable Design Values
+483,Technology & Science Fiction
+484,The Lego(r) Group's Design Values & Practices
+485,Sustainability And Human Needs Equitable Sustainability - The Trailing Edge Of Technology
+486,Engineering For Greater Good (egg) Sustainable Access To Infrastructure Services
+487,Broadening Engagement In Engineering Education Building Self-efficacy For Success In Engineering Education
+488,Capacity Factor Analysis (cfa) Capacity Building For Sustained Access To Essential Human Services In Marginalized Communities
+489,Intercultural Learning And Teaching
+490,History And Culture Of Guatemala
+491,Ethics And Practice Of Community Engagement/service Learning
+492,"Maintenance, Repair, And Restoration"
+493,"Surveillance, Transparency, And Accountability Through Data"
+494,Data Ethics
+495,Technology & Literature
+496,Global Cultural Studies
+498,Scientific Practice
+499,Interdisciplinary Collaboration
+500,Sustainability Management
+501,Temporary Project Organizations
+502,Behavioral Decision-making
+503,Engineering Design
+504,Ai Integration In Engineering Education
+506,Metallurgy
+507,Density Functional Theory
+508,Materials Informatics
+509,Machine Learning/active Learning/adaptive Learning
+510,Ferroic Materials
+511,Electronic Materials
+512,Optical Excitations In Transmission Electron Microscopy
+1352,Electron Energy Loss Spectroscopy
+1353,Electron Energy Gain Spectroscopy
+1354,Cathodoluminescence
+513,Radiation-solid Interactions Ion-solid Interactions
+1355,Light-matter Interactions
+1356,Electron-matter Interactions
+514,"In-situ Transmission Electron Microscopy Coupled Extremes, Data-driven Approaches"
+515,"Advanced Characterization Of Quantum Nanophotonic Systems Low-temperature Luminescence, Boson-coupling"
+516,Fracture Mechanics
+517,Physical Metallurgy
+518,Hydrogen Embrittlement
+519,Corrosion
+520,Additive Manufacturing
+521,Alloy Development Nanocrystalline Alloys
+1357,Defect Phases
+1358,Chemically Complex Alloys
+522,Radiation Effects In Structural Materials Ion Irradiations/implantations
+1359,Microstructural/mechanical Response To Irradiation
+523,"Materials Discovery Automation, High-throughput Approaches"
+524,"Electron Microscopy In-situ Techniques, 4dstem"
+525,"Transport Phenomena We Perform First-principles Dft Calculation Of Properties Of Materials. More Specifically, We Do Modeling Of Electron And Phonon Transport In Crystalline Solids And Investigate The Role Of Scattering Processes On The Response Functions."
+526,Corrosion And Electrochemical Sciences And Engineering
+527,Laser-materials Interactions
+528,Pattern Formation Across Lengthscales By Self-assembly
+530,Rapid Solidification
+531,Microstructure Control In Additive Manufacturing
+532,Thermoelectric Materials And Thermal Transport
+533,Residual Stress In Thin Films
+534,Ferroelectric Materials And Properties
+535,Dielectrics And Integration
+536,Ion Conducting Ceramics And Thin Films
+537,Complex Oxides
+538,Thin Film Processing Science
+539,Thermal Transport
+540,Quantum Materials
+541,Critical Materials
+542,Rare-earth Physics
+543,Magnetism
+544,Electronic Structures
+545,Multifunctional Materials
+546,Tailored Materials
+547,Orthopaedic Implants
+548,Electronic Material Integration
+549,Energy Conconversion
+550,High Temperature Materials Science And Oxides
+551,Experimental Condensed Matter Physics
+552,High Performance Alloys
+553,Anti-microbial Alloys
+554,"Novel Materials: Heas, Metallic Glass, Imcs"
+555,Lead Pipe
+556,Additive Manufacturing Processes And Materials
+557,Synchrotron X-ray Imaging And Scattering
+558,Highly Dynamic Processes In Hard And Soft Condensed Matters
+559,High Temperature Materials Design
+560,Materials Synthesis And Processing
+561,Combinatorial Synthesis And High Throughput Screening
+562,Environmental And Thermal Barrier Coatings
+563,Microarchitectured Lattice Materials
+564,Opal Crystal Growth
+565,Impact/shock Mitigation
+566,Thermal Properties Of Ceramics
+567,Radiative Transport Processes In Oxides And Silicates
+568,Solar Power
+570,Thermodynamics And Kinetics
+571,First-principles Alloy Theory
+572,Phase Transformation
+573,High Temperature Materials And Corrosion
+574,Electrochemical Corrosion
+575,"Advanced In-situ/ex-situ Electron Microscopy And Spectroscopy Develop And Apply Aberration-corrected Tem/stem, Eels/eftem, Lorentz Microscopy, And Electron Holography, To Resolve Structure–property–performance Links At The Atomic Scale."
+576,"Materials For Quantum Information Science Identify Materials-related Decoherence Sources In Qubits (interfaces, Oxides, Defects...)."
+577,"Phases & Phase Transitions In Ferroic Materials Map Lattice–charge–spin Coupling, Domain Topology, And Transition Pathways Under External Stimuli, Incl. Bias, Heating, Cryo, And Magnetic Field."
+578,Geometric Data Analysis
+580,Deep Learning On Non-euclidean Domains
+581,Data-driven Design And Engineering
+582,Digital Human Modeling
+583,Energy Transport And Conversion
+584,Material Properties
+585,Thermal Management
+586,Hypersonics
+587,Cyber-physical Systems For Smart Manufacturing
+588,Real-time Production Control
+589,Knowledge-guided Machine Learning Based Control
+590,Human-robot Collaboration In Industrial Settings
+591,Intelligent Maintenance And Energy Management
+592,Fluid Mechanics
+593,Chemical Kinetics And Model Reduction
+594,Combustion
+595,Hypersonic Propulsion
+596,"Soot Nucleation, Growth, And Oxidation"
+597,Synthesis And Life-cycle Analysis Of Ceramic Materials
+598,Fire Initiation
+1360,Propagation
+1361,Suppression
+599,Spacecraft Electric Propulsion
+600,Space Environment
+601,Plasma Physics And Engineering
+602,Computational Plasma Physics
+604,Ultrafast Laser Spectroscopy
+605,Coherent Anti-stokes Raman Scattering
+606,Optical-based Measurement And Sensor Development
+607,Clean Energy Conversion
+608,Hypersonic Propulsion And Aerodynamics
+609,Morphing Structures/biomimetics
+610,Mechanisms Of Aortic Injury In Automobile Collisions
+611,"Mechanisms, Prediction, And Prevention Of Pedestrian Injuries From Collisions With Automobiles"
+612,Mechanisms And Prediction Of Thoracic Injury In Automobile Collisions
+613,"Automobile Restraint Design, Evaluation, And Optimization"
+614,Effects Of Aging On Thoracic Injury And Vehicular Occupant Protection
+615,Anthropomorphic Test Device Design And Evaluation
+616,Orthopedic Training Simulator Design And Evaluation
+617,Methods And Theory Of Automobile Occupant Injury Prediction And Modeling
+618,Mechanisms And Prevention Of Non-contact Lower Extremity Injury In Athletics
+619,Modeling Of Costal Cartilage Calcification As A Function Of Age
+620,Injury Risk Prediction Using Statistical Techniques To Interpret Finite Element Biomechanics Models
+621,"Development Of High-order Cfd Methods For High-speed Flows (e.g., Supersonic And Hypersonic Regimes)"
+622,Parallel Adaptive Algorithms For Both Spatial And Temporal Domains
+623,Development Of Convergent Algorithms Of Hpc + Data Analytics + Optimization For Aerospace Engineering Designs
+624,Applications Of Above Algorithms: Derive Reduced-order Models For Large Eddy Simulation; Improve Fundamental Understanding Of Physics In Complex Fluid Dynamical Systems; Innovate Practical Propulsion Devices
+625,Exploratory Research: Quantum Computing Algorithms For Fluids
+626,"Base Research Expertise: Adaptive Mesh Refinement, Parallel Computing, Complex Geometry With Embedded Boundary, Mapped Grids, Fourth-order Finite-volume Cfd Methods For Complex Fluid Dynamics (e.g., Turbulence, Chemical Reactions, And/or, Plasma)"
+627,Computational/finite Element Modeling
+628,Vehicle Safety And Crashworthiness
+629,Occupant Safety
+630,Human Body Modeling
+631,Haptics
+632,Human Factors / Human Computer Interaction
+633,Computational Neuroscience
+634,Biomechanics Of Cardiopulmonary Resuscitation
+635,Ecg Diagnosis Of Cardiovascular Emergencies
+636,High Fidelity & Vr Simulation For Medical Education
+637,Trauma Biomechanics
+638,Scramjets
+639,Instrumentation And Laser Diagnostics
+640,Wind Tunnel Testing
+641,Flight Testing
+642,Controls
+643,Advanced Manufacturing
+644,Rotating Machinery
+645,Engineering Curriculum Design
+646,Student Assessment
+647,Injury Biomechanics
+648,Automobile Safety And Traffic Injury Prevention
+649,Athlete Injury And Performance
+650,Smart Manufacturing
+651,Nanomaterial-enabled Energy Systems
+652,Biological And Bio-inspired Materials And Devices
+653,Micro/nanomechanics
+654,Surface Engineering
+655,Tribology
+656,Wind Energy And Energy Storage Systems
+657,Aerospace Propulsion And Aerodynamics
+658,"Turbulence, Multiphase Flow, And Fluid-solid Interaction"
+659,Application Of Optical Measurement Techniques
+660,Development Of Laser Sensors
+661,"Non-intrusive Measurements Of Temperature, Pressure, Velocity, Chemical Composition In Harsh Environments"
+662,Tomography
+663,Three-dimensional Measurements And Visualization
+664,Experimental And Analytical Study Of Energy And Thermal Systems
+665,Traumatic Brain Injury
+666,Computational Biomechanics
+667,Experimental Biomechanics
+668,Design Of Personnel Protective Equipment
+669,Micro- And Nanoscale Heat Transfer
+670,Electro- And Optothermal Experimental Techniques
+671,Microfabrication And Mems
+672,Infrared Thermal Detection
+673,"Injury Biomechanics – Head, C-spine, Chest, Abdomen And Pelvis And Extremities"
+674,Occupant Kinematics
+675,Pedestrian Injury
+676,Experimental Embalming Techniques (soft Embalming For Medical And Surgical Education)
+677,Post Mortem Human Subject Training Techniques For Life Saving Procedures
+678,Anatomical Injury Scaling
+679,Real-world Investigation Of Crashes And Injury Mechanisms
+680,Characterization Of Biological Materials And Structures
+681,Impact Biomechanics For Surgical Training
+682,Structure-function Relationships
+683,Advanced Microscopic Imaging
+684,Biomineralizing Tissues
+685,Bioimaging
+686,Bone
+1362,Cartilage
+1363,Tendon
+687,Fluid Mechanics Analysis/theory And Computation
+688,High-speed Flow Physics
+690,"Metal Oxidation, Processing And Recovery"
+691,Engineering Mechanics
+692,Nanomanufacturing For Wearable Electronics
+693,Engineering Design For Biomedical Devices
+694,Soft-hard Integration Mechanics
+695,Thermal Transport Of Mechanically Deformed Materials
+697,Circular Economy And Industrial Ecology
+698,System Safety And Reliability
+699,Human Performance Modeling
+700,Formal Methods
+701,Situational And Spatial Awareness
+702,Human-automation/-autonomy/-robot Interaction
+703,Complex Systems Failure
+704,Psychophysics And Psychometrics
+705,Auditory Perception
+706,Technology And Democracy
+708,Data Fusion
+709,Knowledge Discovery
+710,Simulation Optimization
+711,Systems Design
+712,Financial Engineering And Modeling
+713,Asset Management And Portfolio Design
+714,Stochastic Systems
+715,Data-driven Decision Making
+716,Multimodal Machine Learning For Public Health
+717,Human Behavior Modeling
+718,Data-centric Ai System
+719,Infectious Disease Modeling
+720,Decision Analysis
+721,Markov Decision Processes
+722,Markov Models
+723,Monte Carlo Simulation Models
+724,Discrete Event Simulation
+725,Massively Interacting Systems And The Mathematics Supporting Rigorous Analysis And Understanding Of Their Stability And Resiliency
+726,The Generic Structure And The Mathematics Of Large-scale Simulation Models Of Massively Interacting Systems
+727,"Discrete And Continuous Dynamical Systems, In Particular Graph Dynamical Systems (gds) And Their Combinatorial And Algebraic Structures"
+728,"Design, Modeling, Framework Development, And Mathematical Analysis Of Simulation Models Based On Graph Dynamical Systems"
+729,"Structure-to-function Theory Of Graph Dynamical Systems Relating Properties Of Networks, Functions And Update Mechanism To Global Dynamics"
+731,Stochastic Optimization
+732,Business Analytics And Decision Analysis
+733,Sports Analytics
+734,Structure Analysis
+735,Computational Solid Mechanics
+736,Applied Mathematics Education
+737,Artificial Neural Networks
+738,Structural Applications Of Smart And Advanced Materials
+739,Energy Dissipation Systems
+740,Computational Mechanics
+741,Intelligent Materials And Structures
+742,Damage Detection And System Identification
+743,Optimization Mathematical Models And Graph Theoretical Methods
+744,Applied Mathematics
+745,Geophysical Mass Flows
+746,Computational Fluid Dynamics Electrokinetic Flows
+747,Numerical Simulation
+748,Data Assimilation Adjoints
+749,Machine Learning System Of Nonlinear Pdes
+750,Motivation
+751,Person-situation Dynamics
+752,Character Ethics
+753,Leadership
+754,Materials Science And Engineering
+755,Mental Health
+756,Digital Health
+758,Networking
+762,Dynamic Programming
+763,Medical Decision Making
+764,Material Science
+765,Thin Films
+766,Semiconductors
+767,Xps
+768,Mbe
+769,Building Energy Performance
+770,Indoor Environmental Quality
+772,Big Data
+773,Genai In Cs Courses
+774,Cs1
+775,Automated Assessment Tools
+776,Metacognitive Awareness
+777,Error Messages
+778,Nanoparticles
+779,Polymer Science
+780,Soft Matter
+781,Adaptive Control
+782,Multivariable Control
+783,Nonlinear Control
+785,Real-time Systems
+786,Biolocomotion
+788,Vehicle Stability
+789,Swarm Dynamics
+790,Magnesium
+791,Uranium
+792,Plasticity
+793,Texture
+794,Dislocations
+795,Solid Mechanics
+796,Extreme Nanomanufacturing
+797,Solid-liquid Interaction
+798,Soft-hard Integration
+799,Data Science
+800,Event Prediction
+801,Event Forecasting
+802,Crime Linkage
+803,Transplant Analytics
+805,Water Chemistry
+806,Carbon Management
+807,Complex Fluids
+809,Neurodevelopmental Disorders
+811,Cellular Heterogeneity
+812,Stem Education
+813,Algorithm Development
+814,Numerical Computation
+815,Optimization
+816,Computational Chemistry
+822,Bio-inspired Flow
+823,Fluid Dynamics
+824,Computational Fluid Dynamics
+825,Insect Flight
+826,Fish Swimming
+827,Infectious Disease
+828,Signal Transduction
+829,Gpus
+830,Geotechnical Engineering
+835,Philosophy Of Technology
+836,Eugenics
+837,Transhumanism
+838,Microresonators
+839,Microcavities
+840,Nonlinear Optics
+841,Photonics
+842,Computer Science
+844,Literary Computing
+845,Security And Privacy
+846,Cs Education Scholarship/research
+847,Graph Dynamical Systems
+848,Modeling
+849,System Architectures
+850,Massively Interacting Systems
+851,Coupled
+852,Autonomous Vehicles
+853,Optical Diagnostics
+855,Flow Instrumentation
+858,Systems Software
+859,Construction Engineering And Management
+860,Environmental Fluid Mechanics
+861,Coastal Oceanography
+862,Marine Ecosystems
+863,Optoelectronics
+864,Fatigue
+865,Environment Assisted Cracking
+866,Stress Corrosion Cracking
+867,Hydrogen
+869,Image Analysis
+870,Shape Analysis
+871,Statistics On Manifolds
+872,Privacy
+873,Innovation Studies
+874,Governance
+875,Responsible Innovation
+876,Futures Studies
+877,Sustainability Education
+878,In-situ Tem
+879,Electron Spectroscopy
+880,Radiation-solid Interactions
+881,Deep Learning
+883,Trustworthy Ai
+884,Smart Materials And Structures
+885,Earthquake Engineering
+886,Sustainable Materials
+887,3d Concrete Printing
+889,Visualization
+890,Network Analysis
+891,Vehicle Crashworthiness
+892,Sports Injuries
+893,Scientific Computing
+895,Secure Internet Of Things
+896,Structural Engineering
+897,Bridge Engineering
+898,Condition Assessment
+899,Digital Image Correlation
+900,Terahertz
+901,Microwave
+902,Millimeter-wave
+903,Diode
+904,Microwave Circuits
+905,Millimeter-wave Circuits
+906,Micromachining
+907,Mems
+908,Rf-mems
+910,Epidemiology
+912,Social Networks
+914,Language Models
+915,Mixed-signal Circuits
+916,Electronic Design Automation
+917,Condensed Matter Theory
+918,Materials Science
+919,First-principles
+920,Multi-robot Systems
+921,Multi-agent Systems
+922,Autonomous Driving
+923,Colloidal Nanoparticles
+924,In-situ/operando Characterization
+925,Xafs
+926,Serious Games
+928,Condensed Matter Physics
+929,Shape Memory Alloys
+930,Orthopaedics
+931,Structural Design
+933,Cardiac Biology
+934,Signaling Networks
+935,Microscopy
+937,Science And Technology Studies
+938,Laboratory Ethnography
+939,Construction Of Expertise
+940,Studies Of Scientific Practice
+941,Computer Systems
+942,Energy-harvesting Sensors
+943,Cell Signaling
+944,Tyrosine Phosphorylation
+945,Engineering Sustainability
+946,Extracellular Matrix
+948,Complex Systems Theory
+949,Economics Of Information
+950,Muscle
+951,Computer Modeling
+952,Imaging
+954,Optical Fiber Communication
+955,Optical Wireless Communications
+956,Visible Light Communications
+957,Optical
+958,Systems And Synthetic Biology
+959,Neonatal And Maternal Immunology
+962,Cps
+963,Emergency Medicine
+964,Pediatric Trauma
+968,Molecular Imaging
+969,Target Identification
+971,Wash
+972,Social Equity In Stem
+974,Rural Development
+975,Financial Engineering
+976,Investment Management
+978,Asset Management
+979,Economic Analysis
+980,Laser
+983,Photodiode
+984,Photodetector
+985,Human-ai/robot Interaction
+986,Molecular Modeling
+987,Chromatography
+988,Econometrics
+989,Theory Of Computation
+990,Industrial Organization
+992,Laser Processing Of Materials
+993,Systems Engineering
+994,Healthcare
+995,Sdn
+997,Thermal Sciences
+999,Material Thermophysics
+1000,Nanoscale Heat Transport
+1002,Medical Simulation
+1003,Human-technology Interaction
+1005,Biofabrication
+1006,Hydrogels
+1008,Uncertainty Quantification
+1009,Stochastic Computation
+1010,Smart Infrastructure Systems
+1011,Bayesian Theory
+1012,Decision Theory
+1013,Forecasting Theory
+1014,Probabilistic Forecasting
+1015,Stochastic Control
+1016,Software Reliability And Performance Analysis
+1017,Transmission Electron Microscopy And Associated Techniques
+1019,Iii-nitride
+1021,Ethics
+1022,Environmental Sustainability
+1023,Integrated Circuits
+1024,Mm-wave Circuits
+1025,Integrated Antennas
+1026,Silicon Photonics
+1027,Graph Learning
+1029,Medical Informatics
+1030,Healthcare Systems
+1031,Adversarial Machine Learning
+1032,Privacy-preserving Machine Learning
+1033,Secure Computation
+1034,Flipping Frenemies
+1036,Environmental Engineering And Policy
+1038,Photoacoustic Imaging
+1039,Ultrasound
+1043,Signal Processing
+1044,Multi-armed Bandits
+1046,Federated Learning
+1047,Wireless
+1048,Trauma
+1049,Post Mortem Radiology
+1050,Life Saving Techniques
+1052,Human-automation Interaction
+1056,Peptides
+1057,Electric Propulsion
+1058,Plasma Physics
+1060,Operations Research
+1061,Lean
+1063,Automobile Safety
+1064,Fiber Reinforced Composites
+1065,Structural Mechanics
+1067,Probabilistic Ml
+1068,Computational Geometry
+1069,Computational Design
+1070,Scientific Machine Learning
+1071,Generative Modeling
+1073,Industrial Ecology
+1074,Mechanical Engineering
+1075,Heat Transfer
+1076,Simulation
+1077,Collaborative Learning
+1078,Inclusive Teaching
+1079,Alternative Grading
+1081,Vascular Biology
+1083,Wireless Communications And Networking
+1086,Polymeric Biomaterials
+1088,Immunotherapy
+1089,Autonomy
+1091,Network Biology
+1094,Transportation Engineering
+1095,Operations
+1096,Information Technology
+1098,Machine Learning Acceleration
+1100,Stochastic Approximation
+1103,Electrochemistry
+1104,Coatings
+1105,Inhibitors
+1107,Predictive Modeling
+1108,Response Surfaces
+1109,Space-time Modeling
+1110,Computational Nano-electronics
+1113,Intelligent Built Environments
+1114,User-centered Design
+1115,Behavioral Modeling
+1116,Virtual And Augmented Reality
+1117,Automation In Construc
+1118,Ai Systems
+1119,Serverless Computing
+1120,Storage Systems
+1123,Microfluidics
+1124,Dielectrophoresis
+1125,Bioimpedance
+1126,Lab-on-a-chip
+1127,Cytometry
+1128,Nbic
+1129,Technology Studies
+1130,Science Fiction
+1131,Charge Transport
+1132,Heat Transport
+1133,Thermoelectrics
+1134,Rapid Prototyping
+1136,Technology
+1137,Labor
+1138,Culture
+1139,Information Theory
+1140,Coding Theory
+1141,Data Storage
+1142,Flexible Electronics
+1143,Smart Manufacturing System Modeling And Analysis
+1144,Production Control
+1145,Hrc
+1146,Ferroelectrics
+1147,Dielectrics
+1149,Epitaxy
+1150,Ion Conductors
+1151,Angiogenesis
+1152,Agent-based Modeling
+1154,Microcirculation
+1155,Heterogeneous Catalysis
+1156,Ai Integration
+1157,First-year Engineering
+1158,Biological Image Analysis
+1160,Ai For Healthcare
+1161,Battery
+1162,Materials
+1163,Colloids
+1164,Particles
+1165,Mri
+1167,Communications
+1169,Tensor Decomposition
+1170,Surveillance
+1171,Transparency
+1172,Service-learning
+1173,Engineering Studies
+1174,Military Technology
+1175,Surface And Nanoscience
+1176,Silicene And Graphene
+1177,Surface Chemistry
+1178,Oxidation And Corrosion
+1179,American Math Soc
+1180,Asian American Scholars Forum
+1181,Indian Acad Sci
+1182,Academy Of Romanian Scientists
+1183,Drug Discovery
+1184,Scholarly Communication
+1185,Professional
+1186,Occupant Protection
+1187,Orthopaedic Biomechanics
+1188,Cyberinfrastructure
+1189,Clouds
+1190,Parallel Computing
+1191,Particle Physics
+1192,Flames
+1193,Chemical Kinetics
+1194,Soot
+1196,Computational Epidemiology
+1198,Scalable Computing
+1199,Computer Vision
+1200,Human Factors Engineering
+1202,Health Equity
+1203,Patient Ergonomics
+1204,Gene Therapy
+1205,Pharmacology
+1209,Edge Computing
+1210,Bone
+1211,Cartilage
+1212,Skeletal Development And Evolution
+1215,Laser Diagnostics
+1216,System Security
+1217,Data Provenance
+1218,Intrusion Detection
+1219,Forensics
+1221,Urban Hydrology
+1223,Global Hydrology
+1224,Remote Sensing
+1225,Materials Physics
+1227,Spacecraft
+1228,Deliberative Democracy
+1229,Tech Ethics
+1230,Peacebuilding
+1231,Conflict Resolution
+1232,Environmental Governance
+1233,Single-cell Biology
+1234,Cellular Plasticity
+1237,Electroconvection
+1238,Nanoscience
+1240,Engineering Pedagogy
+1241,Materials For Extreme Environments
+1242,Gw-bse
+1246,Dependable Computing
+1247,Dependable Systems
+1248,Cyber-physical Systems Security
+1249,Medical Robotics
+1251,Wearable Technology
+1252,Internet Of Medical Things
+1253,Medical Cyber Physical Systems
+1254,Multimodal Displays
+1255,Tactile
+1256,Eye Tracking
+1257,Vr/ar/mr
+1258,Precision Health
+1259,Medical Devices
+1260,Cancer Screening
+1261,History
+1262,History Of Technology
+1263,Science
+1264,And Society
+1265,Vlsi
+1266,Low Power Circuits
+1267,Sub-threshold
+1268,Sram
+1269,Body Sensor Networks
+1270,Water Quality
+1271,Point-of-use Water Treatment
+1272,Groundwater
+1275,Socialization
+1276,Sense Of Belonging
+1278,Identity
+1279,Control Theory And Applications
+1280,Low Power
+1282,Nanoelectronics
+1283,Electrochemical Materials Science
+1284,Electrodeposition
+1285,Photoelectrochemistry
+1286,Functional Materials
+1287,Focused Ultrasound
+1289,Quantitative Imaging
+1290,Image Processing
+1291,Engineering
+1292,Medicine
+1293,Immunology
+1295,Multi-modal Interfaces
+1296,Vr/ar Interaction
+1298,Numerical Algorithms
+1299,Aerospace Propulsion Systems
+1300,Multibody Mechanics
+1302,Corrosion Science
+1303,Service Life Prediction
+1307,Laser Traps
+1308,Cell Motility
+1309,Engineering Education Research
+1312,Hardware Acceleration
+1313,Automata Processing
+1314,Heterogeneous Computing
+1318,Systems
+1323,Resuscitation
+1324,Shock
+1325,Artificial Pancreas
+1326,Metabolic Simulations
+1327,Diabetes Technology
+1328,Impact And Injury Biomechanics
+1329,Image Reconstruction
+1331,Teacher Preparation
+1332,Magnetic Resonance Imaging
+1334,Artificial Neural Network (ann) Applications In Engineering
+1335,Multi-hazard

@@ -1,0 +1,518 @@
+TOPIC DEDUPLICATION SUMMARY
+================================================================================
+
+STATISTICS
+--------------------------------------------------------------------------------
+Original topics: 1335
+Deduplicated topics: 1168
+Topics merged: 168
+Protected pairs (kept separate): 43
+Exact duplicate merges: 133
+Fuzzy duplicate merges: 35
+
+MERGED TOPICS
+--------------------------------------------------------------------------------
+ID 71: Systems biology
+  -> Merged into ID 51: Systems Biology
+
+ID 80: Cellular and Molecular Engineering
+  -> Merged into ID 53: Cellular And Molecular Bioengineering
+
+ID 98: Immune Engineering
+  -> Merged into ID 45: Immunoengineering
+
+ID 110: Machine Learning & Artificial Intelligence
+  -> Merged into ID 92: Machine Learning / Ai / Data Science
+
+ID 117: Materials Characterization
+  -> Merged into ID 108: Materials Characterization
+
+ID 145: Polymer Synthesis & Characterization
+  -> Merged into ID 136: Polymer Synthesis And Characterization
+
+ID 170: Structures and Mechanics - Sustainable Infrastructure Systems
+  -> Merged into ID 162: Structures And Mechanics (sustainable Infrastructure Systems)
+
+ID 236: Theoretical and Applied Research Intelligent Systems
+  -> Merged into ID 233: Theoretical And Applied Research In Intelligent Systems.
+
+ID 238: Artificial Intelligence
+  -> Merged into ID 221: Artificial Intelligence And Machine Learning
+
+ID 239: Computer Science Education
+  -> Merged into ID 229: Computer Science Education
+
+ID 268: Computer architecture
+  -> Merged into ID 255: Computer Architecture
+
+ID 276: Artificial intelligence
+  -> Merged into ID 221: Artificial Intelligence And Machine Learning
+
+ID 288: Cyber Security
+  -> Merged into ID 197: Cybersecurity
+
+ID 293: CS Education
+  -> Merged into ID 229: Computer Science Education
+
+ID 301: CS education
+  -> Merged into ID 229: Computer Science Education
+
+ID 314: Machine learning and artificial intelligence
+  -> Merged into ID 110: Machine Learning & Artificial Intelligence
+
+ID 337: Cyber Physical Systems
+  -> Merged into ID 242: Cyber-physical Systems
+
+ID 343: High performance computing
+  -> Merged into ID 318: High-performance Computing
+
+ID 345: Software engineering
+  -> Merged into ID 244: Software Engineering
+
+ID 347: Cloud/Edge Computing
+  -> Merged into ID 311: Cloud Computing
+
+ID 360: Network Science
+  -> Merged into ID 313: Network Science
+
+ID 361: AI
+  -> Merged into ID 221: Artificial Intelligence And Machine Learning
+
+ID 426: Smart and connected health
+  -> Merged into ID 223: Smart And Connected Health
+
+ID 427: Cyber-physical systems
+  -> Merged into ID 242: Cyber-physical Systems
+
+ID 428: Biotechnology and Biomolecular Engineering (Biomolecular Design, Cellular and Molecular Bioengineering)
+  -> Merged into ID 82: Biotechnology And Biomolecular Engineering Biomolecular Design, Cellular And Molecular Bioengineering
+
+ID 471: Science, Technology, and Society
+  -> Merged into ID 432: Science, Technology And Society
+
+ID 481: Science, technology, and society (STS)
+  -> Merged into ID 432: Science, Technology And Society
+
+ID 497: Science, Technology & Society
+  -> Merged into ID 432: Science, Technology And Society
+
+ID 505: Bio-inspired Robotics
+  -> Merged into ID 412: Bio-inspired Robotics
+
+ID 529: Magnetic materials
+  -> Merged into ID 394: Magnetic Materials
+
+ID 569: Laser-materials interactions
+  -> Merged into ID 527: Laser-materials Interactions
+
+ID 579: Statistical Shape Modeling & Analysis
+  -> Merged into ID 376: Statistical Shape Analysis
+
+ID 603: High Performance Computing
+  -> Merged into ID 318: High-performance Computing
+
+ID 689: Fluid-structure interactions
+  -> Merged into ID 411: Fluid-structure Interactions
+
+ID 696: Engineering Design Education
+  -> Merged into ID 19: Engineering Education
+
+ID 707: Engineering ethics
+  -> Merged into ID 452: Engineering Ethics
+
+ID 730: Markov Decision Processes
+  -> Merged into ID 721: Markov Decision Processes
+
+ID 757: cybersecurity
+  -> Merged into ID 197: Cybersecurity
+
+ID 759: smart cities
+  -> Merged into ID 169: Smart Cities
+
+ID 760: sustainability
+  -> Merged into ID 182: Sustainability
+
+ID 761: Stochastic Modelling
+  -> Merged into ID 275: Stochastic Modeling
+
+ID 771: Digital Twin
+  -> Merged into ID 173: Digital Twins
+
+ID 784: robotics
+  -> Merged into ID 241: Robotics
+
+ID 787: energy harvesting
+  -> Merged into ID 413: Energy-harvesting
+
+ID 804: Environmental engineering
+  -> Merged into ID 118: Environmental Engineering
+
+ID 808: Life cycle assessment
+  -> Merged into ID 202: Life Cycle Assessment
+
+ID 810: Cancer biology
+  -> Merged into ID 52: Cancer Biology
+
+ID 817: water resources management
+  -> Merged into ID 204: Water Resources Management
+
+ID 818: multi-objective control
+  -> Merged into ID 205: Multi-objective Control
+
+ID 819: stochastic hydrology
+  -> Merged into ID 206: Stochastic Hydrology
+
+ID 820: risk analysis
+  -> Merged into ID 207: Risk Analysis
+
+ID 821: uncertainty analysis
+  -> Merged into ID 208: Uncertainty Analysis
+
+ID 831: engineering education
+  -> Merged into ID 19: Engineering Education
+
+ID 832: Distributed System
+  -> Merged into ID 310: Distributed Systems
+
+ID 833: Networking
+  -> Merged into ID 758: Networking
+
+ID 834: cryptography
+  -> Merged into ID 370: Cryptography
+
+ID 843: software engineering
+  -> Merged into ID 244: Software Engineering
+
+ID 854: combustion
+  -> Merged into ID 594: Combustion
+
+ID 856: tomography
+  -> Merged into ID 662: Tomography
+
+ID 857: thermal management
+  -> Merged into ID 585: Thermal Management
+
+ID 868: corrosion
+  -> Merged into ID 519: Corrosion
+
+ID 882: Natural Language Processing
+  -> Merged into ID 307: Natural Lanaguage Processing
+
+ID 888: Structural Health Monitorin
+  -> Merged into ID 172: Structural Health Monitoring
+
+ID 894: Human-Robot Interaction
+  -> Merged into ID 389: Human-robot Interaction
+
+ID 909: Computer science
+  -> Merged into ID 842: Computer Science
+
+ID 911: graph dynamical systems
+  -> Merged into ID 847: Graph Dynamical Systems
+
+ID 913: wireless networks
+  -> Merged into ID 334: Wireless Networking
+
+ID 927: Materials science
+  -> Merged into ID 918: Materials Science
+
+ID 932: systems biology
+  -> Merged into ID 51: Systems Biology
+
+ID 936: biomedical engineering
+  -> Merged into ID 302: Biomedical Engineering
+
+ID 947: Water Resources Management
+  -> Merged into ID 204: Water Resources Management
+
+ID 953: biomechanics
+  -> Merged into ID 29: Biomechanics
+
+ID 960: Cell signaling
+  -> Merged into ID 943: Cell Signaling
+
+ID 961: cancer biology
+  -> Merged into ID 52: Cancer Biology
+
+ID 965: machine learning
+  -> Merged into ID 91: Machine Learning
+
+ID 966: Condensed Matter Physics
+  -> Merged into ID 928: Condensed Matter Physics
+
+ID 967: Electronic structure
+  -> Merged into ID 544: Electronic Structures
+
+ID 970: drug delivery
+  -> Merged into ID 134: Drug Delivery
+
+ID 973: Sustainable Infrastructure
+  -> Merged into ID 196: Sustainable Infrastructure Systems
+
+ID 977: stochastic modeling
+  -> Merged into ID 275: Stochastic Modeling
+
+ID 981: optoelectronics
+  -> Merged into ID 863: Optoelectronics
+
+ID 982: photonics
+  -> Merged into ID 841: Photonics
+
+ID 991: Fluid Dynamics
+  -> Merged into ID 823: Fluid Dynamics
+
+ID 996: Software-Defined Networks
+  -> Merged into ID 304: Software-defined Networking
+
+ID 998: laser-material interactions
+  -> Merged into ID 527: Laser-materials Interactions
+
+ID 1001: ultrafast laser spectroscopy
+  -> Merged into ID 604: Ultrafast Laser Spectroscopy
+
+ID 1004: biomaterials
+  -> Merged into ID 2: Biomaterials
+
+ID 1007: tissue engineering
+  -> Merged into ID 84: Tissue Engineering
+
+ID 1018: magnetic materials
+  -> Merged into ID 394: Magnetic Materials
+
+ID 1020: artificial intelligence
+  -> Merged into ID 221: Artificial Intelligence And Machine Learning
+
+ID 1028: Ubiquitous computing
+  -> Merged into ID 329: Ubiquitous Computing
+
+ID 1035: IoT
+  -> Merged into ID 198: Internet Of Things
+
+ID 1037: Machine Learning and Data Mining
+  -> Merged into ID 78: Machine Learning And Data Science
+
+ID 1040: Regenerative medicine
+  -> Merged into ID 17: Regenerative Medicine
+
+ID 1041: bioinformatics
+  -> Merged into ID 103: Bioinformatics
+
+ID 1042: computational biology
+  -> Merged into ID 11: Computational Biology
+
+ID 1045: Reinforcement learning
+  -> Merged into ID 365: Reinforcement Learning
+
+ID 1051: formal methods
+  -> Merged into ID 700: Formal Methods
+
+ID 1053: human performance modeling
+  -> Merged into ID 699: Human Performance Modeling
+
+ID 1054: human behavior modeling
+  -> Merged into ID 717: Human Behavior Modeling
+
+ID 1055: polymers
+  -> Merged into ID 121: Polymers
+
+ID 1059: Formal Methods
+  -> Merged into ID 700: Formal Methods
+
+ID 1062: Injury biomechanics
+  -> Merged into ID 647: Injury Biomechanics
+
+ID 1066: Neurosymbolic AI
+  -> Merged into ID 279: Neuro-symbolic Ai
+
+ID 1072: engineering design
+  -> Merged into ID 503: Engineering Design
+
+ID 1080: mechanobiology
+  -> Merged into ID 34: Mechanobiology
+
+ID 1082: Machine learning
+  -> Merged into ID 91: Machine Learning
+
+ID 1084: Fluid mechanics
+  -> Merged into ID 592: Fluid Mechanics
+
+ID 1085: Geophysical mass flows
+  -> Merged into ID 745: Geophysical Mass Flows
+
+ID 1087: nanoparticles
+  -> Merged into ID 778: Nanoparticles
+
+ID 1090: bioengineering
+  -> Merged into ID 115: Bioengineering
+
+ID 1092: infectious disease
+  -> Merged into ID 827: Infectious Disease
+
+ID 1093: cancer
+  -> Merged into ID 81: Cancer
+
+ID 1097: Computer-Aided Desgin
+  -> Merged into ID 438: Computer-aided Design
+
+ID 1099: reinforcement learning
+  -> Merged into ID 365: Reinforcement Learning
+
+ID 1101: Systems engineering
+  -> Merged into ID 993: Systems Engineering
+
+ID 1102: Risk Analysis
+  -> Merged into ID 207: Risk Analysis
+
+ID 1106: data fusion
+  -> Merged into ID 708: Data Fusion
+
+ID 1111: Polymers and Soft Matter
+  -> Merged into ID 113: Polymers And Soft Matter
+
+ID 1112: Advanced (Bio)Manufacturing
+  -> Merged into ID 114: Advanced (bio)manufacturing
+
+ID 1121: distributed systems
+  -> Merged into ID 310: Distributed Systems
+
+ID 1122: high-performance computing
+  -> Merged into ID 318: High-performance Computing
+
+ID 1135: Advanced Manufacturing
+  -> Merged into ID 643: Advanced Manufacturing
+
+ID 1148: thin films
+  -> Merged into ID 765: Thin Films
+
+ID 1153: regenerative medicine
+  -> Merged into ID 17: Regenerative Medicine
+
+ID 1159: Medical Image Analysis
+  -> Merged into ID 375: Biomedical Image Analysis
+
+ID 1166: Signal Processing
+  -> Merged into ID 1043: Signal Processing
+
+ID 1168: Data Science
+  -> Merged into ID 799: Data Science
+
+ID 1195: hypersonics
+  -> Merged into ID 586: Hypersonics
+
+ID 1197: Multi-agent systems
+  -> Merged into ID 921: Multi-agent Systems
+
+ID 1201: health informatics
+  -> Merged into ID 104: Health Informatics
+
+ID 1206: Distributed systems and networks
+  -> Merged into ID 346: Distributed Systems And Networks
+
+ID 1207: Distributed machine learning
+  -> Merged into ID 348: Distributed Machine Learning
+
+ID 1208: Cloud
+  -> Merged into ID 1189: Clouds
+
+ID 1213: Structure-Function relation
+  -> Merged into ID 682: Structure-function Relationships
+
+ID 1214: Ultrafast Spectroscopy
+  -> Merged into ID 604: Ultrafast Laser Spectroscopy
+
+ID 1220: hydroinformatics
+  -> Merged into ID 166: Hydroinformatics
+
+ID 1222: flooding
+  -> Merged into ID 168: Flooding
+
+ID 1226: Rotating Machinery
+  -> Merged into ID 644: Rotating Machinery
+
+ID 1235: Numerical simulation
+  -> Merged into ID 747: Numerical Simulation
+
+ID 1236: CFD
+  -> Merged into ID 824: Computational Fluid Dynamics
+
+ID 1239: nanomaterials
+  -> Merged into ID 398: Nanomaterials
+
+ID 1243: Data-Driven Decision-Making
+  -> Merged into ID 715: Data-driven Decision Making
+
+ID 1244: Infectious Diseases Modeling
+  -> Merged into ID 719: Infectious Disease Modeling
+
+ID 1245: AI for Public Health
+  -> Merged into ID 1160: Ai For Healthcare
+
+ID 1250: Heterogeneous Catalysis
+  -> Merged into ID 1155: Heterogeneous Catalysis
+
+ID 1273: catalysis
+  -> Merged into ID 105: Catalysis
+
+ID 1274: energy conversion
+  -> Merged into ID 549: Energy Conconversion
+
+ID 1277: first year engineering
+  -> Merged into ID 1157: First-year Engineering
+
+ID 1281: Processing-in-Memory
+  -> Merged into ID 422: Processing In Memory
+
+ID 1288: cancer immunotherapy
+  -> Merged into ID 69: Cancer Immunotherapy
+
+ID 1294: Human-Computer Interaction
+  -> Merged into ID 224: Hci
+
+ID 1297: Computational Fluid Dynamics
+  -> Merged into ID 824: Computational Fluid Dynamics
+
+ID 1301: controls
+  -> Merged into ID 642: Controls
+
+ID 1304: Computational materials science
+  -> Merged into ID 445: Computational Materials Science
+
+ID 1305: Phase transformations
+  -> Merged into ID 572: Phase Transformation
+
+ID 1306: Engineering education
+  -> Merged into ID 19: Engineering Education
+
+ID 1310: computer architecture
+  -> Merged into ID 255: Computer Architecture
+
+ID 1311: processing in memory
+  -> Merged into ID 422: Processing In Memory
+
+ID 1315: science technology and society
+  -> Merged into ID 432: Science, Technology And Society
+
+ID 1316: engineering ethics
+  -> Merged into ID 452: Engineering Ethics
+
+ID 1317: technology & science fiction
+  -> Merged into ID 483: Technology & Science Fiction
+
+ID 1319: Cultural anthropology
+  -> Merged into ID 454: Cultural Anthropology
+
+ID 1320: STS (science and technology studies)
+  -> Merged into ID 937: Science And Technology Studies
+
+ID 1321: Feminisms
+  -> Merged into ID 456: Feminism
+
+ID 1322: Emergency Medicine
+  -> Merged into ID 963: Emergency Medicine
+
+ID 1330: High-Performance Computing
+  -> Merged into ID 318: High-performance Computing
+
+ID 1333: Image Reconstruction
+  -> Merged into ID 1329: Image Reconstruction
+

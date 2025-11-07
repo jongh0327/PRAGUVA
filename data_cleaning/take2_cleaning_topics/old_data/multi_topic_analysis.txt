@@ -1,0 +1,90 @@
+================================================================================
+MULTI-TOPIC ANALYSIS REPORT
+================================================================================
+
+Found topics that may contain multiple topics:
+
+ID 249: Robotics, Autonomous Driving, Multi-robot Systems
+  Suggested split into 3 topics:
+    1. Robotics
+    2. Autonomous Driving
+    3. Multi-robot Systems
+
+ID 250: Data Mining, Machine Learning, Computational Epidemiology
+  Suggested split into 3 topics:
+    1. Data Mining
+    2. Machine Learning
+    3. Computational Epidemiology
+
+ID 264: Ai, Machine Learning, Data Mining
+  Suggested split into 3 topics:
+    1. Ai
+    2. Machine Learning
+    3. Data Mining
+
+ID 298: Computer Architecture Performance, Energy Efficiency, Memory Systems
+  Suggested split into 3 topics:
+    1. Computer Architecture Performance
+    2. Energy Efficiency
+    3. Memory Systems
+
+ID 299: Graphics Processing Units (gpus) Cloud, Autonomous Vehicles, Gpus For Ai
+  Suggested split into 3 topics:
+    1. Graphics Processing Units (gpus) Cloud
+    2. Autonomous Vehicles
+    3. Gpus For Ai
+
+ID 363: Machine Learning Graph Neural Networks, Reinforcement Learning, Llm
+  Suggested split into 3 topics:
+    1. Machine Learning Graph Neural Networks
+    2. Reinforcement Learning
+    3. Llm
+
+ID 447: Mixed-signal Vlsi Design Data Converters, Frequency Synthesizers, Transceivers
+  Suggested split into 3 topics:
+    1. Mixed-signal Vlsi Design Data Converters
+    2. Frequency Synthesizers
+    3. Transceivers
+
+ID 450: Ai-assisted Bioelectronics Medical Patch, Implants, Cancer Screening
+  Suggested split into 3 topics:
+    1. Ai-assisted Bioelectronics Medical Patch
+    2. Implants
+    3. Cancer Screening
+
+ID 512: Optical Excitations In Transmission Electron Microscopy, Electron Energy Loss Spectroscopy, Electron Energy Gain Spectroscopy, Cathodoluminescence
+  Suggested split into 4 topics:
+    1. Optical Excitations In Transmission Electron Microscopy
+    2. Electron Energy Loss Spectroscopy
+    3. Electron Energy Gain Spectroscopy
+    4. Cathodoluminescence
+
+ID 513: Radiation-solid Interactions Ion-solid Interactions, Light-matter Interactions, Electron-matter Interactions
+  Suggested split into 3 topics:
+    1. Radiation-solid Interactions Ion-solid Interactions
+    2. Light-matter Interactions
+    3. Electron-matter Interactions
+
+ID 521: Alloy Development Nanocrystalline Alloys, Defect Phases, Chemically Complex Alloys
+  Suggested split into 3 topics:
+    1. Alloy Development Nanocrystalline Alloys
+    2. Defect Phases
+    3. Chemically Complex Alloys
+
+ID 522: Radiation Effects In Structural Materials Ion Irradiations/implantations, Microstructural/mechanical Response To Irradiation
+  Suggested split into 2 topics:
+    1. Radiation Effects In Structural Materials Ion Irradiations/implantations
+    2. Microstructural/mechanical Response To Irradiation
+
+ID 598: Fire Initiation, Propagation, Suppression
+  Suggested split into 3 topics:
+    1. Fire Initiation
+    2. Propagation
+    3. Suppression
+
+ID 686: Bone, Cartilage, Tendon
+  Suggested split into 3 topics:
+    1. Bone
+    2. Cartilage
+    3. Tendon
+

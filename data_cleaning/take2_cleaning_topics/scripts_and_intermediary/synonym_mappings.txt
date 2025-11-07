@@ -1,0 +1,68 @@
+SYNONYM GROUPS USED FOR NORMALIZATION
+================================================================================
+
+artificial_intelligence:
+  - ai
+  - artificial intelligence
+  - artificial intelligence and machine learning
+
+augmented_reality:
+  - ar
+  - augmented reality
+
+computational_fluid_dynamics:
+  - cfd
+  - computational fluid dynamics
+
+computer_aided_design:
+  - cad
+  - computer aided design
+  - computer-aided design
+
+computer_science:
+  - cs
+  - computer science
+  - comp sci
+
+convolutional_neural_network:
+  - cnn
+  - convolutional neural network
+
+deep_learning:
+  - dl
+  - deep learning
+
+finite_element:
+  - fe
+  - finite element
+
+human_computer_interaction:
+  - hci
+  - human computer interaction
+  - human-computer interaction
+
+internet_of_things:
+  - iot
+  - internet of things
+
+machine_learning:
+  - ml
+  - machine learning
+  - machine learning and ai
+
+natural_language_processing:
+  - nlp
+  - natural language processing
+
+reinforcement_learning:
+  - rl
+  - reinforcement learning
+
+stem:
+  - stem
+  - science technology engineering mathematics
+
+virtual_reality:
+  - vr
+  - virtual reality
+

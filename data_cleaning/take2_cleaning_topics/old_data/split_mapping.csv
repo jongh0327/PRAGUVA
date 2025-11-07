@@ -1,0 +1,43 @@
+Original_ID,New_ID,Original_Name,New_Name
+249,249,"Robotics, Autonomous Driving, Multi-robot Systems",Robotics
+249,1336,"Robotics, Autonomous Driving, Multi-robot Systems",Autonomous Driving
+249,1337,"Robotics, Autonomous Driving, Multi-robot Systems",Multi-robot Systems
+250,250,"Data Mining, Machine Learning, Computational Epidemiology",Data Mining
+250,1338,"Data Mining, Machine Learning, Computational Epidemiology",Machine Learning
+250,1339,"Data Mining, Machine Learning, Computational Epidemiology",Computational Epidemiology
+264,264,"Ai, Machine Learning, Data Mining",Ai
+264,1340,"Ai, Machine Learning, Data Mining",Machine Learning
+264,1341,"Ai, Machine Learning, Data Mining",Data Mining
+298,298,"Computer Architecture Performance, Energy Efficiency, Memory Systems",Computer Architecture Performance
+298,1342,"Computer Architecture Performance, Energy Efficiency, Memory Systems",Energy Efficiency
+298,1343,"Computer Architecture Performance, Energy Efficiency, Memory Systems",Memory Systems
+299,299,"Graphics Processing Units (gpus) Cloud, Autonomous Vehicles, Gpus For Ai",Graphics Processing Units (gpus) Cloud
+299,1344,"Graphics Processing Units (gpus) Cloud, Autonomous Vehicles, Gpus For Ai",Autonomous Vehicles
+299,1345,"Graphics Processing Units (gpus) Cloud, Autonomous Vehicles, Gpus For Ai",Gpus For Ai
+363,363,"Machine Learning Graph Neural Networks, Reinforcement Learning, Llm",Machine Learning Graph Neural Networks
+363,1346,"Machine Learning Graph Neural Networks, Reinforcement Learning, Llm",Reinforcement Learning
+363,1347,"Machine Learning Graph Neural Networks, Reinforcement Learning, Llm",Llm
+447,447,"Mixed-signal Vlsi Design Data Converters, Frequency Synthesizers, Transceivers",Mixed-signal Vlsi Design Data Converters
+447,1348,"Mixed-signal Vlsi Design Data Converters, Frequency Synthesizers, Transceivers",Frequency Synthesizers
+447,1349,"Mixed-signal Vlsi Design Data Converters, Frequency Synthesizers, Transceivers",Transceivers
+450,450,"Ai-assisted Bioelectronics Medical Patch, Implants, Cancer Screening",Ai-assisted Bioelectronics Medical Patch
+450,1350,"Ai-assisted Bioelectronics Medical Patch, Implants, Cancer Screening",Implants
+450,1351,"Ai-assisted Bioelectronics Medical Patch, Implants, Cancer Screening",Cancer Screening
+512,512,"Optical Excitations In Transmission Electron Microscopy Electron Energy Loss Spectroscopy, Electron Energy Gain Spectroscopy, Cathodoluminescence",Optical Excitations In Transmission Electron Microscopy
+512,1352,"Optical Excitations In Transmission Electron Microscopy Electron Energy Loss Spectroscopy, Electron Energy Gain Spectroscopy, Cathodoluminescence",Electron Energy Loss Spectroscopy
+512,1353,"Optical Excitations In Transmission Electron Microscopy Electron Energy Loss Spectroscopy, Electron Energy Gain Spectroscopy, Cathodoluminescence",Electron Energy Gain Spectroscopy
+512,1354,"Optical Excitations In Transmission Electron Microscopy Electron Energy Loss Spectroscopy, Electron Energy Gain Spectroscopy, Cathodoluminescence",Cathodoluminescence
+513,513,"Radiation-solid Interactions Ion-solid Interactions, Light-matter Interactions, Electron-matter Interactions",Radiation-solid Interactions Ion-solid Interactions
+513,1355,"Radiation-solid Interactions Ion-solid Interactions, Light-matter Interactions, Electron-matter Interactions",Light-matter Interactions
+513,1356,"Radiation-solid Interactions Ion-solid Interactions, Light-matter Interactions, Electron-matter Interactions",Electron-matter Interactions
+521,521,"Alloy Development Nanocrystalline Alloys, Defect Phases, Chemically Complex Alloys",Alloy Development Nanocrystalline Alloys
+521,1357,"Alloy Development Nanocrystalline Alloys, Defect Phases, Chemically Complex Alloys",Defect Phases
+521,1358,"Alloy Development Nanocrystalline Alloys, Defect Phases, Chemically Complex Alloys",Chemically Complex Alloys
+522,522,"Radiation Effects In Structural Materials Ion Irradiations/implantations, Microstructural/mechanical Response To Irradiation",Radiation Effects In Structural Materials Ion Irradiations/implantations
+522,1359,"Radiation Effects In Structural Materials Ion Irradiations/implantations, Microstructural/mechanical Response To Irradiation",Microstructural/mechanical Response To Irradiation
+598,598,"Fire Initiation, Propagation, Suppression",Fire Initiation
+598,1360,"Fire Initiation, Propagation, Suppression",Propagation
+598,1361,"Fire Initiation, Propagation, Suppression",Suppression
+686,686,"Bone, Cartilage, Tendon",Bone
+686,1362,"Bone, Cartilage, Tendon",Cartilage
+686,1363,"Bone, Cartilage, Tendon",Tendon

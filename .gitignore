@@ -25,3 +25,6 @@ config.py
 # OS
 .DS_Store
 Thumbs.db
+
+# Files with my pathways - ignore all Python scripts in this directory
+data_cleaning/cleaning_scripts_and_intermediary_files/*.py

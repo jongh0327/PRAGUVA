@@ -1,0 +1,41 @@
+## 1. BIOMEDICAL & LIFE SCIENCES ENGINEERING
+
+### 1.1 Biomedical Engineering
+#### 1.1.1 Medical Imaging & Diagnostics
+- Magnetic Resonance Imaging
+- Bioimage Analysis
+- Post mortem radiology
+- Quantitative imaging
+- Focused ultrasound
+- Medical imaging technologies
+
+#### 1.1.2 Biomechanics & Injury Science
+- Trauma Biomechanics
+- Injury Biomechanics
+- Occupant Kinematics
+- Pedestrian Injury
+- Biomechanics of Cardiopulmonary Resuscitation
+- Vehicle Safety and Crashworthiness
+
+## 3. MATERIALS SCIENCE & ENGINEERING
+
+### 3.1 Materials Synthesis & Processing
+#### 3.1.1 Materials Synthesis
+- Materials synthesis and processing
+- Crystal growth
+- Chemical synthesis
+- Sol-gel processing
+
+#### 9.6.3 Economic Analysis
+- Economic analysis
+- Cost-benefit analysis
+- Economic modeling
+- Market analysis
+
+#### 9.6.4 Industrial Organization
+- Industrial Organization
+- Market structure
+- Competition policy
+- Regulatory economics
+
+

@@ -1,4 +1,5 @@
 from typing import List, Dict, Any, Tuple, Optional, Iterable
+from collections import deque
 from neo4j import Driver
 import math
 
@@ -10,7 +11,6 @@ class MultiHopDriver:
         self.result_edges: List[Dict[str, Any]] = []
 
     # ---------------- 1-Hop ----------------
-
     def one_hop_subgraph(
         self,
         entry_node_eids: List[str],
@@ -19,9 +19,10 @@ class MultiHopDriver:
         max_rels: int = 4000,
         relationship_types: Optional[List[str]] = None,   # e.g. ["TEACHES","MENTORS","CO_AUTHORED"]
         label_whitelist: Optional[List[str]] = None,      # e.g. ["Professor","Course","Department"]
-        query_embedding:[List[float]],    # if provided, rank by cosine sim
+        query_embedding: Optional[List[float]] = None,    # if provided, rank by cosine sim
         embedding_prop: str = "descriptionEmbedding",     # node prop name that stores the vector
-        top_per_label: int = 10                           # keep top-N per node label
+        top_per_label: int = 5,                          # keep top-N per node label
+        always_keep_ids: Optional[List[str]] = None       # <-- NEW: do not prune these (e.g., frontier/seed)
     ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         """
         Build a 1-hop (undirected) subgraph around the given seed nodes using APOC.
@@ -29,6 +30,7 @@ class MultiHopDriver:
         If `query_embedding` is provided, the method post-filters the returned nodes:
           - compute cosine similarity between `query_embedding` and each node's `props[embedding_prop]`
           - keep only the top `top_per_label` for each label (Course, Department, etc.)
+          - ALSO keep any node whose id is in always_keep_ids (e.g., the frontier/seed)
           - prune relationships to those whose endpoints remain
         If `query_embedding` is None, behavior is unchanged.
         """
@@ -94,36 +96,29 @@ class MultiHopDriver:
 
                 # --- optional: per-label top-k by cosine similarity ---
                 if query_embedding is not None:
-                    # Precompute norms
                     q = query_embedding
                     q_norm = math.sqrt(sum(x * x for x in q)) or 1.0
 
                     def cosine(vec: List[float]) -> float:
-                        # Safe cosine against q
                         if not isinstance(vec, list) or not vec:
                             return float("-inf")
                         num = 0.0
-                        den = 0.0
                         v_norm = 0.0
-                        # fast path if lengths match
                         m = min(len(vec), len(q))
                         for i in range(m):
                             num += vec[i] * q[i]
                             v_norm += vec[i] * vec[i]
-                        den = (math.sqrt(v_norm) or 1.0) * q_norm
-                        return num / den
+                        return num / ((math.sqrt(v_norm) or 1.0) * q_norm)
 
-                    # Score nodes (once) and bucket by label
                     scores: Dict[str, float] = {}
                     label_buckets: Dict[str, List[Dict[str, Any]]] = {}
 
                     for n in nodes:
-                        vec = n.get("props", {}).get(embedding_prop)
-                        s = cosine(vec)
                         nid = n.get("id")
-                        if nid is None:
+                        if not nid:
                             continue
-                        scores[nid] = s
+                        vec = n.get("props", {}).get(embedding_prop)
+                        scores[nid] = cosine(vec)
                         for lbl in (n.get("labels") or []):
                             label_buckets.setdefault(lbl, []).append(n)
 
@@ -132,18 +127,19 @@ class MultiHopDriver:
                     for lbl, bucket in label_buckets.items():
                         bucket.sort(key=lambda nn: scores.get(nn.get("id"), float("-inf")), reverse=True)
                         for nn in bucket[: max(0, top_per_label)]:
-                            if nn.get("id") is not None:
+                            if nn.get("id"):
                                 keep_ids.add(nn["id"])
+
+                    # NEW: never prune the seeds/frontier we expanded from
+                    if always_keep_ids:
+                        keep_ids.update(always_keep_ids)
 
                     # Reduce nodes to kept ids
                     nodes = [n for n in nodes if n.get("id") in keep_ids]
 
                     # Prune relationships to kept endpoints
                     kept = {n["id"] for n in nodes if n.get("id")}
-                    rels = [
-                        r for r in rels
-                        if r.get("start") in kept and r.get("end") in kept
-                    ]
+                    rels = [r for r in rels if r.get("start") in kept and r.get("end") in kept]
 
                 return nodes, rels
 
@@ -151,96 +147,119 @@ class MultiHopDriver:
             print(f"APOC 1-hop subgraph error: {e}")
             return [], []
 
-    # ---------------- 2-Hop (unchanged logic; still uses one_hop_subgraph) ----------------
-
+    # ---------------- 2/3-Hop (default = 2; per-label can extend) ----------------
     def two_hop_via_python(
         self,
-        entry_node_eids: List[str],
+        seed_nodes: List[Dict[str, Any]],
         *,
-        max_nodes: int = 1000,
-        max_rels: int = 4000,
-        max_hop1_neighbors: Optional[int] = None,     # None = no cap
-        seed_includes_hop0: bool = True,              # keep the original seeds in output
-        relationship_types: Optional[List[str]] = None,
-        label_whitelist: Optional[List[str]] = None,
-        one_hop_kwargs: Optional[Dict[str, Any]] = None,
+        query_embedding: Optional[List[float]] = None
     ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         """
-        Compose a 2-hop subgraph *purely in Python* by calling one_hop_subgraph twice.
-        This function itself runs NO Cypher; it only merges results.
+        Hop-budget traversal (0–1 BFS per seed).
+        In this graph, all transitions cost 1, so this behaves like a strict 2-hop.
         """
-        if not entry_node_eids:
-            self.result_nodes, self.result_edges = [], []
+        self.result_nodes, self.result_edges = [], []
+        if not seed_nodes:
             return self.result_nodes, self.result_edges
 
-        one_hop_kwargs = dict(one_hop_kwargs or {})
-        if relationship_types is not None:
-            one_hop_kwargs.setdefault("relationship_types", relationship_types)
-        if label_whitelist is not None:
-            one_hop_kwargs.setdefault("label_whitelist", label_whitelist)
+        node_map: Dict[str, Dict[str, Any]] = {}
+        edge_map: Dict[str, Dict[str, Any]] = {}
 
-        # Helpers
-        def _index_nodes(nodes: Iterable[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
-            return {n["id"]: n for n in nodes if n and "id" in n}
+        for seed in seed_nodes:
+            seed_id = seed.get("id")
+            seed_labels = seed.get("labels", [])
+            if not seed_id:
+                continue
 
-        def _merge_nodes(into: Dict[str, Dict[str, Any]], new_nodes: Iterable[Dict[str, Any]]) -> None:
-            for n in new_nodes:
-                if not n or "id" not in n:
+            budget = self._hop_budget_for(seed_labels)  # default 2
+
+            best_cost: Dict[str, int] = {seed_id: 0}
+            dq: deque[Tuple[str, List[str], int]] = deque()
+            dq.append((seed_id, seed_labels, 0))
+
+            # Ensure the seed is present in the final graph
+            self._dedupe_merge(
+                node_map, edge_map,
+                [{"id": seed_id, "labels": seed_labels, "props": seed.get("props", {})}],
+                [],
+            )
+
+            while dq:
+                current_id, current_labels, cost_so_far = dq.popleft()
+
+                if cost_so_far >= budget:
                     continue
-                into.setdefault(n["id"], n)
 
-        def _merge_rels(into: Dict[str, Dict[str, Any]], new_rels: Iterable[Dict[str, Any]]) -> None:
-            for r in new_rels:
-                if not r or "id" not in r:
-                    continue
-                into.setdefault(r["id"], r)
+                # Expand only 1-hop from the current frontier node
+                hop_kwargs: Dict[str, Any] = {}
+                if query_embedding is not None:
+                    hop_kwargs["query_embedding"] = query_embedding
+                # protect the frontier from being pruned by per-label top-k
+                hop_kwargs["always_keep_ids"] = [current_id]
+                # (optional) explicitly whitelist known labels to keep results tight
+                hop_kwargs.setdefault("label_whitelist", ["Professor", "Course", "Department"])
 
-        def _cap(d: Dict[str, Any], k: Optional[int]) -> Dict[str, Any]:
-            if k is None or len(d) <= k:
-                return d
-            return dict(list(d.items())[:k])
+                nbors, rels = self.one_hop_subgraph([current_id], **hop_kwargs)
 
-        # Hop 1
-        hop1_nodes, hop1_rels = self.one_hop_subgraph(entry_node_eids, **one_hop_kwargs)
-        nodes_by_id: Dict[str, Dict[str, Any]] = {}
-        rels_by_id: Dict[str, Dict[str, Any]] = {}
-        _merge_nodes(nodes_by_id, hop1_nodes)
-        _merge_rels(rels_by_id, hop1_rels)
+                # Build quick labels
+                label_by_id = {n["id"]: (n.get("labels") or []) for n in nbors if n.get("id")}
 
-        seed_set = set(entry_node_eids)
-        hop1_neighbor_ids: List[str] = [
-            nid for nid in _index_nodes(hop1_nodes).keys() if nid not in seed_set
-        ]
+                # Compute which neighbors are within budget
+                allowed_ids: set = set()
+                for nb in nbors:
+                    nb_id = nb.get("id")
+                    if not nb_id:
+                        continue
+                    next_labels = label_by_id.get(nb_id, [])
+                    step_cost = self._transition_cost(current_labels, next_labels)  # 1 in your schema
+                    new_cost = cost_so_far + step_cost
+                    if new_cost <= budget:
+                        allowed_ids.add(nb_id)
+                        # Enqueue if we found a cheaper path
+                        if new_cost < best_cost.get(nb_id, 10**9):
+                            best_cost[nb_id] = new_cost
+                            item = (nb_id, next_labels, new_cost)
+                            # 0–1 BFS discipline (kept for future flexibility)
+                            if step_cost == 0:
+                                dq.appendleft(item)
+                            else:
+                                dq.append(item)
 
-        if seed_includes_hop0:
-            for sid in entry_node_eids:
-                nodes_by_id.setdefault(sid, {"id": sid, "labels": [], "props": {}})
+                # ❗️Only merge nodes/edges that are within budget
+                if allowed_ids:
+                    filtered_nodes = [n for n in nbors if n.get("id") in allowed_ids]
+                    filtered_ids = {n["id"] for n in filtered_nodes}
+                    filtered_rels = [r for r in rels if r.get("start") in filtered_ids and r.get("end") in filtered_ids]
+                    self._dedupe_merge(node_map, edge_map, filtered_nodes, filtered_rels)
+                # else: nothing within budget from this frontier
 
-        if max_hop1_neighbors is not None and max_hop1_neighbors >= 0:
-            hop1_neighbor_ids = hop1_neighbor_ids[:max_hop1_neighbors]
-
-        if not hop1_neighbor_ids:
-            nodes_by_id = _cap(nodes_by_id, max_nodes)
-            if max_nodes is not None and len(nodes_by_id) < len(_index_nodes(hop1_nodes)):
-                kept = set(nodes_by_id.keys())
-                rels_by_id = {rid: r for rid, r in rels_by_id.items() if r["start"] in kept and r["end"] in kept}
-            rels_by_id = _cap(rels_by_id, max_rels)
-
-            self.result_nodes = list(nodes_by_id.values())
-            self.result_edges = list(rels_by_id.values())
-            return self.result_nodes, self.result_edges
-
-        # Hop 2
-        hop2_nodes, hop2_rels = self.one_hop_subgraph(hop1_neighbor_ids, **one_hop_kwargs)
-        _merge_nodes(nodes_by_id, hop2_nodes)
-        _merge_rels(rels_by_id, hop2_rels)
-
-        # Final capping & coherence
-        nodes_by_id = _cap(nodes_by_id, max_nodes)
-        kept_nodes = set(nodes_by_id.keys())
-        rels_by_id = {rid: r for rid, r in rels_by_id.items() if r["start"] in kept_nodes and r["end"] in kept_nodes}
-        rels_by_id = _cap(rels_by_id, max_rels)
-
-        self.result_nodes = list(nodes_by_id.values())
-        self.result_edges = list(rels_by_id.values())
+        self.result_nodes = list(node_map.values())
+        self.result_edges = list(edge_map.values())
         return self.result_nodes, self.result_edges
+
+
+    # ---------- tiny policy hooks (customize later) ----------
+    def _hop_budget_for(self, labels: List[str]) -> int:
+        return 2
+
+    def _transition_cost(self, prev_labels: List[str], next_labels: List[str]) -> int:
+        if "Topic" in prev_labels and "Topic" in next_labels:
+            return 0
+        return 1
+
+    # ---------- existing dedupe helper ----------
+    def _dedupe_merge(
+        self,
+        node_map: Dict[str, Dict[str, Any]],
+        edge_map: Dict[str, Dict[str, Any]],
+        nodes: List[Dict[str, Any]],
+        rels: List[Dict[str, Any]],
+    ) -> None:
+        for n in nodes or []:
+            nid = n.get("id")
+            if nid and nid not in node_map:
+                node_map[nid] = n
+        for r in rels or []:
+            rid = r.get("id")
+            if rid and rid not in edge_map:
+                edge_map[rid] = r

@@ -49,7 +49,7 @@ def main():
     embedding_model = build_embedding_model()
     client = build_genai_client()
 
-    # Initialize our new MultiHopDriver wrapper
+    # Initialize MultiHopDriver
     mh_driver = MultiHopDriver(driver)
 
     print("Embedding-based search for Professors and Courses. Type 'exit' to quit.")
@@ -67,7 +67,7 @@ def main():
             if q.lower() in {"exit", "quit", ":q"}:
                 break
 
-            # Step 1: search seed nodes by embeddings
+            # 1) Seed search (embedding-based)
             results = search_professors_and_courses(driver, embedding_model, q, top_k=3)
             professors = results["professors"]
             courses = results["courses"]
@@ -75,32 +75,33 @@ def main():
             _print_results("Top Professors", professors)
             _print_results("Top Courses", courses)
 
-            entry_eids = list({row["nodeEid"] for row in professors + courses})
-            if not entry_eids:
+            if not (professors or courses):
                 print("(no entry nodes found)")
                 continue
 
-            # Step 2: compute query embedding for similarity ranking inside graph traversal
+            # 2) Convert search rows → seed_nodes expected by MultiHopDriver
+            def _row_to_seed(row: Dict[str, Any]) -> Dict[str, Any]:
+                node = row["node"]
+                node_id = row["nodeEid"]
+                # neo4j.Node has .labels (set-like) and ._properties (dict-like); fallbacks included
+                labels = list(node.labels) if hasattr(node, "labels") else []
+                props = dict(node._properties) if hasattr(node, "_properties") else dict(node)
+                return {"id": node_id, "labels": labels, "props": props}
+
+            seed_nodes = [_row_to_seed(r) for r in (professors + courses)]
+
+            # 3) Compute query embedding once
             query_embedding = embedding_model.encode(q).tolist()
 
-            # Step 3: use MultiHopDriver for multi-hop expansion
+            # 4) Multi-hop expansion (driver handles hop logic)
             nodes, relationships = mh_driver.two_hop_via_python(
-                entry_eids,
-                max_nodes=1000,
-                max_rels=4000,
-                max_hop1_neighbors=100,
-                one_hop_kwargs={
-                    "query_embedding": query_embedding,
-                    "embedding_prop": "descriptionEmbedding",
-                    "top_per_label": 10,
-                    # "relationship_types": ["TEACHES", "MENTORS"],
-                    # "label_whitelist": ["Professor", "Course", "Department"],
-                },
+                seed_nodes=seed_nodes,
+                query_embedding=query_embedding,
             )
 
             print(f"\n[Subgraph] nodes: {len(nodes)}, relationships: {len(relationships)}")
 
-            # Step 4: generate natural-language output via Gemini
+            # 5) NL generation
             nodes, relationships = strip_embeddings(nodes, relationships)
             answer = generate_nl_response_from_graph(client, q, nodes, relationships)
             if answer:
@@ -116,6 +117,7 @@ def main():
 
     finally:
         driver.close()
+
 
 
 if __name__ == "__main__":

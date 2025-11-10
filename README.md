@@ -13,11 +13,12 @@ Graph update pipeline:
 3. Run embeddings.py
 4. Run graph_embedding.py
 5. Create vector indexes by running two Cypher queries:
-    a. CREATE VECTOR INDEX graphsage_index
-       FOR (n)
-       ON (n.graphSageEmbedding)
-       OPTIONS { indexConfig: { `vector.dimensions`: 384, `vector.similarity_function`: 'cosine' } };
-    b. CREATE VECTOR INDEX feature_index
-       FOR (n)
-       ON (n.featureVector)
-       OPTIONS { indexConfig: { `vector.dimensions`: 384, `vector.similarity_function`: 'cosine' } };
+    CREATE VECTOR INDEX searchable_feature_index
+FOR (n:Searchable)
+ON (n.featureVector)
+OPTIONS {
+  indexConfig: {
+    `vector.dimensions`: 384,
+    `vector.similarity_function`: 'cosine'
+  }
+};

@@ -25,34 +25,39 @@ def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
     """
     user_embedding = embedding_model.encode(query_text).tolist()
 
+    search_k = max(50, top_k * 5)
+
     cypher = """
     // ---- Text-based vector search ----
-    CALL db.index.vector.queryNodes('searchable_feature_index', $top_k, $user_embedding)
+    CALL db.index.vector.queryNodes('searchable_feature_index', $search_k, $user_embedding)
     YIELD node AS tNode, score AS tScore
     RETURN elementId(tNode) AS tNodeEid, tNode, tScore
     """
 
     cypher_graph = """
     // ---- Graph-based vector search ----
-    CALL db.index.vector.queryNodes('searchable_graphSage_index', $top_k, $user_embedding)
+    CALL db.index.vector.queryNodes('searchable_graphSage_index', $search_k, $user_embedding)
     YIELD node AS gNode, score AS gScore
     RETURN elementId(gNode) AS gNodeEid, gNode, gScore
     """
 
     combine_query = f"""
-    CALL {{
+    CALL () {{
         {cypher}
     }}
-    CALL {{
+    WITH collect({{node: tNode, eid: tNodeEid, score: tScore}}) AS textResults
+    CALL () {{
         {cypher_graph}
     }}
-    WITH
-        coalesce(tNode, gNode) AS node,
-        coalesce(tNodeEid, gNodeEid) AS nodeEid,
-        coalesce(tScore, 0.0) AS tScore,
-        coalesce(gScore, 0.0) AS gScore
-    WITH node, nodeEid, 
-         ($alpha * tScore + (1 - $alpha) * gScore) AS combinedScore
+    WITH textResults, collect({{node: gNode, eid: gNodeEid, score: gScore}}) AS graphResults
+    UNWIND textResults + graphResults AS result
+    WITH result.eid AS nodeEid, result.node AS node,
+        avg(result.score) AS avgScore,
+        max(result.score) AS maxScore
+
+    WHERE NOT 'Topic' IN labels(node)
+    WITH node, nodeEid,
+        $alpha * avgScore + (1 - $alpha) * maxScore AS combinedScore
     RETURN node, nodeEid, combinedScore
     ORDER BY combinedScore DESC
     LIMIT $top_k
@@ -64,7 +69,8 @@ def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
                 combine_query,
                 user_embedding=user_embedding,
                 alpha=alpha,
-                top_k=top_k
+                top_k=top_k,
+                search_k = search_k
             )
             return result.data()
     except Exception as e:
@@ -283,9 +289,9 @@ def main():
 
             # Extract clean properties
             if hasattr(node, "_properties"):
-                props = {k: v for k, v in dict(node._properties).items() if not k.endswith("Embedding")}
+                props = {k: v for k, v in dict(node._properties).items() if (not k.endswith("Embedding") and not k.endswith("Vector"))}
             else:
-                props = {k: v for k, v in dict(node).items() if not k.endswith("Embedding")}
+                props = {k: v for k, v in dict(node).items() if (not k.endswith("Embedding") and not k.endswith("Vector"))}
 
             # Print nicely
             label = list(node.labels)[0] if hasattr(node, "labels") else "Node"

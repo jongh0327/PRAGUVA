@@ -18,6 +18,93 @@ def build_embedding_model():
     model_name = getattr(config, "EMBEDDING_MODEL", "all-MiniLM-L6-v2")
     return SentenceTransformer(model_name)
 
+def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
+    """
+    Perform hybrid search combining text-based and graph-based embeddings.
+    alpha ∈ [0, 1]: weight given to text vs graph embeddings.
+    """
+    user_embedding = embedding_model.encode(query_text).tolist()
+
+    search_k = max(100, top_k * 5)
+
+    cypher = """
+    // ---- Text-based vector search ----
+    CALL db.index.vector.queryNodes('searchable_feature_index', $search_k, $user_embedding)
+    YIELD node AS tNode, score AS tScore
+    RETURN elementId(tNode) AS tNodeEid, tNode, tScore
+    """
+
+    cypher_graph = """
+    // ---- Graph-based vector search ----
+    CALL db.index.vector.queryNodes('searchable_graphSage_index', $search_k, $user_embedding)
+    YIELD node AS gNode, score AS gScore
+    RETURN elementId(gNode) AS gNodeEid, gNode, gScore
+    """
+
+    combine_query = f"""
+    // Run text-based vector search
+    CALL () {{
+        {cypher}
+    }}
+    WITH collect({{eid: tNodeEid, node: tNode, score: tScore}}) AS textResults
+
+    // Run graph-based vector search
+    CALL () {{
+        {cypher_graph}
+    }}
+    WITH textResults, collect({{eid: gNodeEid, node: gNode, score: gScore}}) AS graphResults
+
+    // Combine by node ID
+    UNWIND textResults AS t
+    UNWIND graphResults AS g
+    WITH t, g
+    WHERE t.eid = g.eid
+    WITH
+        coalesce(t.node, g.node) AS node,
+        coalesce(t.eid, g.eid) AS nodeEid,
+        coalesce(t.score, 0.0) AS tScore,
+        coalesce(g.score, 0.0) AS gScore
+    WHERE NOT 'Topic' IN labels(node)
+    WITH node, nodeEid,
+        ($alpha * tScore + (1 - $alpha) * gScore) AS combinedScore,
+        tScore, gScore
+    RETURN node, nodeEid, labels(node) AS nodeLabels, tScore, gScore, combinedScore
+    ORDER BY combinedScore DESC
+    LIMIT $top_k
+    """
+
+
+    try:
+        with driver.session() as session:
+            result = session.run(
+                combine_query,
+                user_embedding=user_embedding,
+                alpha=alpha,
+                top_k=top_k,
+                search_k = search_k
+            )
+
+            data = result.data()
+
+            print("\n[DEBUG] Hybrid search details:")
+            for r in data:
+                labels = r.get("nodeLabels", [])
+                t_score = r.get("tScore", 0.0)
+                g_score = r.get("gScore", 0.0)
+                combined = r.get("combinedScore", 0.0)
+                
+                print(f"Labels: {labels}")
+                print(f"  Text Score:  {t_score:.4f}")
+                print(f"  Graph Score: {g_score:.4f}")
+                print(f"  Combined:    {combined:.4f}\n")
+
+            return data
+    except Exception as e:
+        print(f"Hybrid search error: {e}")
+        return []
+
+
+
 def search_by_embedding(driver, embedding_model, query_text: str, index_name: str, top_k: int = 3):
     user_embedding = embedding_model.encode(query_text).tolist()
 
@@ -183,6 +270,8 @@ def main():
     #For Test Options(Comparing with Raw Gemini Output)
     parser = argparse.ArgumentParser(description="Neo4j + Gemini assistant")
     parser.add_argument("-t", "--test", action="store_true", help="Run both Gemini models (GraphRAG and Search-based)")
+    parser.add_argument("--alpha", type=float, default=0.5, help="Weight for text vs. graph embeddings (0=graph only, 1=text only)")
+    parser.add_argument("--top_k", type=int, default=5, help="Number of top results to return")
     args = parser.parse_args()
 
     # Connect to Neo4j
@@ -195,9 +284,10 @@ def main():
     embedding_model = build_embedding_model()
     client = build_genai_client()
 
-    print("Embedding-based search for Professors and Courses. Type 'exit' to quit.")
+    print("Embedding-based search for for All Nodes (Professors, Courses, Papers, etc.)")
     print(f"Embedding Model: {getattr(config, 'EMBEDDING_MODEL', 'all-MiniLM-L6-v2')}")
     print(f"NL Generation (Gemini): {config.GEMINI_MODEL}")
+    print(f"Alpha (text weight): {args.alpha}")
     if args.test:
         print("Test mode: Comparing GraphRAG-style NL vs. Search-grounded NL")
 
@@ -210,65 +300,38 @@ def main():
             break
 
         # Search both professor and course embeddings
-        results = search_professors_and_courses(driver, embedding_model, q, top_k=3)
-        
-        professors = results["professors"]
-        courses = results["courses"]
+        results = hybrid_search(driver, embedding_model, q, alpha=args.alpha, top_k=args.top_k)
+        print(f"[DEBUG] main(): received {len(results)} results from hybrid_search()")
+
+        if not results:
+            print("(no results)")
+            continue
         
         # Display results
-        print("\n--- Top Professors ---")
-        if professors:
-            for i, row in enumerate(professors, 1):
-                node = row['node']
-                score = row['score']
-                node_id = row['nodeEid']
-                # Extract node properties
-                if hasattr(node, '_properties'):
-                    props = {key: value for key, value in dict(node._properties).items() if key != 'descriptionEmbedding'}
-                else:
-                    props = {key: value for key, value in dict(node).items() if key != 'descriptionEmbedding'}
-                print(f"{i}. [Score: {score:.4f}] [id={node_id}]")
-                for key,value in props.items():
-                    print(f"{key}: {value}")
-                print()
-        else:
-            print("(no results)")
-        
-        print("\n--- Top Courses ---")
-        if courses:
-            for i, row in enumerate(courses, 1):
-                node = row['node']
-                score = row['score']
-                node_id = row['nodeEid']
-                # Extract node properties
-                if hasattr(node, '_properties'):
-                    props = {key: value for key, value in dict(node._properties).items() if key != 'descriptionEmbedding'}
-                else:
-                    props = {key: value for key, value in dict(node).items() if key != 'descriptionEmbedding'}
-                print(f"{i}. [Score: {score:.4f}] [id={node_id}]")
-                for key,value in props.items():
-                    print(f"{key}: {value}")
-                print()
-        else:
-            print("(no results)")
+        print("\n--- Top Matching Nodes (Hybrid Ranked) ---")
+        for i, row in enumerate(results, 1):
+            node = row["node"]
+            score = row["combinedScore"]
+            node_id = row["nodeEid"]
+
+            # Extract clean properties
+            if hasattr(node, "_properties"):
+                props = {k: v for k, v in dict(node._properties).items() if (not k.endswith("Embedding") and not k.endswith("Vector"))}
+            else:
+                props = {k: v for k, v in dict(node).items() if (not k.endswith("Embedding") and not k.endswith("Vector"))}
+
+            # Print nicely
+            label = list(node.labels)[0] if hasattr(node, "labels") else "Node"
+            print(f"{i}. [{label}] [Score: {score:.4f}] [id={node_id}]")
+            for key, value in props.items():
+                print(f"   {key}: {value}")
+            print()
 
         # Collect Entry seed IDs
-        entry_eids = list({row["nodeEid"] for row in professors + courses})
+        nodes = [dict(node._properties) if hasattr(node, "_properties") else dict(node) for node in [r["node"] for r in results]]
 
-        nodes, relationships = fetch_two_hop_subgraph_apoc(
-            driver,
-            entry_eids,
-            max_level=2
-        )
-        print(f"\n[Subgraph] nodes: {len(nodes)}, relationships: {len(relationships)}")
-
-        # Generate natural language answer with Gemini
-        generate_NL_response(client, q, nodes, relationships)
-        
-        # Optional search-based NL generation
-        if(args.test):
-            print("#" * 100)
-            generate_NL_response_with_search(client, q)
+        # ✅ Generate the natural language response using just these nodes
+        generate_NL_response(client, q, nodes, [])
 
     driver.close()
 

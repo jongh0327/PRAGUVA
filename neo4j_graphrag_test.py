@@ -25,7 +25,7 @@ def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
     """
     user_embedding = embedding_model.encode(query_text).tolist()
 
-    search_k = max(50, top_k * 5)
+    search_k = max(100, top_k * 5)
 
     cypher = """
     // ---- Text-based vector search ----
@@ -42,26 +42,37 @@ def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
     """
 
     combine_query = f"""
+    // Run text-based vector search
     CALL () {{
         {cypher}
     }}
-    WITH collect({{node: tNode, eid: tNodeEid, score: tScore}}) AS textResults
+    WITH collect({{eid: tNodeEid, node: tNode, score: tScore}}) AS textResults
+
+    // Run graph-based vector search
     CALL () {{
         {cypher_graph}
     }}
-    WITH textResults, collect({{node: gNode, eid: gNodeEid, score: gScore}}) AS graphResults
-    UNWIND textResults + graphResults AS result
-    WITH result.eid AS nodeEid, result.node AS node,
-        avg(result.score) AS avgScore,
-        max(result.score) AS maxScore
+    WITH textResults, collect({{eid: gNodeEid, node: gNode, score: gScore}}) AS graphResults
 
+    // Combine by node ID
+    UNWIND textResults AS t
+    UNWIND graphResults AS g
+    WITH t, g
+    WHERE t.eid = g.eid
+    WITH
+        coalesce(t.node, g.node) AS node,
+        coalesce(t.eid, g.eid) AS nodeEid,
+        coalesce(t.score, 0.0) AS tScore,
+        coalesce(g.score, 0.0) AS gScore
     WHERE NOT 'Topic' IN labels(node)
     WITH node, nodeEid,
-        $alpha * avgScore + (1 - $alpha) * maxScore AS combinedScore
-    RETURN node, nodeEid, combinedScore
+        ($alpha * tScore + (1 - $alpha) * gScore) AS combinedScore,
+        tScore, gScore
+    RETURN node, nodeEid, labels(node) AS nodeLabels, tScore, gScore, combinedScore
     ORDER BY combinedScore DESC
     LIMIT $top_k
     """
+
 
     try:
         with driver.session() as session:
@@ -72,7 +83,22 @@ def hybrid_search(driver, embedding_model, query_text, alpha=0.5, top_k=5):
                 top_k=top_k,
                 search_k = search_k
             )
-            return result.data()
+
+            data = result.data()
+
+            print("\n[DEBUG] Hybrid search details:")
+            for r in data:
+                labels = r.get("nodeLabels", [])
+                t_score = r.get("tScore", 0.0)
+                g_score = r.get("gScore", 0.0)
+                combined = r.get("combinedScore", 0.0)
+                
+                print(f"Labels: {labels}")
+                print(f"  Text Score:  {t_score:.4f}")
+                print(f"  Graph Score: {g_score:.4f}")
+                print(f"  Combined:    {combined:.4f}\n")
+
+            return data
     except Exception as e:
         print(f"Hybrid search error: {e}")
         return []
@@ -275,6 +301,7 @@ def main():
 
         # Search both professor and course embeddings
         results = hybrid_search(driver, embedding_model, q, alpha=args.alpha, top_k=args.top_k)
+        print(f"[DEBUG] main(): received {len(results)} results from hybrid_search()")
 
         if not results:
             print("(no results)")

@@ -5,12 +5,12 @@ PROVIDER = "groq"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # --- Neo4j ---
-NEO4J_URI = "neo4j+s://b8e99ab4.databases.neo4j.io"
+NEO4J_URI = ""
 NEO4J_USERNAME = "neo4j"
-NEO4J_PASSWORD = "0_JY9HzSR3WGckN5PRimrD__vLHEXV53MLx2LViUezg"
+NEO4J_PASSWORD = ""
 
 # --- Gemini ---
-GEMINI_API_KEY = "AIzaSyBHpT6rzS7r74HsD9v3Fys_s0Rgpr2GqRM" 
+GEMINI_API_KEY = "" 
 GEMINI_MODEL = "gemini-flash-latest"
 
 GEMINI_SYSTEM_PROMPT = (

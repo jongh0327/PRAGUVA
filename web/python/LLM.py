@@ -1,6 +1,6 @@
 import json
 from typing import List, Dict, Any, Tuple
-import config
+import web.python.config as config
 
 from google import genai
 from google.genai import types

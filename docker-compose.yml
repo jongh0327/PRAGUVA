@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: ./web        # Dockerfile lives in ./web
+      dockerfile: Dockerfile
+    container_name: prag_uva_web
+    ports:
+      - "8080:80"           # Visit at http://localhost:8080
+    volumes:
+      - ./web:/var/www/html              # Sync your code for development
+      - ./web/uploads:/var/www/html/uploads  # Keep uploads persistent
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}  # Use .env for your key
+    restart: unless-stopped

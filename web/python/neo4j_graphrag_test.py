@@ -2,7 +2,7 @@
 import os
 import json
 from neo4j import GraphDatabase
-import config
+import web.python.config as config
 from typing import List, Dict, Any, Tuple, Optional, Iterable
 from sentence_transformers import SentenceTransformer
 import argparse

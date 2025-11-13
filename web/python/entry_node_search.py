@@ -1,7 +1,7 @@
 from typing import Dict, Any, List
 from neo4j import GraphDatabase, Driver
 from sentence_transformers import SentenceTransformer
-import config
+import web.python.config as config
 
 def build_embedding_model() -> SentenceTransformer:
     model_name = getattr(config, "EMBEDDING_MODEL", "all-MiniLM-L6-v2")

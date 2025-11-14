@@ -1,8 +1,7 @@
-# LLM.py
 import json
-from typing import Any, Dict, List
-
+from typing import List, Dict, Any, Tuple
 import config
+
 from google import genai
 from google.genai import types
 
@@ -12,30 +11,49 @@ def build_genai_client() -> genai.Client:
     return genai.Client(api_key=config.GEMINI_API_KEY)
 
 
+def strip_embeddings(
+    nodes: List[Dict[str, Any]],
+    relationships: List[Dict[str, Any]]
+) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Remove large embedding fields before passing to Gemini."""
+    EMBED_KEYS = {"featureVector", "graphSageEmbedding"}
+
+    for n in nodes:
+        props = n.get("props", {})
+        for key in EMBED_KEYS:
+            if key in props:
+                props.pop(key, None)
+
+    for r in relationships:
+        props = r.get("props", {})
+        for key in EMBED_KEYS:
+            if key in props:
+                props.pop(key, None)
+
+    return nodes, relationships
+
+
 def generate_nl_response_from_graph(
     client: genai.Client,
-    q: str,
+    question: str,
     nodes: List[Dict[str, Any]],
     relationships: List[Dict[str, Any]],
 ) -> str:
     """
     NL generation that consumes a graph snapshot (nodes + relationships).
-    Returns the model's answer as a string.
-    Mirrors the logic from your original generate_NL_response.
+    Returns the model text (or empty string on failure).
     """
     try:
         graph_payload = {"nodes": nodes, "relationships": relationships}
         graph_json = json.dumps(graph_payload, ensure_ascii=False, indent=2)
 
         user_prompt = config.GEMINI_USER_PROMPT.format(
-            question=q,
-            results=graph_json,
+            question=question,
+            results=graph_json
         )
 
         cfg = types.GenerateContentConfig(
-            system_instruction=getattr(
-                config, "GEMINI_SYSTEM_PROMPT", "You are a helpful assistant."
-            )
+            system_instruction=getattr(config, "GEMINI_SYSTEM_PROMPT", "You are a helpful assistant.")
         )
 
         resp = client.models.generate_content(
@@ -50,12 +68,11 @@ def generate_nl_response_from_graph(
 
 def generate_nl_response_with_search(
     client: genai.Client,
-    q: str,
+    question: str
 ) -> str:
     """
     Search-grounded generation using NEW SDK.
-    Returns the model's answer as a string.
-    Mirrors your original generate_NL_response_with_search.
+    Returns the model text (or error string).
     """
     try:
         cfg = types.GenerateContentConfig(
@@ -63,37 +80,9 @@ def generate_nl_response_with_search(
         )
         resp = client.models.generate_content(
             model=config.GEMINI_MODEL,
-            contents=q,
+            contents=question,
             config=cfg,
         )
         return (resp.text or "(no text returned)").strip()
     except Exception as e:
         return f"GEMINI ERROR: {e}"
-
-
-# ---- Legacy name wrappers (optional; keeps old call sites working) ----
-
-def generate_NL_response(
-    client: genai.Client,
-    q: str,
-    nodes: List[Dict[str, Any]],
-    relationships: List[Dict[str, Any]],
-) -> None:
-    """
-    Backwards-compatible wrapper: prints the answer like the old function.
-    """
-    answer = generate_nl_response_from_graph(client, q, nodes, relationships)
-    print("\n--- Answer (Graph-based) ---")
-    print(answer)
-
-
-def generate_NL_response_with_search(
-    client: genai.Client,
-    q: str,
-) -> None:
-    """
-    Backwards-compatible wrapper: prints the answer like the old function.
-    """
-    answer = generate_nl_response_with_search(client, q)
-    print("\n--- Answer (Gemini + Google Search) ---")
-    print(answer)

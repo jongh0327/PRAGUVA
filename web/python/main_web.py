@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
+import os
 import argparse
 from typing import Any, Dict, List
 from neo4j import GraphDatabase
 import config
 
+# --- FIX: set Hugging Face cache directory to a writable location ---
+hf_cache_dir = os.path.join(os.path.dirname(__file__), ".cache")
+os.makedirs(hf_cache_dir, exist_ok=True)
+os.environ["HF_HOME"] = hf_cache_dir
+
 from embedding_search import build_embedding_model, hybrid_search, search_entry_nodes
 from multi_hop_search import MultiHopDriver
 from LLM import build_genai_client, strip_embeddings, generate_nl_response_from_graph
-
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Neo4j + Gemini assistant (Web)")

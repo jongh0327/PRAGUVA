@@ -29,4 +29,6 @@ GEMINI_USER_PROMPT = """Question: {question}
     Focus on the most relevant items (highest similarity scores) and explain how they relate to the question.
 
     Also, note that 1000~4000 level courses are undergrad level and those over 5000s are graduate courses.    
+    Hide node IDs and course IDs, instructor IDs and such. They are for internal datakeeping only. 
+    Only exception is the Course Number such as CS 3100. Those, you can show.
 """

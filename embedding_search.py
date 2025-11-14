@@ -107,7 +107,6 @@ def search_by_embedding(
     driver: Driver,
     embedding_model: SentenceTransformer,
     query_text: str,
-    index_name: str,
     top_k: int = 3,
 ) -> List[Dict[str, Any]]:
     """
@@ -116,7 +115,7 @@ def search_by_embedding(
     user_embedding = embedding_model.encode(query_text).tolist()
 
     cypher = """
-    CALL db.index.vector.queryNodes($index_name, $top_k, $user_embedding)
+    CALL db.index.vector.queryNodes('searchable_feature_index', $top_k, $user_embedding)
     YIELD node, score
     RETURN node, elementId(node) AS nodeEid, score
     ORDER BY score DESC
@@ -126,7 +125,7 @@ def search_by_embedding(
         with driver.session() as session:
             result = session.run(
                 cypher,
-                index_name=index_name,
+                index_name="featureVector",
                 top_k=top_k,
                 user_embedding=user_embedding,
             )
@@ -136,19 +135,16 @@ def search_by_embedding(
         return []
 
 
-def search_professors_and_courses(
+def search_entry_nodes(
     driver: Driver,
     embedding_model: SentenceTransformer,
     query_text: str,
-    top_k: int = 3,
+    top_k: int = 5,
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
     Convenience helper that searches professor and course indices.
     """
-    professors = search_by_embedding(
-        driver, embedding_model, query_text, "professor_embeddings", top_k
+    entry_nodes = search_by_embedding(
+        driver, embedding_model, query_text, top_k=top_k
     )
-    courses = search_by_embedding(
-        driver, embedding_model, query_text, "course_embeddings", top_k
-    )
-    return {"professors": professors, "courses": courses}
+    return entry_nodes

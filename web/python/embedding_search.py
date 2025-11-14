@@ -2,7 +2,7 @@
 from typing import Any, Dict, List
 from neo4j import Driver
 from sentence_transformers import SentenceTransformer
-import config
+import web.python.config as config
 
 
 def build_embedding_model() -> SentenceTransformer:

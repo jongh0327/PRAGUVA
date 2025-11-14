@@ -20,6 +20,8 @@ __pycache__/
 
 # Project specific
 connection_check.py
+uploads
+.cache
 
 # OS
 .DS_Store

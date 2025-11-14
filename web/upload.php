@@ -10,30 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["pdf_file"])) {
         mkdir($upload_dir, 0777, true);
     }
 
-    $file_tmp = $_FILES["pdf_file"]["tmp_name"];
-    $file_name = basename($_FILES["pdf_file"]["name"]);
-    $target_path = $upload_dir . $file_name;
+    // --- Move uploaded file to persistent uploads directory ---
+    $user_input = $_FILES["pdf_file"]["tmp_name"];  // temporary uploaded file
+    $target = $upload_dir . basename($_FILES["pdf_file"]["name"]);
 
-    if (move_uploaded_file($file_tmp, $target_path)) {
-        echo "<p>File uploaded successfully: $file_name</p>";
+    if (move_uploaded_file($user_input, $target)) {
+        echo "<p>File uploaded successfully: " . basename($_FILES["pdf_file"]["name"]) . "</p>";
 
-        // Run Python inside the venv to extract text
-        $python = "/opt/venv/bin/python3";
-        $script = "/var/www/html/python/pdf_to_text.py";
-        $command = escapeshellcmd("$python $script " . escapeshellarg($target_path));
-        $output = shell_exec($command . " 2>&1");
+        // --- Run Python script to extract text ---
+        $escaped_input = escapeshellarg($target);
+        $command = "python3 /var/www/html/python/pdf_to_text.py $escaped_input 2>&1";
+        $output = shell_exec($command);
 
         if ($output) {
-            $_SESSION["pdf_text"] = $output;
+            $_SESSION["pdf_text"] = $output; // Save extracted text in session
             echo "<p><strong>Text extracted and saved to session.</strong></p>";
             echo "<pre>" . htmlspecialchars(substr($output, 0, 1000)) . "</pre>"; // show preview
         } else {
             echo "<p>Error: No output from Python script.</p>";
         }
+
     } else {
         echo "<p>Error uploading file.</p>";
     }
+
 } else {
+    // Upload form
     echo '
     <form method="POST" enctype="multipart/form-data">
         <label for="pdf_file">Choose a PDF file:</label><br>

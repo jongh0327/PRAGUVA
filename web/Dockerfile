@@ -10,10 +10,10 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
-# Copy project files into container
-COPY . /var/www/html/
+# Copy only requirements first (cache pip install layer)
+COPY python/requirements.txt ./python/requirements.txt
 
-# Create Python virtual environment outside the web root
+# Create Python virtual environment outside web root
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
@@ -24,6 +24,9 @@ RUN /bin/bash -c "\
     pip install -r python/requirements.txt && \
     python -c 'from sentence_transformers import SentenceTransformer; SentenceTransformer(\"all-MiniLM-L6-v2\")' \
 "
+
+# Copy the rest of your project
+COPY . /var/www/html/
 
 # Make uploads writable
 RUN mkdir -p /var/www/html/uploads && chmod -R 777 /var/www/html/uploads

@@ -5,7 +5,7 @@ Creates embeddings for professor descriptions. Adds them to database nodes.
 from neo4j import GraphDatabase
 from sentence_transformers import SentenceTransformer
 import numpy as np
-import web.python.config as config
+import config
 
 NEO4J_URI = config.NEO4J_URI
 NEO4J_USER = config.NEO4J_USERNAME

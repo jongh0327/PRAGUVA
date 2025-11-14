@@ -23,7 +23,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.data import Data
 from torch_geometric.nn import SAGEConv
-import web.python.config as config
+import config
 
 NEO4J_URI = config.NEO4J_URI
 NEO4J_USER = config.NEO4J_USERNAME

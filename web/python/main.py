@@ -3,15 +3,15 @@ import argparse
 from typing import Any, Dict, List
 
 from neo4j import GraphDatabase
-import web.python.config as config
+import config
 
-from web.python.embedding_search import (
+from embedding_search import (
     build_embedding_model,
     hybrid_search,
     search_entry_nodes,
 )
-from web.python.multi_hop_search import MultiHopDriver
-from web.python.LLM import (
+from multi_hop_search import MultiHopDriver
+from LLM import (
     build_genai_client,
     strip_embeddings,
     generate_nl_response_from_graph,

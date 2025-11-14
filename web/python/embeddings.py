@@ -9,7 +9,7 @@ to combine text semantics with graph structure.
 from neo4j import GraphDatabase
 from sentence_transformers import SentenceTransformer
 import numpy as np
-import web.python.config as config
+import config
 from tqdm import tqdm
 
 NEO4J_URI = config.NEO4J_URI

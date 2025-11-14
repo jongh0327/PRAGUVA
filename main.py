@@ -94,6 +94,7 @@ def main() -> None:
         help="Run both Gemini models (GraphRAG and Search-based)",
     )
     parser.add_argument(
+        "-a",
         "--alpha",
         type=float,
         default=0.5,

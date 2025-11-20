@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: ./web        # Dockerfile lives in ./web
+      dockerfile: Dockerfile
+    container_name: prag_uva_web
+    ports:
+      - "8080:80"           # Visit at http://localhost:8080
+    volumes:
+      - ./web:/var/www/html              # Sync your code for development
+      - ./web/uploads:/var/www/html/uploads  # Keep uploads persistent
+    environment:
+      - NEO4J_URI=${NEO4J_URI}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped

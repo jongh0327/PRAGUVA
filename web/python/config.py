@@ -1,16 +1,15 @@
 import os
 
 # --- Choose LLM provider ---
-PROVIDER = "groq"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 # --- Neo4j ---
-NEO4J_URI = ""
+NEO4J_URI = os.getenv("NEO4J_URI")
 NEO4J_USERNAME = "neo4j"
-NEO4J_PASSWORD = ""
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
 
 # --- Gemini ---
-GEMINI_API_KEY = "" 
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-flash-latest"
 
 GEMINI_SYSTEM_PROMPT = (
@@ -29,4 +28,6 @@ GEMINI_USER_PROMPT = """Question: {question}
     Focus on the most relevant items (highest similarity scores) and explain how they relate to the question.
 
     Also, note that 1000~4000 level courses are undergrad level and those over 5000s are graduate courses.    
+    Hide node IDs and course IDs, instructor IDs and such. They are for internal datakeeping only. 
+    Only exception is the Course Number such as CS 3100. Those, you can show.
 """

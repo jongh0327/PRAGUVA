@@ -5,7 +5,7 @@ each node as 'graphsageEmbedding'.
 """
 
 from neo4j import GraphDatabase
-import config
+import web.python.config as config
 
 driver = GraphDatabase.driver(
     config.NEO4J_URI,

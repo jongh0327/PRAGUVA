@@ -16,6 +16,7 @@ from LLM import (
     strip_embeddings,
     generate_nl_response_from_graph,
     generate_nl_response_with_search,
+    classify_and_answer_query,
 )
 
 
@@ -152,6 +153,13 @@ def main() -> None:
                 break
 
             if not q:
+                continue
+
+            classification = classify_and_answer_query(client, q)
+
+            if classification.get("status") == "ANSWERABLE":
+                print("\n--- Answer (Gemini direct) ---")
+                print(classification.get("answer", "(no answer)"))
                 continue
 
             if args.search_mode == "simple":

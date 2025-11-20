@@ -32,6 +32,41 @@ def strip_embeddings(
 
     return nodes, relationships
 
+def classify_and_answer_query(client, user_query: str) -> Dict[str, str]:
+    """
+    Expected output:
+      {
+        "status": "ANSWERABLE",  # or "COMPLEX"
+        "answer": "..."         # If ANSWERABLE
+      }
+    """
+
+    system_prompt = (
+        "You are a classifier that decides whether a user query can be "
+        "fully and confidently answered using general knowledge on the internet.\n\n"
+        "If the query can be answered without private knowledge (e.g., without "
+        "a custom database), you must:\n"
+        "- respond in JSON: {\"status\": \"ANSWERABLE\", \"answer\": \"...\"}\n\n"
+        "If the question cannot be effectively answered without access to a\n"
+        "custom/private knowledge base (e.g., the user's Neo4j graph), then return:\n"
+        "- {\"status\": \"COMPLEX\"}\n\n"
+        "Do not include extra text outside the JSON."
+    )
+
+    prompt = f"{system_prompt}\n\nUser Query: {user_query}"
+
+    try:
+        response = client.generate(prompts=[prompt])
+        content = response.text.strip()
+
+        import json
+        result = json.loads(content)
+        return result
+
+    except Exception as e:
+        return {"status": "COMPLEX"}
+
+
 
 def generate_nl_response_from_graph(
     client: genai.Client,

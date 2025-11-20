@@ -1,0 +1,398 @@
+paperID,topicID,similarity,topicName,paperTitle
+2,182,0.6003719271587142,Sustainability,Walking the walk: Conceptual foundations of the Sustainable Personality
+4,1309,0.6546585103080064,Engineering Education Research,"Creative thinking, creative problem solving, and inventive design in the engineering curriculum: A review"
+4,19,0.6385671256126956,Engineering Education,"Creative thinking, creative problem solving, and inventive design in the engineering curriculum: A review"
+4,645,0.6307039934046814,Engineering Curriculum Design,"Creative thinking, creative problem solving, and inventive design in the engineering curriculum: A review"
+4,1240,0.6143033142577061,Engineering Pedagogy,"Creative thinking, creative problem solving, and inventive design in the engineering curriculum: A review"
+4,487,0.602292461877204,Broadening Engagement In Engineering Education Building Self-efficacy For Success In Engineering Education,"Creative thinking, creative problem solving, and inventive design in the engineering curriculum: A review"
+6,1309,0.6782967816561812,Engineering Education Research,"Educating the Whole Engineer at Wake Forest Engineering: Using Cognitive Apprenticeship as an Effective Pedagogical Approach to Cultivate Design Learning, Team Effectiveness …"
+6,19,0.6618391933818385,Engineering Education,"Educating the Whole Engineer at Wake Forest Engineering: Using Cognitive Apprenticeship as an Effective Pedagogical Approach to Cultivate Design Learning, Team Effectiveness …"
+6,504,0.6316341354621516,Ai Integration In Engineering Education,"Educating the Whole Engineer at Wake Forest Engineering: Using Cognitive Apprenticeship as an Effective Pedagogical Approach to Cultivate Design Learning, Team Effectiveness …"
+6,1240,0.6313490984783758,Engineering Pedagogy,"Educating the Whole Engineer at Wake Forest Engineering: Using Cognitive Apprenticeship as an Effective Pedagogical Approach to Cultivate Design Learning, Team Effectiveness …"
+8,479,0.833891162655414,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Scoping review of character development pedagogies in engineering education
+8,452,0.6461520848102648,Engineering Ethics,Scoping review of character development pedagogies in engineering education
+8,1240,0.6010358756110479,Engineering Pedagogy,Scoping review of character development pedagogies in engineering education
+12,566,0.6385099699606851,Thermal Properties Of Ceramics,UHTCs: ultra-high temperature ceramic materials for extreme environment applications
+12,559,0.6037273873350907,High Temperature Materials Design,UHTCs: ultra-high temperature ceramic materials for extreme environment applications
+40,472,0.6111509108221689,Ethics And Information Technology,Ethical Challenges of the Internet of Things
+54,393,0.604547724801651,Nanoelectronics And 2-d Materials,"2D materials advances: from large scale synthesis and controlled heterostructures to improved characterization techniques, defects and applications"
+61,769,0.63309475194681,Building Energy Performance,On the development of multi-linear regression analysis to assess energy consumption in the early stages of building design
+70,291,0.6098104470851854,Computing Education,The robots are here: Navigating the generative ai revolution in computing education
+74,776,0.610544994849,Metacognitive Awareness,First things first: Providing metacognitive scaffolding for interpreting problem prompts
+75,773,0.6793620149211315,Genai In Cs Courses,GenAI Integration in Upper-Level Computing Courses
+78,291,0.6253333240216508,Computing Education,"All for One and One for All-Collaboration in Computing Education: Policy, Practice, and Professional Dispositions"
+90,781,0.6726415562333703,Adaptive Control,Adaptive control design and analysis
+92,588,0.617095484592772,Real-time Production Control,"Feedback control real-time scheduling: Framework, modeling, and algorithms"
+103,58,0.6521376324539655,Tissue Engineering And Biomaterials,Photopolymerizable hydrogels for tissue engineering applications
+103,1006,0.6365324981537739,Hydrogels,Photopolymerizable hydrogels for tissue engineering applications
+133,929,0.6380484348754905,Shape Memory Alloys,Micromechanical modelling of the effect of plastic deformation on the mechanical behaviour in pseudoelastic shape memory alloys
+150,945,0.7138951641455679,Engineering Sustainability,A review of engineering research in sustainable manufacturing
+222,2,0.8338923939078261,Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,96,0.8308807319636655,Biomaterials Science,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,1086,0.7231008911299559,Polymeric Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,99,0.7145082989517483,Biomaterials And Biofunctional Materials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,59,0.7088132502978791,Novel Biomaterial Development,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,58,0.699260599081666,Tissue Engineering And Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,43,0.68711830815673,Engineered Soft Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,10005,0.6596861659052431,3.4.4 Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,652,0.6580351805417566,Biological And Bio-inspired Materials And Devices,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,10303,0.6433494020682218,1.3.3 Biomaterials,Biomaterials: Graduate Student Award Session (Invited Talks)
+222,36,0.6023987227798211,Materials And Advanced Manufacturing For Biological Applications,Biomaterials: Graduate Student Award Session (Invited Talks)
+223,148,0.7376873512624328,Peptide Self-assembly,Impact of L-and D-Peptide Isomer Mixtures on Self-Assembly in Tissue Engineering: A Molecular Dynami
+223,137,0.624986180705675,Peptide Binding And Assembly,Impact of L-and D-Peptide Isomer Mixtures on Self-Assembly in Tissue Engineering: A Molecular Dynami
+230,719,0.6270016250445505,Infectious Disease Modeling,Systems Virology at Scale
+242,300,0.6361443767555496,Hardware Security And Reliability Gpus,Dissecting Performance Overheads of Confidential Computing on GPU-based Systems
+267,1033,0.6295573936145111,Secure Computation,Cryptography for parallel RAM from indistinguishability obfuscation
+283,463,0.642230474964619,Disability Studies Cyborg-technology Relations,"Cyborg maintenance: Design, breakdown, and inclusion"
+287,463,0.8915462277673913,Disability Studies Cyborg-technology Relations,Cyborg-Technology Relations
+288,463,0.6175599807983683,Disability Studies Cyborg-technology Relations,The Problem of the Sexy Cyborg: The Ethics of Cyborg Imagery
+289,1309,0.6717604359740025,Engineering Education Research,Social Foundations of Education as a Model for Social Foundations of Engineering: Possibilities for Engaging the Philosophy of Engineering
+289,479,0.6490582321234145,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Social Foundations of Education as a Model for Social Foundations of Engineering: Possibilities for Engaging the Philosophy of Engineering
+289,19,0.6443820908771829,Engineering Education,Social Foundations of Education as a Model for Social Foundations of Engineering: Possibilities for Engaging the Philosophy of Engineering
+289,1240,0.6022526003802802,Engineering Pedagogy,Social Foundations of Education as a Model for Social Foundations of Engineering: Possibilities for Engaging the Philosophy of Engineering
+289,452,0.6022224558923355,Engineering Ethics,Social Foundations of Education as a Model for Social Foundations of Engineering: Possibilities for Engaging the Philosophy of Engineering
+295,443,0.6487659158493498,Optical Microresonators,Chaos-assisted broadband momentum transformation in optical microresonators
+310,229,0.609560897064081,Computer Science Education,Role of larger software artifacts in introductory computer science courses
+324,646,0.6048440971166622,Student Assessment,Who needs help? Automating student assessment within exploratory learning environments
+331,847,0.6853741314351006,Graph Dynamical Systems,An introduction to sequential dynamical systems
+331,10289,0.6474015175934849,"In Particular Graph Dynamical Systems (gds) And Their Combinatorial And Algebraic Structures""",An introduction to sequential dynamical systems
+333,344,0.6549941861368457,Discrete Dynamical Systems,"Discrete, sequential dynamical systems"
+338,1196,0.6057298120783525,Computational Epidemiology,Epihiper—A high performance computational modeling framework to support epidemic science
+350,242,0.6199904335903381,Cyber-physical Systems,Foreword for ICCPS’24 Special Issue
+350,10136,0.6008661274999689,4.5.4 Cyber-Physical Systems,Foreword for ICCPS’24 Special Issue
+370,922,0.6596374900340021,Autonomous Driving,AnA: An Attentive Autonomous Driving System
+370,852,0.6176431322238062,Autonomous Vehicles,AnA: An Attentive Autonomous Driving System
+396,866,0.6101678263258251,Stress Corrosion Cracking,Effect of corrosion severity on fatigue evolution in Al–Zn–Mg–Cu
+397,866,0.6647466909836871,Stress Corrosion Cracking,Driving forces for localized corrosion‐to‐fatigue crack transition in Al–Zn–Mg–Cu
+402,518,0.632742234230972,Hydrogen Embrittlement,"Guest Editorial for the special issue on"" Understanding hydrogen-materials interactions"""
+402,867,0.6234984307357404,Hydrogen,"Guest Editorial for the special issue on"" Understanding hydrogen-materials interactions"""
+415,280,0.6634766077462926,Differential Privacy,Locally differentially private protocols for frequency estimation
+416,280,0.7664445267164397,Differential Privacy,Privacy at scale: Local differential privacy in practice
+419,1027,0.6413247706330946,Graph Learning,Graph unlearning
+419,363,0.6056477744659317,Machine Learning Graph Neural Networks,Graph unlearning
+420,280,0.73488436303642,Differential Privacy,Network-Aware Differential Privacy
+427,202,0.6334010817176942,Life Cycle Assessment,Illustrating anticipatory life cycle assessment for emerging photovoltaic technologies
+428,877,0.7689552094727494,Sustainability Education,"Sustainability Education Framework for Teachers: Developing sustainability literacy through futures, values, systems, and strategic thinking"
+429,939,0.6809768066324591,Construction Of Expertise,Acquisition of T-shaped expertise: an exploratory study
+450,32,0.6243734297407688,Biomedical Data Science And Systems Biology,REU Site: Multi-Scale Systems Bioengineering and Biomedical Data Sciences
+456,103,0.6034217887863709,Bioinformatics,Random forest for bioinformatics
+464,929,0.6594069782417464,Shape Memory Alloys,Seismic response control using shape memory alloys: a review
+470,10307,0.623748223656329,6.5.4 Infrastructure Resilience,Evaluating Contributions of Emerging Technologies to Civil Infrastructure System Resilience. I: A Decision-Making Workflow
+471,10307,0.6143676661632022,6.5.4 Infrastructure Resilience,Evaluating Contributions of Emerging Technologies to Civil Infrastructure System Resilience. II: Case Studies
+476,291,0.6700489801968558,Computing Education,Stop reinventing the wheel! promoting community software in computing education
+478,1077,0.6374145325929875,Collaborative Learning,How do students collaborate? Analyzing group choice in a collaborative learning environment
+480,291,0.642485224743316,Computing Education,Escaping the CS Dungeon: Modern College Curricula within and Beyond Computing
+480,229,0.6055286685710898,Computer Science Education,Escaping the CS Dungeon: Modern College Curricula within and Beyond Computing
+481,291,0.6211025586531708,Computing Education,Auto-grading in Computing Education: Perceptions and Use
+485,613,0.6261174583340274,Automobile Restraint Design,Occupant safety in automated vehicles-effect of seatback recline on occupant restraint
+493,590,0.6174666679288578,Human-robot Collaboration In Industrial Settings,Movement coordination in human–robot teams: a dynamical systems approach
+502,698,0.7057600376132585,System Safety And Reliability,Dependability metrics to assess safety-critical systems
+503,698,0.646566891006916,System Safety And Reliability,Safety-critical systems built with COTS
+505,698,0.7101414024759174,System Safety And Reliability,A Safety Assessment Methodology for Complex Safety-Critical Hardware/Software Systems
+526,1157,0.6478613227517909,First-year Engineering,Full Paper: What are we Teaching First Year Students? A Qualitative Analysis of Introductory Engineering Course Syllabi
+526,1240,0.6441480237681836,Engineering Pedagogy,Full Paper: What are we Teaching First Year Students? A Qualitative Analysis of Introductory Engineering Course Syllabi
+526,19,0.6012606893277511,Engineering Education,Full Paper: What are we Teaching First Year Students? A Qualitative Analysis of Introductory Engineering Course Syllabi
+526,1309,0.6000531282292676,Engineering Education Research,Full Paper: What are we Teaching First Year Students? A Qualitative Analysis of Introductory Engineering Course Syllabi
+546,1116,0.6003161370716994,Virtual And Augmented Reality,Developing Augmented Reality Applications to Help Engineering Students Learn Spatial Structural Engineering Concepts
+548,378,0.6788819728981891,Millimeter-wave And Terahertz Electronics,Opening the terahertz window with integrated diode circuits
+562,908,0.651891554155652,Rf-mems,Distributed MEMS tunable matching network using minimal-contact RF-MEMS varactors
+596,532,0.7959650406420051,Thermoelectric Materials And Thermal Transport,Perspectives on thermoelectrics: from fundamentals to device applications
+596,1133,0.7521728055177761,Thermoelectrics,Perspectives on thermoelectrics: from fundamentals to device applications
+602,532,0.8374007494730189,Thermoelectric Materials And Thermal Transport,Fundamentals and advances in thermal transport in thermoelectric materials
+602,1133,0.6933741917968921,Thermoelectrics,Fundamentals and advances in thermal transport in thermoelectric materials
+631,533,0.7003034586638623,Residual Stress In Thin Films,Origin of compressive residual stress in polycrystalline thin films
+635,533,0.6210993684315032,Residual Stress In Thin Films,Physical origins of intrinsic stresses in Volmer–Weber thin films
+639,532,0.6012597851984924,Thermoelectric Materials And Thermal Transport,Thermoelectric properties of YbZn 11− x Al x
+641,929,0.7410609631847955,Shape Memory Alloys,High temperature shape memory alloys
+649,1302,0.6243887499634351,Corrosion Science,Morphogenic Modeling of Corrosion Reveals Complex Effects of Intermetallic Particles
+665,937,0.622314356559073,Science And Technology Studies,Earth Sciences from the Perspectives of Science and Technology Studies
+688,942,0.6647315117166828,Energy-harvesting Sensors,Scheduling energy harvesting nodes in a wireless sensor network
+688,413,0.6266421895385975,Energy-harvesting,Scheduling energy harvesting nodes in a wireless sensor network
+694,104,0.6100659868537823,Health Informatics,Informatics at the Frontier of Cancer Research
+709,1032,0.6255625424721825,Privacy-preserving Machine Learning,Privacy-preserving distributed linear regression on high-dimensional data
+716,1033,0.6136735932213784,Secure Computation,Secure multiparty computation with identifiable abort via vindicating release
+717,260,0.630249771413431,Threshold Signatures,Threshold ECDSA in three rounds
+723,3,0.6103895434689882,Fibroblast Biology,Macrophage and fibroblast interactions in biomaterial‐mediated fibrosis
+732,1223,0.6668266306150197,Global Hydrology,Socio-hydrology: a new understanding to unite or a new science to divide?
+732,1221,0.643202780067653,Urban Hydrology,Socio-hydrology: a new understanding to unite or a new science to divide?
+732,183,0.637785736966862,Global Hydrology And Water Resources,Socio-hydrology: a new understanding to unite or a new science to divide?
+749,10300,0.6522272264223863,4.2.2 Optical Communications,Roadmap of optical communications
+749,955,0.6489763620642346,Optical Wireless Communications,Roadmap of optical communications
+749,954,0.6231842705687864,Optical Fiber Communication,Roadmap of optical communications
+749,379,0.6033070376308021,Wireless And Optical Communication Systems,Roadmap of optical communications
+777,44,0.7817078677942004,Systems Immunology,Abstract 2046 The long and winding road that led me to my systems immunology laboratory
+777,1293,0.6856575525373515,Immunology,Abstract 2046 The long and winding road that led me to my systems immunology laboratory
+777,1,0.6278162767564618,Molecular Immunology,Abstract 2046 The long and winding road that led me to my systems immunology laboratory
+777,45,0.6183709220528015,Immunoengineering,Abstract 2046 The long and winding road that led me to my systems immunology laboratory
+777,10002,0.608521037125941,1.4.3 Immunology & Immunoengineering,Abstract 2046 The long and winding road that led me to my systems immunology laboratory
+800,679,0.6316855165046745,Real-world Investigation Of Crashes And Injury Mechanisms,Nature and etiology of hollow-organ abdominal injuries in frontal crashes
+800,612,0.6269284890960738,Mechanisms And Prediction Of Thoracic Injury In Automobile Collisions,Nature and etiology of hollow-organ abdominal injuries in frontal crashes
+819,778,0.6329501731938536,Nanoparticles,Cell-specific targeting of nanoparticles by multivalent attachment of small molecules
+835,302,0.6514115574648779,Biomedical Engineering,"A introductory-level, student-taught biomedical neuroengineering course for 1st year undeclared engineering undergraduate students"
+835,10032,0.6342463180651794,1.1 Biomedical Engineering,"A introductory-level, student-taught biomedical neuroengineering course for 1st year undeclared engineering undergraduate students"
+837,1078,0.6368465139122363,Inclusive Teaching,Creating Inclusive Classrooms: Work Developed during the ASEE Year of Impact on Racial Equity (YIRE)
+840,488,0.6839285935208816,Capacity Factor Analysis (cfa) Capacity Building For Sustained Access To Essential Human Services In Marginalized Communities,Capacity factor analysis for evaluating water and sanitation infrastructure choices for developing communities
+841,1229,0.713716903265386,Tech Ethics,"Integrating ethics & engineering: A graduate option in systems engineering, ethics, and technology studies"
+841,452,0.6631790611828664,Engineering Ethics,"Integrating ethics & engineering: A graduate option in systems engineering, ethics, and technology studies"
+852,645,0.625580895909254,Engineering Curriculum Design,The Current State and Future Needs of Systems Engineering Education: A Proposed Curriculum *
+852,993,0.6103023628146496,Systems Engineering,The Current State and Future Needs of Systems Engineering Education: A Proposed Curriculum *
+853,713,0.6360294005039437,Asset Management And Portfolio Design,Portfolio design and management through state-based analytics: A probabilistic approach
+878,590,0.6057727895611522,Human-robot Collaboration In Industrial Settings,Towards Physically-grounded Human-AI Collaboration
+935,340,0.632635095910582,Database Systems,Systems and methods for data warehousing
+935,287,0.6095445946124602,The Interface Of Data Engineering And Data Science With Data Systems,Systems and methods for data warehousing
+939,304,0.8285049204539596,Software-defined Networking,Improving network management with software defined networking
+939,995,0.6739560186891156,Sdn,Improving network management with software defined networking
+940,304,0.6594862393940846,Software-defined Networking,Procera: A language for high-level reactive network control
+942,304,0.715084917749585,Software-defined Networking,Coronet: Fault tolerance for software defined networks
+970,133,0.6756762138288875,Tissue Engineering And Regenerative Medicine,Biofabrication strategies for 3D in vitro models and regenerative medicine
+970,58,0.6497167740335438,Tissue Engineering And Biomaterials,Biofabrication strategies for 3D in vitro models and regenerative medicine
+970,84,0.6197634254975363,Tissue Engineering,Biofabrication strategies for 3D in vitro models and regenerative medicine
+973,85,0.6303158412994171,Advanced Biomanufacturing 3d Bioprinting,A Generalizable Strategy for the 3D Bioprinting of Hydrogels from Nonviscous Photo‐crosslinkable Inks
+994,1014,0.6702670734937328,Probabilistic Forecasting,Bayesian theory of probabilistic forecasting via deterministic hydrologic model
+995,1014,0.6952072980335109,Probabilistic Forecasting,The case for probabilistic forecasting in hydrology
+995,206,0.6327106118807297,Stochastic Hydrology,The case for probabilistic forecasting in hydrology
+999,1014,0.8743481129625903,Probabilistic Forecasting,Probabilistic forecasts and optimal decisions
+999,213,0.7200755095548014,Forecast-informed Decision Making,Probabilistic forecasts and optimal decisions
+999,1013,0.6891064944993106,Forecasting Theory,Probabilistic forecasts and optimal decisions
+999,801,0.6126076407104978,Event Forecasting,Probabilistic forecasts and optimal decisions
+999,721,0.6046094786988152,Markov Decision Processes,Probabilistic forecasts and optimal decisions
+1010,272,0.6151799511022888,Software Testing,"An experimental comparison of four unit test criteria: Mutation, edge-pair, all-uses and prime path coverage"
+1015,504,0.6555045539021904,Ai Integration In Engineering Education,Report from the 4th Int. Workshop on Education through Advanced Software Engineering and Artificial Intelligence (EASEAI'22)
+1018,504,0.6398312646645564,Ai Integration In Engineering Education,Report from the 3rd Int. Workshop on Education through Advanced Software Engineering and Artificial Intelligence (EASEAI'21)
+1030,132,0.7910095064793177,Reaction Engineering,Fundamentals of chemical reaction engineering
+1030,10060,0.6467332458123506,7.1.1 Reaction Engineering,Fundamentals of chemical reaction engineering
+1039,1309,0.6985234191805476,Engineering Education Research,In search of integration: Mapping conceptual efforts to apply STS to engineering education
+1039,19,0.6659964013073976,Engineering Education,In search of integration: Mapping conceptual efforts to apply STS to engineering education
+1039,1240,0.644507618883182,Engineering Pedagogy,In search of integration: Mapping conceptual efforts to apply STS to engineering education
+1039,504,0.6239844310158537,Ai Integration In Engineering Education,In search of integration: Mapping conceptual efforts to apply STS to engineering education
+1040,19,0.6426547225644299,Engineering Education,Teaching STS to engineers: A comparative study of embedded STS programs
+1040,1309,0.6311319661249013,Engineering Education Research,Teaching STS to engineers: A comparative study of embedded STS programs
+1040,1240,0.6244216952208639,Engineering Pedagogy,Teaching STS to engineers: A comparative study of embedded STS programs
+1041,277,0.6730625032533055,Generative Ai And Its Use For Scientific And Engineering Resarch,Using generative ai as an active learning tool to refine professional engineering skills
+1042,1309,0.6619472576096667,Engineering Education Research,Applying STS to Engineering Education: A Comparative Study of STS Minors
+1042,19,0.6358918217527021,Engineering Education,Applying STS to Engineering Education: A Comparative Study of STS Minors
+1042,1240,0.6192200019029488,Engineering Pedagogy,Applying STS to Engineering Education: A Comparative Study of STS Minors
+1044,479,0.7422686329421604,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Choreographing Virtue: The Role of Situatedness and Layering in Building Moral Muscle Memory in Engineering Ethics Education
+1044,452,0.6135857468113818,Engineering Ethics,Choreographing Virtue: The Role of Situatedness and Layering in Building Moral Muscle Memory in Engineering Ethics Education
+1045,452,0.7170071347318401,Engineering Ethics,Incorporating Giving Voice to Values (GVV) into an Engineering Ethics Course
+1045,479,0.7019788901362306,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Incorporating Giving Voice to Values (GVV) into an Engineering Ethics Course
+1046,1026,0.8352780953955001,Silicon Photonics,Perspective on the future of silicon photonics and electronics
+1046,440,0.6394983973975178,Integrated Photonics,Perspective on the future of silicon photonics and electronics
+1046,10192,0.6055590043652942,4.2 Photonics & Optoelectronics,Perspective on the future of silicon photonics and electronics
+1047,442,0.6487127340673398,Microwave Photonics,Photonic chip-based low-noise microwave oscillator
+1050,1266,0.7477772294723442,Low Power Circuits,Low power receiver and related circuits
+1059,1046,0.6164838663609317,Federated Learning,FedHERO: A Federated Learning Approach for Node Classification Task on Heterophilic Graphs
+1069,1046,0.8635133090077306,Federated Learning,Advances and Open Problems in Federated Learning
+1069,414,0.6504746558507999,"""Machine Learning Transformers And In-context Learning; Distributed Learning And Optimization; Reinforcement Learning; Federated Learning""",Advances and Open Problems in Federated Learning
+1069,348,0.6026336611739711,Distributed Machine Learning,Advances and Open Problems in Federated Learning
+1072,1033,0.6866006203596384,Secure Computation,Faster Secure Two-Party Computation Using Garbled Circuits
+1091,186,0.6945856150910532,Risk Management,Learning to organise risk management in organisations: what future for enterprise risk management?
+1114,1038,0.7895000047429137,Photoacoustic Imaging,Ultrasound and photoacoustic imaging of cancer
+1117,1038,0.7512176499677681,Photoacoustic Imaging,Acoustic loudness factor as an experimental parameter for benchmarking small molecule photoacoustic probes
+1131,1046,0.7049993517928743,Federated Learning,Design and analysis of uplink and downlink communications for federated learning
+1132,1044,0.7002751118134958,Multi-armed Bandits,Federated Multi-armed Bandits with Personalization
+1134,1209,0.6165349458277017,Edge Computing,Edge intelligence through in-sensor and near-sensor computing for the artificial intelligence of things
+1137,1046,0.6454792037458922,Federated Learning,Federated Split Learning with Improved Communication and Storage Efficiency
+1148,1052,0.6849718676774622,Human-automation Interaction,Using formal verification to evaluate human-automation interaction: A review
+1149,1052,0.6022099237835017,Human-automation Interaction,A systematic approach to model checking human–automation interaction using task analytic models
+1151,1052,0.6001202425084495,Human-automation Interaction,Formally verifying human–automation interaction as part of a system model: limitations and tradeoffs
+1159,148,0.7425687345489416,Peptide Self-assembly,"Biomaterials via peptide assembly: Design, characterization, and application in tissue engineering"
+1159,137,0.6335762662874991,Peptide Binding And Assembly,"Biomaterials via peptide assembly: Design, characterization, and application in tissue engineering"
+1163,148,0.7472201918030305,Peptide Self-assembly,Programming Peptide Assembly for Advanced Biomaterials: Organic Processing Conditions and Stereocomplexation
+1163,137,0.681643797660629,Peptide Binding And Assembly,Programming Peptide Assembly for Advanced Biomaterials: Organic Processing Conditions and Stereocomplexation
+1168,602,0.6194314705943369,Computational Plasma Physics,Grid-based Vlasov simulation of collisionless plasma expansion
+1170,602,0.6391920200676914,Computational Plasma Physics,Grid-Based Kinetic Simulations of Collisionless Plasma Expansion
+1176,602,0.6312241429014621,Computational Plasma Physics,Electron Scale Physics in Plasma Expansion: Grid-based Vlasov Simulations
+1176,601,0.6142988934707723,Plasma Physics And Engineering,Electron Scale Physics in Plasma Expansion: Grid-based Vlasov Simulations
+1176,1058,0.6062452953771229,Plasma Physics,Electron Scale Physics in Plasma Expansion: Grid-based Vlasov Simulations
+1196,612,0.6613450436104642,Mechanisms And Prediction Of Thoracic Injury In Automobile Collisions,Automobile injury trends in the contemporary fleet: Belted occupants in frontal collisions
+1196,10268,0.6443467817019242,"Prediction,  And Prevention Of Pedestrian Injuries From Collisions With Automobiles",Automobile injury trends in the contemporary fleet: Belted occupants in frontal collisions
+1196,628,0.6048401798954699,Vehicle Safety And Crashworthiness,Automobile injury trends in the contemporary fleet: Belted occupants in frontal collisions
+1197,1328,0.7204936944263709,Impact And Injury Biomechanics,Human surrogates for injury biomechanics research
+1197,647,0.7121707395323447,Injury Biomechanics,Human surrogates for injury biomechanics research
+1197,637,0.6955552947502359,Trauma Biomechanics,Human surrogates for injury biomechanics research
+1197,76,0.6189745570505559,Biomechanics/injury Biomechanics Or Biomechanics And Mechanobiology,Human surrogates for injury biomechanics research
+1197,620,0.6088042060202067,Injury Risk Prediction Using Statistical Techniques To Interpret Finite Element Biomechanics Models,Human surrogates for injury biomechanics research
+1197,10035,0.6065719160378288,1.1.2 Biomechanics & Injury Science,Human surrogates for injury biomechanics research
+1198,647,0.7369387591158725,Injury Biomechanics,Accidental injury: biomechanics and prevention
+1198,637,0.7071824293680303,Trauma Biomechanics,Accidental injury: biomechanics and prevention
+1198,1328,0.7060310298680128,Impact And Injury Biomechanics,Accidental injury: biomechanics and prevention
+1198,673,0.6336846653230288,"""Injury Biomechanics – Head",Accidental injury: biomechanics and prevention
+1199,620,0.7341443428599015,Injury Risk Prediction Using Statistical Techniques To Interpret Finite Element Biomechanics Models,Predicting rib fracture risk with whole-body finite element models: development and preliminary evaluation of a probabilistic analytical framework
+1207,665,0.6015118435472142,Traumatic Brain Injury,Experimental investigation of cavitation as a possible damage mechanism in blast-induced traumatic brain injury in post-mortem human subject heads
+1213,620,0.6317835203950593,Injury Risk Prediction Using Statistical Techniques To Interpret Finite Element Biomechanics Models,Development of a biofidelic computational model of human pelvis for predicting biomechanical responses and pelvic fractures
+1223,1046,0.6287549183498864,Federated Learning,Federated learning enables big data for rare cancer boundary detection
+1225,630,0.7296823788144339,Human Body Modeling,Parametric human body shape modeling framework for human-centered product design
+1225,582,0.614937708328621,Digital Human Modeling,Parametric human body shape modeling framework for human-centered product design
+1235,354,0.6061379166171368,Design Verification,The validation square: how does one verify and validate a design method
+1236,1309,0.604347977678708,Engineering Education Research,Assessing engineering design process knowledge
+1236,645,0.604111617897722,Engineering Curriculum Design,Assessing engineering design process knowledge
+1242,645,0.6819081522414299,Engineering Curriculum Design,A model for integrating engineering design into science teacher education
+1242,1240,0.6363789773600668,Engineering Pedagogy,A model for integrating engineering design into science teacher education
+1242,19,0.6301521977365623,Engineering Education,A model for integrating engineering design into science teacher education
+1242,1309,0.626751349986048,Engineering Education Research,A model for integrating engineering design into science teacher education
+1249,1000,0.6458381645870562,Nanoscale Heat Transport,"Limitations and Advances in Optical Thermal Transport Measurements: Extremes in Properties, Length Scales, and Temperature"
+1264,437,0.6635585774857717,Hardware-software Co-design,The Codesign of Embedded Systems: A Unified Hardware/Software Representation: A Unified Hardware/Software Representation
+1270,89,0.6337623753500858,Biomechanics And Mechanobiology,Mechanisms of mechanotransduction
+1270,16,0.621776482915479,Cell And Molecular Biomechanics,Mechanisms of mechanotransduction
+1273,16,0.6165947611915441,Cell And Molecular Biomechanics,The cytoskeleton under external fluid mechanical forces: hemodynamic forces acting on the endothelium
+1275,302,0.6251276920477049,Biomedical Engineering,Creating Inclusive Environments to Support Learning and Professional Development in Biomedical Engineering Education
+1283,413,0.6025345908147433,Energy-harvesting,Energy cooperation in energy harvesting communications
+1305,272,0.6393344755201671,Software Testing,Supporting controlled experimentation with testing techniques: An infrastructure and its potential impact
+1317,934,0.6178257775726494,Signaling Networks,Reconstruction of cellular signalling networks and analysis of their properties
+1320,1326,0.6008882698967298,Metabolic Simulations,Reframing the role of the objective function in its proper context for metabolic network modeling
+1341,407,0.8033513306708805,Neuromorphic Computing,Neuromorphic Computing in the Era of Large Models
+1350,209,0.6837912284896768,Climate Risk Management,Changing the resilience paradigm
+1350,211,0.6178672928562983,Resilience In Complex Systems,Changing the resilience paradigm
+1363,1006,0.6024340245567378,Hydrogels,Defining and designing polymers and hydrogels for neural tissue engineering
+1369,526,0.8454406743092107,Corrosion And Electrochemical Sciences And Engineering,Electrochemical techniques in corrosion science and engineering
+1369,574,0.8046750971932188,Electrochemical Corrosion,Electrochemical techniques in corrosion science and engineering
+1369,1302,0.739400595438396,Corrosion Science,Electrochemical techniques in corrosion science and engineering
+1369,1283,0.6705546747467863,Electrochemical Materials Science,Electrochemical techniques in corrosion science and engineering
+1369,519,0.6247272189587425,Corrosion,Electrochemical techniques in corrosion science and engineering
+1370,526,0.6335358899895596,Corrosion And Electrochemical Sciences And Engineering,Accurate electrochemical measurement of magnesium corrosion rates
+1370,574,0.6012614465709708,Electrochemical Corrosion,Accurate electrochemical measurement of magnesium corrosion rates
+1371,1302,0.6077633070141037,Corrosion Science,Corrosion tests and standards: application and interpretation
+1372,526,0.6793616259612549,Corrosion And Electrochemical Sciences And Engineering,Corrosion of magnesium alloys: the role of alloying
+1372,574,0.6743851795659289,Electrochemical Corrosion,Corrosion of magnesium alloys: the role of alloying
+1372,1302,0.6373649110542527,Corrosion Science,Corrosion of magnesium alloys: the role of alloying
+1373,526,0.6721557553766975,Corrosion And Electrochemical Sciences And Engineering,Electrochemical impedance: analysis and interpretation
+1373,574,0.6443392111307462,Electrochemical Corrosion,Electrochemical impedance: analysis and interpretation
+1413,1046,0.6833652379801903,Federated Learning,Tifl: A tier-based federated learning system
+1414,1046,0.7016358807695459,Federated Learning,FedAT: A High-Performance and Communication-Efficient Federated Learning System with Asynchronous Tiers
+1416,1119,0.6222309025156353,Serverless Computing,Wukong: A scalable and locality-enhanced framework for serverless parallel computing
+1429,645,0.6047442193852322,Engineering Curriculum Design,Engineering a complete curriculum overhaul
+1430,291,0.6580176039474694,Computing Education,Training computing educators to become computing education researchers
+1443,95,0.6861890082996396,Nanotechnology,"Nanotalk: Conversations with scientists and engineers about ethics, meaning, and belief in the development of nanotechnology"
+1443,1238,0.6023537236598855,Nanoscience,"Nanotalk: Conversations with scientists and engineers about ethics, meaning, and belief in the development of nanotechnology"
+1444,95,0.648656659704917,Nanotechnology,Towards the conscientious development of ethical nanotechnology
+1445,483,0.6632343515540136,Technology & Science Fiction,Science fiction in computer science education
+1446,452,0.6430481308738359,Engineering Ethics,"Ethics, technology, and the future: an intergenerational experience in engineering education"
+1446,479,0.6031710353955859,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education","Ethics, technology, and the future: an intergenerational experience in engineering education"
+1447,1229,0.6147735681745571,Tech Ethics,"Animals, Ethics, and Engineering: Intersections and Implications"
+1447,452,0.6105192815757313,Engineering Ethics,"Animals, Ethics, and Engineering: Intersections and Implications"
+1448,452,0.6549020451223866,Engineering Ethics,Non-human Animals and a New Ethics for Engineering
+1448,476,0.6048661557260417,"""Engineering Ethics Climate Change",Non-human Animals and a New Ethics for Engineering
+1451,1006,0.6424916968470287,Hydrogels,A practical guide to hydrogels for cell culture
+1461,532,0.8453614802975544,Thermoelectric Materials And Thermal Transport,Perspectives on thermoelectrics: from fundamentals to device applications.
+1461,1133,0.7853041150310492,Thermoelectrics,Perspectives on thermoelectrics: from fundamentals to device applications.
+1464,1133,0.7422755346188736,Thermoelectrics,Thermoelectric power factor: Enhancement mechanisms and strategies for higher performance thermoelectric materials
+1464,532,0.7358000826698744,Thermoelectric Materials And Thermal Transport,Thermoelectric power factor: Enhancement mechanisms and strategies for higher performance thermoelectric materials
+1466,1133,0.717786109227503,Thermoelectrics,Innovation in thermoelectric materials: From fundamental physics to practical applications
+1466,532,0.7061550034698386,Thermoelectric Materials And Thermal Transport,Innovation in thermoelectric materials: From fundamental physics to practical applications
+1512,19,0.6633141857674296,Engineering Education,Liberal education in twenty-first century engineering: Responses to ABET/EC 2000 Criteria
+1512,1309,0.6341790626496813,Engineering Education Research,Liberal education in twenty-first century engineering: Responses to ABET/EC 2000 Criteria
+1512,1240,0.6088513324754926,Engineering Pedagogy,Liberal education in twenty-first century engineering: Responses to ABET/EC 2000 Criteria
+1512,479,0.6037450752069085,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Liberal education in twenty-first century engineering: Responses to ABET/EC 2000 Criteria
+1517,452,0.7058590149430457,Engineering Ethics,"Knowledge Integration as the Foundation of Ethical Action: or, Why You Need All Three Legs of a Three-Legged Stool"
+1517,1229,0.6467531301175201,Tech Ethics,"Knowledge Integration as the Foundation of Ethical Action: or, Why You Need All Three Legs of a Three-Legged Stool"
+1517,479,0.6166452785327066,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education","Knowledge Integration as the Foundation of Ethical Action: or, Why You Need All Three Legs of a Three-Legged Stool"
+1518,1309,0.6083434221662616,Engineering Education Research,The Person behind the Mann Report: Charles Riborg Mann as an Influential but Elusive Figure in Engineering Education
+1528,650,0.6277274505306487,Smart Manufacturing,Artificial Intelligence in Advanced Manufacturing: Current Status and Future Outlook
+1528,643,0.6052122696150111,Advanced Manufacturing,Artificial Intelligence in Advanced Manufacturing: Current Status and Future Outlook
+1534,1143,0.6616416877152625,Smart Manufacturing System Modeling And Analysis,"Advances in Modeling, Analysis, and Control of Manufacturing Systems: Methods, Gaps, and Research Frontiers"
+1554,1151,0.632204653034006,Angiogenesis,Macrophages: an inflammatory link between angiogenesis and lymphangiogenesis
+1555,73,0.6898615979996334,Computational Modeling Of Biological Phenomena,Multiscale computational models of complex biological systems
+1555,7,0.6453784991382046,Computational Systems Biology,Multiscale computational models of complex biological systems
+1575,1155,0.6464192445241617,Heterogeneous Catalysis,Progress and pitfalls in designing heterogeneous catalysts with molecular precision
+1576,1155,0.6531259375461091,Heterogeneous Catalysis,Chemical kinetics of heterogeneous catalysis: experimental research methodologies and case studies of site-isolated materials
+1576,1193,0.6137713668890065,Chemical Kinetics,Chemical kinetics of heterogeneous catalysis: experimental research methodologies and case studies of site-isolated materials
+1582,645,0.6696419330744722,Engineering Curriculum Design,A design approach in an Introduction to Engineering course
+1582,1240,0.6388608983678163,Engineering Pedagogy,A design approach in an Introduction to Engineering course
+1582,503,0.617477865824101,Engineering Design,A design approach in an Introduction to Engineering course
+1582,19,0.6011155637740713,Engineering Education,A design approach in an Introduction to Engineering course
+1585,504,0.6359248620413558,Ai Integration In Engineering Education,GIFTS: Integrating Generative AI into First-Year Engineering Education: From Knowledge Acquisition and Arduino Projects to Defining Accessibility Problems and Solutions
+1585,277,0.6179816376635432,Generative Ai And Its Use For Scientific And Engineering Resarch,GIFTS: Integrating Generative AI into First-Year Engineering Education: From Knowledge Acquisition and Arduino Projects to Defining Accessibility Problems and Solutions
+1586,1309,0.6205096514502129,Engineering Education Research,WIP: Assessing the Progression of Design Process Learning in First-Year Engineering Students
+1589,230,0.7751329055417403,Computational Thinking,Thinking about computational thinking: Origins of computational thinking in educational computing
+1589,291,0.7176336972375643,Computing Education,Thinking about computational thinking: Origins of computational thinking in educational computing
+1589,229,0.603895501654232,Computer Science Education,Thinking about computational thinking: Origins of computational thinking in educational computing
+1612,122,0.6537307542481808,Redox Flow Battery / Fuel Cell Membranes,Sulfonated Cation Exchange Membrane for Selective Transport in Non-Aqueous Redox Flow Battery Applications
+1615,122,0.7637554501766686,Redox Flow Battery / Fuel Cell Membranes,Selective Cation Exchange Membrane for Nonaqueous Flow Battery Separator
+1626,1169,0.760218216422549,Tensor Decomposition,Tensor decomposition for signal processing and machine learning
+1671,31,0.6076118760421648,Structural Bioinformatics,The protein data bank
+1680,277,0.6235957831940111,Generative Ai And Its Use For Scientific And Engineering Resarch,Biological databases in the age of generative artificial intelligence
+1687,1190,0.6547256745440829,Parallel Computing,Solving problems on concurrent processors. Vol. 1: General techniques and regular problems
+1689,256,0.7072855557186734,Grid/cloud/high-performance Computing,Overview of the book: grid computing–making the global infrastructure a reality
+1691,359,0.6414880503097995,Distributed Computing,Examining the challenges of scientific workflows
+1691,893,0.6282992654686159,Scientific Computing,Examining the challenges of scientific workflows
+1691,267,0.6166751716453112,Parallel And Distributed Computing,Examining the challenges of scientific workflows
+1705,332,0.6003362375304006,Digital Well-being,Designing for Meaningful Interactions and Digital Wellbeing
+1746,1203,0.6069380316502614,Patient Ergonomics,Macroergonomic factors in the patient work system: examining the context of patients with chronic illness
+1747,1203,0.7220367486887381,Patient Ergonomics,Patient ergonomics: 10-year mapping review of patient-centered human factors
+1747,10011,0.6891852359739361,8.4 Human Factors & Ergonomics,Patient ergonomics: 10-year mapping review of patient-centered human factors
+1782,605,0.6940971326563419,Coherent Anti-stokes Raman Scattering,Single-shot ultrafast coherent anti-Stokes Raman scattering of vibrational/rotational nonequilibrium
+1783,605,0.6187751052138164,Coherent Anti-stokes Raman Scattering,Interference-free gas-phase thermometry at elevated pressure using hybrid femtosecond/picosecond rotational coherent anti-Stokes Raman scattering
+1785,605,0.6587204802290134,Coherent Anti-stokes Raman Scattering,Dual-pump vibrational/rotational femtosecond/picosecond coherent anti-Stokes Raman scattering temperature and species measurements
+1786,605,0.650594922054327,Coherent Anti-stokes Raman Scattering,Vibrational femtosecond/picosecond coherent anti‐Stokes Raman scattering with enhanced temperature sensitivity for flame thermometry from 300 to 2400 K
+1799,1217,0.6006407824861076,Data Provenance,PROVSYN: Synthesizing Provenance Graphs for Data Augmentation in Intrusion Detection Systems
+1803,946,0.611643906584044,Extracellular Matrix,Decellularized matrices in regenerative medicine
+1813,1217,0.6360866210046393,Data Provenance,Toward the Geoscience Paper of the Future: Best practices for documenting and sharing research from data to software to provenance
+1826,1223,0.624272188098573,Global Hydrology,"Advances in Remote Sensing, AI, and Modeling for Hydrology and the Terrestrial Water Cycle III Oral"
+1830,532,0.6827362228532395,Thermoelectric Materials And Thermal Transport,Recent developments in bulk thermoelectric materials
+1830,1133,0.679685365297463,Thermoelectrics,Recent developments in bulk thermoelectric materials
+1849,480,0.7202755678186689,"""Technology And Public Deliberation Social Movements And Deliberative Systems",How social movements engage with public deliberation: A multifaceted approach
+1849,1228,0.6009861557217138,Deliberative Democracy,How social movements engage with public deliberation: A multifaceted approach
+1850,478,0.7270069933945951,Engineering And Peacebuilding Peace Engineering,Beyond experts and conciliators: Envisioning engineers as multi-faceted peacebuilders in Costa Rica
+1852,123,0.6494492029073828,Desalination Membranes,Water permeability and water/salt selectivity tradeoff in polymers for desalination
+1875,645,0.667860470383115,Engineering Curriculum Design,"Work in Progress: A Novel Two-Semester Course Sequence that Integrates Engineering Design, Sociotechnical Skills, Career Development, and Academic Advising"
+1875,19,0.6496294764138482,Engineering Education,"Work in Progress: A Novel Two-Semester Course Sequence that Integrates Engineering Design, Sociotechnical Skills, Career Development, and Academic Advising"
+1875,1157,0.6266217572650298,First-year Engineering,"Work in Progress: A Novel Two-Semester Course Sequence that Integrates Engineering Design, Sociotechnical Skills, Career Development, and Academic Advising"
+1875,1240,0.6247201148377978,Engineering Pedagogy,"Work in Progress: A Novel Two-Semester Course Sequence that Integrates Engineering Design, Sociotechnical Skills, Career Development, and Academic Advising"
+1875,1309,0.6126821429530085,Engineering Education Research,"Work in Progress: A Novel Two-Semester Course Sequence that Integrates Engineering Design, Sociotechnical Skills, Career Development, and Academic Advising"
+1880,929,0.6264356494288488,Shape Memory Alloys,Accelerated search for materials with targeted properties by adaptive design
+1884,929,0.6965756834879888,Shape Memory Alloys,An informatics approach to transformation temperatures of NiTi-based shape memory alloys
+1896,716,0.6866510507711766,Multimodal Machine Learning For Public Health,From Data to Decisions: Engineering Pathways to Equitable and Resilient Public Health Systems
+1897,719,0.6322506312657563,Infectious Disease Modeling,Advancing real-time infectious disease forecasting using large language models
+1936,451,0.6311956357133907,"""Haptic Suits For Rehabilitation Smart Textiles",Smart textiles for personalized healthcare
+1937,1251,0.6241861210022015,Wearable Technology,Electronic textiles for wearable point-of-care systems
+1937,451,0.6198607911066998,"""Haptic Suits For Rehabilitation Smart Textiles",Electronic textiles for wearable point-of-care systems
+1948,648,0.639991120302913,Automobile Safety And Traffic Injury Prevention,Four Paradigms: Traffic Safety in the Twentieth-Century United States
+1948,1063,0.6253103144458403,Automobile Safety,Four Paradigms: Traffic Safety in the Twentieth-Century United States
+1957,1269,0.8295288503912176,Body Sensor Networks,Body area sensor networks: Challenges and opportunities
+1969,1270,0.6957970534501308,Water Quality,Global stressors on water quality and quantity
+1986,972,0.6100349865478849,Social Equity In Stem,Disciplinary socialization in first-year STEM students
+1987,972,0.6138253789556078,Social Equity In Stem,The Journey of Becoming and Belonging: A Longitudinal Exploration of Socialization's Impact on STEM Students' Sense of Belonging
+1988,499,0.6700641817762318,Interdisciplinary Collaboration,Interdisciplinary collaboration in capstone courses
+2011,1284,0.7058725104580416,Electrodeposition,Theory and practice of metal electrodeposition
+2011,1283,0.6497479815233316,Electrochemical Materials Science,Theory and practice of metal electrodeposition
+2011,526,0.6217644910586104,Corrosion And Electrochemical Sciences And Engineering,Theory and practice of metal electrodeposition
+2011,574,0.6062976141861285,Electrochemical Corrosion,Theory and practice of metal electrodeposition
+2038,614,0.6673694544208151,Effects Of Aging On Thoracic Injury And Vehicular Occupant Protection,Structural and material changes in the aging thorax and their role in crash protection for older occupants
+2042,612,0.6500638465186064,Mechanisms And Prediction Of Thoracic Injury In Automobile Collisions,Spinal injury rates and specific causation in motor vehicle collisions
+2054,1091,0.6157034815524574,Network Biology,Inferring causal molecular networks: empirical assessment through a community-based effort
+2055,414,0.6223907419860994,"""Machine Learning Transformers And In-context Learning; Distributed Learning And Optimization; Reinforcement Learning; Federated Learning""",Transformers learn to implement preconditioned gradient descent for in-context learning
+2098,1103,0.7216838055624577,Electrochemistry,From the Editor: Lessons in Chemistry
+2098,1283,0.6075794405670847,Electrochemical Materials Science,From the Editor: Lessons in Chemistry
+2105,562,0.6871314782236444,Environmental And Thermal Barrier Coatings,Opportunities for novel refractory alloy thermal/environmental barrier coatings using multicomponent rare earth oxides
+2114,645,0.7488255527404823,Engineering Curriculum Design,Impact of a curriculum and design course redesign on student’s engineering design process knowledge
+2114,1309,0.6259387069111098,Engineering Education Research,Impact of a curriculum and design course redesign on student’s engineering design process knowledge
+2114,1240,0.6226148187177312,Engineering Pedagogy,Impact of a curriculum and design course redesign on student’s engineering design process knowledge
+2114,19,0.6142243846883324,Engineering Education,Impact of a curriculum and design course redesign on student’s engineering design process knowledge
+2128,267,0.6267461953615613,Parallel And Distributed Computing,Treadmarks: Shared memory computing on networks of workstations
+2130,267,0.6090919111857618,Parallel And Distributed Computing,Treadmarks: Distributed shared memory on standard workstations and operating systems.
+2153,487,0.6187938262392408,Broadening Engagement In Engineering Education Building Self-efficacy For Success In Engineering Education,Experimental Self-Efficacy and Troubleshooting Ability in a Chemical Engineering Laboratory
+2154,1314,0.6129441772180574,Heterogeneous Computing,Rodinia: A benchmark suite for heterogeneous computing
+2158,436,0.6307638345222483,In-memory Computing,Memory devices including processing-in-memory architecture configured to provide accumulation dispatching and hybrid partitioning
+2158,422,0.6091667297097844,Processing In Memory,Memory devices including processing-in-memory architecture configured to provide accumulation dispatching and hybrid partitioning
+2161,945,0.6777792175532947,Engineering Sustainability,"Designing for a Sustainable World: Integrating the United Nations Sustainable Development Goals into a First-year Engineering Course in Science, Technology, and Society"
+2161,1157,0.607774475821392,First-year Engineering,"Designing for a Sustainable World: Integrating the United Nations Sustainable Development Goals into a First-year Engineering Course in Science, Technology, and Society"
+2162,452,0.7071926940357001,Engineering Ethics,Fostering Ethical Innovation in Engineering Education and Design
+2162,479,0.6997295544651265,"""Engineering Ethics Education Cultivating Character Strengths In Engineering Education",Fostering Ethical Innovation in Engineering Education and Design
+2162,476,0.605688975260287,"""Engineering Ethics Climate Change",Fostering Ethical Innovation in Engineering Education and Design
+2162,945,0.6039469255445393,Engineering Sustainability,Fostering Ethical Innovation in Engineering Education and Design
+2163,452,0.6445046685863003,Engineering Ethics,Rogue Engineering: Teaching Frankenstein as a Parable of (Un) ethical Engineering Practice
+2164,499,0.6205280270174319,Interdisciplinary Collaboration,Communication across Divisions: Trends Emerging from the 2019 Annual Conference of ASEE and Some Possibilities for Strategic Action
+2166,484,0.7093376373978105,The Lego(r) Group's Design Values & Practices,"Learning through Play: Using LEGO® Products, Practices, and Values to Teach Social and Ethical Aspects of Engineering Design"
+2190,706,0.6294319069025562,Technology And Democracy,"Life, Liberty and the Pursuit of Convenience—on whose terms and at what costs?"
+2193,499,0.6760182616129933,Interdisciplinary Collaboration,Introduction: Caring for equitable relations in interdisciplinary collaborations
+2193,10017,0.6004187804492851,9. INTERDISCIPLINARY & EMERGING FIELDS,Introduction: Caring for equitable relations in interdisciplinary collaborations
+2216,1325,0.6573718740510985,Artificial Pancreas,Fully integrated artificial pancreas in type 1 diabetes: modular closed-loop glucose control maintains near normoglycemia
+2216,1327,0.608283300491702,Diabetes Technology,Fully integrated artificial pancreas in type 1 diabetes: modular closed-loop glucose control maintains near normoglycemia
+2221,1327,0.6749543233616486,Diabetes Technology,Unified platform for monitoring and control of blood glucose levels in diabetic patients
+2224,665,0.6667780378831603,Traumatic Brain Injury,Brain injuries from blast
+2242,719,0.6343272738079409,Infectious Disease Modeling,Episimdemics: an efficient algorithm for simulating the spread of infectious disease over large realistic social networks
+2260,229,0.633517446421975,Computer Science Education,Curriculum for a Comprehensive Statewide In-Service CS Teacher Training Program
+2261,291,0.6182239317798408,Computing Education,Panel Session: A Vision for the Next 15 Years of Computing Education
+2272,929,0.6455062401510705,Shape Memory Alloys,Structural vibration control using high strength and damping capacity shape memory alloys
+2277,1079,0.639884843251814,Alternative Grading,Exploring the Impact of Mastery Grading on Student Performance

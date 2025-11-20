@@ -41,16 +41,23 @@ def classify_and_answer_query(client, user_query: str) -> Dict[str, str]:
       }
     """
 
-    system_prompt = (
-        "You are a classifier that decides whether a user query can be "
-        "fully and confidently answered using general knowledge on the internet.\n\n"
-        "If the query can be answered without private knowledge (e.g., without "
-        "a custom database), you must:\n"
-        "- respond in JSON: {\"status\": \"ANSWERABLE\", \"answer\": \"...\"}\n\n"
-        "If the question cannot be effectively answered without access to a\n"
-        "custom/private knowledge base (e.g., the user's Neo4j graph), then return:\n"
-        "- {\"status\": \"COMPLEX\"}\n\n"
-        "Do not include extra text outside the JSON."
+    system_prompt = ("""
+    You are a classifier. Given a user query, decide whether a typical public LLM 
+    with general world knowledge could confidently answer it WITHOUT access to any 
+    private database or custom graph.
+
+    IF the question is something that could be answered from Wikipedia-level knowledge,
+    e.g., "Who is Yann LeCun?" or "What is machine learning?"
+    THEN produce ONLY JSON of the form:
+    {"status": "ANSWERABLE", "answer": "<your answer>"}
+
+    IF the question depends on private institutional knowledge, such as a university's
+    course catalog, research graph, or internal data that a public LLM would NOT know,
+    THEN produce ONLY:
+    {"status": "COMPLEX"}
+
+    Do not add any text before or after the JSON.
+    """
     )
 
     prompt = f"{system_prompt}\n\nUser Query: {user_query}"

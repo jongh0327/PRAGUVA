@@ -157,10 +157,13 @@ def main() -> None:
 
             classification = classify_and_answer_query(client, q)
 
-            if classification.get("status") == "ANSWERABLE":
+            if classification.get("status") == "COMPLEX":
                 print("\n--- Answer (Gemini direct) ---")
                 print(classification.get("answer", "(no answer)"))
                 continue
+            else:
+                print(classification.get("status"))
+                print(len(classification.get("status")))
 
             if args.search_mode == "simple":
                 # -------- SIMPLE MODE: hybrid_search only --------

@@ -240,6 +240,7 @@ def main() -> None:
                     seed_nodes=seed_nodes,
                     query_embedding=query_embedding,
                 )
+                print(rels_for_llm[0],rels_for_llm[50])
                 print(
                     f"\n[Graph grounding] BFS: nodes={len(nodes_for_llm)}, relationships={len(rels_for_llm)}"
                 )

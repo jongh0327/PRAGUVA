@@ -1,7 +1,34 @@
+# Python bytecode
 __pycache__/
 *.pyc
 *.pyo
-*.log
-.git/
-uploads/
+*.pyd
+
+# HuggingFace / Transformers cache
+.cache/
+python/.cache/
+python/cache/
+hf_cache/
+transformers/
+models/
+
+# Virtual environments
 venv/
+.venv/
+python/venv/
+python/.venv/
+
+# Upload folder (persistent, not inside build)
+uploads/
+web/uploads/
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+
+# OS junk
+.DS_Store
+Thumbs.db

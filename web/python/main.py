@@ -204,7 +204,7 @@ def main() -> None:
                     top_k=args.top_k,
                 )
                 print(
-                    f"[DEBUG] main(): BFS mode, received {len(entry_nodes)} entry nodes from search_professors_and_courses()"
+                    f"[DEBUG] main(): BFS mode, received {len(entry_nodes)} entry nodes from search_entry_nodes()"
                 )
 
                 if not entry_nodes:

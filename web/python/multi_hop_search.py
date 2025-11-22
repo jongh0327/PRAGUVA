@@ -76,42 +76,8 @@ class MultiHopDriver:
                type: type(r),
                start: elementId(startNode(r)),
                end: elementId(endNode(r)),
-               startName: CASE
-                 WHEN 'Course'     IN labels(startNode(r)) THEN startNode(r).Name
-                 WHEN 'Department' IN labels(startNode(r)) THEN startNode(r).department
-                 WHEN 'Major'      IN labels(startNode(r)) THEN startNode(r).major
-                 WHEN 'Minor'      IN labels(startNode(r)) THEN startNode(r).minor
-                 WHEN 'Paper'      IN labels(startNode(r)) THEN startNode(r).title
-                 WHEN 'Professor'  IN labels(startNode(r)) THEN startNode(r).name
-                 WHEN 'Topic'      IN labels(startNode(r)) THEN startNode(r).topicName
-                 ELSE coalesce(
-                   startNode(r).name,
-                   startNode(r).Name,
-                   startNode(r).title,
-                   startNode(r).topicName,
-                   startNode(r).department,
-                   startNode(r).major,
-                   startNode(r).minor
-                 )
-               END,
-               endName: CASE
-                 WHEN 'Course'     IN labels(endNode(r)) THEN endNode(r).Name
-                 WHEN 'Department' IN labels(endNode(r)) THEN endNode(r).department
-                 WHEN 'Major'      IN labels(endNode(r)) THEN endNode(r).major
-                 WHEN 'Minor'      IN labels(endNode(r)) THEN endNode(r).minor
-                 WHEN 'Paper'      IN labels(endNode(r)) THEN endNode(r).title
-                 WHEN 'Professor'  IN labels(endNode(r)) THEN endNode(r).name
-                 WHEN 'Topic'      IN labels(endNode(r)) THEN endNode(r).topicName
-                 ELSE coalesce(
-                   endNode(r).name,
-                   endNode(r).Name,
-                   endNode(r).title,
-                   endNode(r).topicName,
-                   endNode(r).department,
-                   endNode(r).major,
-                   endNode(r).minor
-                 )
-               END,
+               startName: startNode(r).name,
+               endName:   endNode(r).name,
                props: properties(r)
              }
           ] AS relationships

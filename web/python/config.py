@@ -20,14 +20,20 @@ GEMINI_SYSTEM_PROMPT = (
 )
 
 GEMINI_USER_PROMPT = """Question: {question}
-    Search Method: Vector similarity search using embeddings
-    Results (showing similarity scores where 1.0 is most similar):
+    Search Method: 0-1 BFS with entry nodes from embedding search.
+    Results :
     {results}
 
     Please provide a helpful, natural language answer to the user's question based on these search results.
     Focus on the most relevant items (highest similarity scores) and explain how they relate to the question.
 
     Also, note that 1000~4000 level courses are undergrad level and those over 5000s are graduate courses.    
-    Hide node IDs and course IDs, instructor IDs and such. They are for internal datakeeping only. 
+    Do not put information about Node IDs, course IDs, instructor IDs and such in the response.
+    They are for internal datakeeping within the graph only. 
     Only exception is the Course Number such as CS 3100. Those, you can show.
+    When the query asks for papers or courses taught by a professor, list all that are available.
+
+    For Course-Professor relationships, the semesters that specific professor taught the course is in the relationship(edge's) property.
+    Don't list all the semester the course was taught in the school. Not all of them were taught by that professor.
+    Just list the semester where that specific professor taught the course.
 """

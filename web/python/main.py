@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from typing import Any, Dict, List
+import time
 
 from neo4j import GraphDatabase
 import config
@@ -17,7 +18,6 @@ from LLM import (
     generate_nl_response_from_graph,
     generate_nl_response_with_search,
 )
-
 
 def _print_results(results: List[Dict[str, Any]]) -> None:
     """
@@ -105,7 +105,7 @@ def main() -> None:
         "--top_k",
         type=int,
         default=5,
-        help="Number of top results to return",
+        help="Number of entry nodes",
     )
     parser.add_argument(
         "-s",
@@ -154,7 +154,8 @@ def main() -> None:
 
             if not q:
                 continue
-
+            
+            start_time = time.time()
             if args.search_mode == "simple":
                 # -------- SIMPLE MODE: hybrid_search only --------
                 results = hybrid_search(
@@ -240,13 +241,14 @@ def main() -> None:
                     seed_nodes=seed_nodes,
                     query_embedding=query_embedding,
                 )
-                print(rels_for_llm[0],rels_for_llm[50])
                 print(
                     f"\n[Graph grounding] BFS: nodes={len(nodes_for_llm)}, relationships={len(rels_for_llm)}"
                 )
 
             # ---- Common LLM call for BOTH modes ----
             clean_nodes, clean_rels = strip_embeddings(nodes_for_llm, rels_for_llm)
+            # print(clean_rels[0])
+            # print(clean_rels[50])
             answer = generate_nl_response_from_graph(
                 client,
                 q,
@@ -260,6 +262,8 @@ def main() -> None:
                 s_answer = generate_nl_response_with_search(client, q)
                 print("\n--- Answer (Gemini + Google Search) ---")
                 print(s_answer)
+
+            print(f"Response Time : {str(time.time()-start_time)}s")
 
     finally:
         driver.close()

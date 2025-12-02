@@ -70,13 +70,17 @@ class MultiHopDriver:
 
         RETURN
           [n IN nset | {id: elementId(n), labels: labels(n), props: properties(n)}] AS nodes,
-          [r IN rset | {
-             id: elementId(r),
-             type: type(r),
-             start: elementId(startNode(r)),
-             end: elementId(endNode(r)),
-             props: properties(r)
-          }] AS relationships
+          [r IN rset |
+             {
+               id: elementId(r),
+               type: type(r),
+               start: elementId(startNode(r)),
+               end: elementId(endNode(r)),
+               startName: startNode(r).name,
+               endName:   endNode(r).name,
+               props: properties(r)
+             }
+          ] AS relationships
         """
 
         try:

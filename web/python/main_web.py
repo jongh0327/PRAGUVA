@@ -17,7 +17,15 @@ from LLM import build_genai_client, strip_embeddings, generate_nl_response_from_
 def main() -> None:
     parser = argparse.ArgumentParser(description="Neo4j + Gemini assistant (Web)")
     parser.add_argument("-q", "--query", required=True, help="User query")
-    parser.add_argument("-k", "--top_k", type=int, default=5, help="Number of top results to return")
+    parser.add_argument("--alpha", type=float, default=0.5, help="Weight for text vs. graph embeddings")
+    parser.add_argument("-k", "--top_k", type=int, default=5, help="Number of entry nodes")
+    parser.add_argument(
+        "-s",
+        "--search-mode",
+        choices=["simple", "bfs"],
+        default="simple",
+        help="Graph grounding mode: simple = hybrid hits only, bfs = BFS multi-hop",
+    )
     args = parser.parse_args()
 
     q = args.query.strip()

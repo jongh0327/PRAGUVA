@@ -16,7 +16,7 @@ def strip_embeddings(
     relationships: List[Dict[str, Any]]
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """Remove large embedding fields before passing to Gemini."""
-    EMBED_KEYS = {"featureVector", "graphSageEmbedding"}
+    EMBED_KEYS = {"featureVector"}
 
     for n in nodes:
         props = n.get("props", {})

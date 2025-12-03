@@ -2,29 +2,60 @@
 import os
 import argparse
 from typing import Any, Dict, List
+
 from neo4j import GraphDatabase
 import config
 
-# --- FIX: set Hugging Face cache directory to a writable location ---
+# HuggingFace cache (safe for server environments)
 hf_cache_dir = os.path.join(os.path.dirname(__file__), ".cache")
 os.makedirs(hf_cache_dir, exist_ok=True)
 os.environ["HF_HOME"] = hf_cache_dir
 
-from embedding_search import build_embedding_model, hybrid_search, search_entry_nodes
+from embedding_search import (
+    build_embedding_model,
+    search_entry_nodes,
+)
 from multi_hop_search import MultiHopDriver
-from LLM import build_genai_client, strip_embeddings, generate_nl_response_from_graph
+from LLM import (
+    build_genai_client,
+    strip_embeddings,
+    generate_nl_response_from_graph,
+)
+
+
+def extract_seed_nodes(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Extract ID, labels, and properties from Neo4j entry nodes."""
+    seed_nodes: List[Dict[str, Any]] = []
+    for row in rows:
+        node = row["node"]
+        node_id = row["nodeEid"]
+
+        labels = list(node.labels) if hasattr(node, "labels") else []
+        props = dict(node._properties) if hasattr(node, "_properties") else dict(node)
+
+        seed_nodes.append({
+            "id": node_id,
+            "labels": labels,
+            "props": props
+        })
+
+    return seed_nodes
+
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Neo4j + Gemini assistant (Web)")
-    parser.add_argument("-q", "--query", required=True, help="User query")
-    parser.add_argument("--alpha", type=float, default=0.5, help="Weight for text vs. graph embeddings")
-    parser.add_argument("-k", "--top_k", type=int, default=5, help="Number of entry nodes")
+    parser = argparse.ArgumentParser(description="Web entrypoint for Neo4j + Gemini")
     parser.add_argument(
-        "-s",
-        "--search-mode",
-        choices=["simple", "bfs"],
-        default="simple",
-        help="Graph grounding mode: simple = hybrid hits only, bfs = BFS multi-hop",
+        "-q",
+        "--query",
+        required=True,
+        help="User question"
+    )
+    parser.add_argument(
+        "-k",
+        "--top_k",
+        type=int,
+        default=5,
+        help="Number of entry nodes"
     )
     args = parser.parse_args()
 
@@ -36,7 +67,7 @@ def main() -> None:
     # Connect to Neo4j
     driver = GraphDatabase.driver(
         config.NEO4J_URI,
-        auth=(config.NEO4J_USERNAME, config.NEO4J_PASSWORD),
+        auth=(config.NEO4J_USERNAME, config.NEO4J_PASSWORD)
     )
 
     embedding_model = build_embedding_model()
@@ -44,52 +75,45 @@ def main() -> None:
     mh_driver = MultiHopDriver(driver)
 
     try:
-        if args.search_mode == "simple":
-            results = hybrid_search(driver, embedding_model, q, alpha=args.alpha, top_k=args.top_k)
-            if not results:
-                print("(no results)")
-                return
+        # 1. Find entry nodes using embedding search
+        entry_nodes = search_entry_nodes(
+            driver,
+            embedding_model,
+            q,
+            top_k=args.top_k,
+        )
 
-            # Seed nodes for LLM
-            seed_nodes: List[Dict[str, Any]] = []
-            for row in results:
-                node = row["node"]
-                node_id = row["nodeEid"]
-                labels = list(node.labels) if hasattr(node, "labels") else []
-                props = dict(node._properties) if hasattr(node, "_properties") else dict(node)
-                seed_nodes.append({"id": node_id, "labels": labels, "props": props})
+        if not entry_nodes:
+            print("No entry nodes found.")
+            return
 
-            nodes_for_llm = seed_nodes
-            rels_for_llm: List[Dict[str, Any]] = []
+        # 2. Convert Neo4j results into GraphRAG seed nodes
+        seed_nodes = extract_seed_nodes(entry_nodes)
+        if not seed_nodes:
+            print("No seed nodes available.")
+            return
 
-        else:
-            # BFS mode
-            entry_nodes = search_entry_nodes(driver, embedding_model, q, top_k=args.top_k)
-            if not entry_nodes:
-                print("(no entry nodes found)")
-                return
+        # 3. Encode user query for BFS scoring
+        query_embedding = embedding_model.encode(q).tolist()
 
-            # Flatten entry nodes
-            seed_nodes: List[Dict[str, Any]] = []
-            for row in entry_nodes:
-                node = row["node"]
-                node_id = row["nodeEid"]
-                labels = list(node.labels) if hasattr(node, "labels") else []
-                props = dict(node._properties) if hasattr(node, "_properties") else dict(node)
-                seed_nodes.append({"id": node_id, "labels": labels, "props": props})
+        # 0–1 BFS multi-hop expansion (same as main.py)
+        nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(
+            seed_nodes=seed_nodes,
+            query_embedding=query_embedding,
+        )
 
-            if not seed_nodes:
-                print("(no seed nodes for BFS)")
-                return
-
-            query_embedding = embedding_model.encode(q).tolist()
-            nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(seed_nodes=seed_nodes, query_embedding=query_embedding)
-
-        # Strip embeddings before sending to LLM
+        # 4. Strip embeddings (clean for LLM)
         clean_nodes, clean_rels = strip_embeddings(nodes_for_llm, rels_for_llm)
-        answer = generate_nl_response_from_graph(client, q, clean_nodes, clean_rels)
 
-        # Print only the LLM answer so PHP can capture it
+        # 5. Generate answer using Gemini
+        answer = generate_nl_response_from_graph(
+            client,
+            q,
+            clean_nodes,
+            clean_rels,
+        )
+
+        # Web mode: print only the answer
         print(answer)
 
     finally:

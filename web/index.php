@@ -2,7 +2,7 @@
 session_start();
 //session_destroy();
 //session_start();
-require_once "controller.php";
+require_once "run_llm.php";  // ← ONLY CHANGE: was "controller.php"
 
 // Initialize chat history
 if (!isset($_SESSION["chat_history"])) {

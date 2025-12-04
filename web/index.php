@@ -10,13 +10,15 @@ if (!isset($_SESSION["chat_history"])) {
 // Handle AJAX requests
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
     $user_input = trim($_POST["user_input"] ?? "");
+    $top_k = $_POST["top_k"] ?? 5;
+    $top_per_label = $_POST["top_per_label"] ?? 5;
     $response = "";
     $duration = 0.0;
 
     if ($user_input !== "") {
         try {
             $start_time = microtime(true);
-            $response = run_llm($user_input);
+            $response = run_llm($user_input, $top_k, $top_per_label);
             $duration = round(microtime(true) - $start_time, 2);
 
             $_SESSION["chat_history"][] = [
@@ -46,7 +48,6 @@ include 'navbar.php';
     <link rel="stylesheet" href="styles.css">
     <title>AI Chat</title>
     <style>
-        /* Keep all your existing styles */
         body { display:flex; flex-direction:column; height:100vh; margin:0; font-family:Arial, sans-serif; background-color:#f8f9fa; }
         .chat-container { flex:1; overflow-y:auto; padding:20px; background:#f0f0f0; border-radius:10px; margin:0 20px 10px 20px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
         .chat-message { margin-bottom:15px; padding:10px; border-radius:8px; background-color:white; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
@@ -63,6 +64,10 @@ include 'navbar.php';
         .typing-indicator .dot:nth-child(3) { animation-delay:0.4s; }
         @keyframes blink { 0%,80%,100% { opacity:0; } 40% { opacity:1; } }
         .response-time { color:gray; font-size:0.85em; margin-left:10px; }
+        /* Modal styling */
+        #settingsModal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+            background:white; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.3); z-index:1000; width:250px; }
+        #settingsModal h3 { margin-top:0; }
     </style>
 </head>
 <body>
@@ -90,13 +95,54 @@ include 'navbar.php';
 <div class="input-container">
     <textarea id="userInput" placeholder="Type your message..."></textarea>
     <button id="sendBtn">Send</button>
+    <button id="settingsBtn">⚙️</button>
+</div>
+
+<!-- Settings modal -->
+<div id="settingsModal">
+    <h3>Search Settings</h3>
+    <div style="margin-bottom:10px;">
+        <label for="topK"># Starting Nodes:</label>
+        <span id="topKVal" style="display:inline-block; width:30px; text-align:right;">5</span>
+        <input type="range" id="topK" min="1" max="20" value="5" style="width:100%;">
+    </div>
+    <div style="margin-bottom:10px;">
+        <label for="topPerLabel"># Nodes per Hop:</label>
+        <span id="topPerLabelVal" style="display:inline-block; width:35px; text-align:right;">5</span>
+        <input type="range" id="topPerLabel" min="0" max="100" value="5" style="width:100%;">
+    </div>
+    <button id="closeSettings" style="margin-top:10px; width:100%;">Close</button>
 </div>
 
 <script>
 const container = document.getElementById("chatContainer");
 const input = document.getElementById("userInput");
 const btn = document.getElementById("sendBtn");
+const settingsBtn = document.getElementById("settingsBtn");
+const modal = document.getElementById("settingsModal");
+const closeSettings = document.getElementById("closeSettings");
+const topKSlider = document.getElementById("topK");
+const topPerLabelSlider = document.getElementById("topPerLabel");
+const topKVal = document.getElementById("topKVal");
+const topPerLabelVal = document.getElementById("topPerLabelVal");
 const noMessages = document.getElementById("noMessages");
+
+let topK = parseInt(topKSlider.value);
+let topPerLabel = parseInt(topPerLabelSlider.value);
+
+// Update slider labels
+topKSlider.addEventListener("input", () => {
+    topK = parseInt(topKSlider.value);
+    topKVal.innerText = topK;
+});
+topPerLabelSlider.addEventListener("input", () => {
+    topPerLabel = parseInt(topPerLabelSlider.value);
+    topPerLabelVal.innerText = topPerLabel;
+});
+
+// Open/close modal
+settingsBtn.addEventListener("click", () => { modal.style.display = "block"; });
+closeSettings.addEventListener("click", () => { modal.style.display = "none"; });
 
 function scrollBottom() { container.scrollTop = container.scrollHeight; }
 
@@ -115,7 +161,6 @@ function sendMessage() {
     scrollBottom();
     input.value = "";
 
-    // Typing indicator with live timer
     const typingIndicator = document.createElement("div");
     typingIndicator.className = "typing-indicator";
     typingIndicator.innerHTML = `
@@ -132,10 +177,13 @@ function sendMessage() {
         document.getElementById("liveTimer").innerText = `Response time: ${seconds.toFixed(1)}s`;
     }, 100);
 
+    // Send hyperparameters along with the user input
     fetch("", {
         method: "POST",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         body: "ajax=1&user_input=" + encodeURIComponent(text)
+            + "&top_k=" + encodeURIComponent(topK)
+            + "&top_per_label=" + encodeURIComponent(topPerLabel)
     })
     .then(res => res.json())
     .then(data => {

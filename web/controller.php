@@ -1,10 +1,11 @@
 <?php
-function run_llm($input) {
+function run_llm($input, $top_k = 5, $top_per_label = 5) {
     $escaped = escapeshellarg($input);
+    $top_k = intval($top_k);
+    $top_per_label = intval($top_per_label);
 
-    // EXACT behavior of your old run_python.php
-    $cmd = "python3 /var/www/html/python/main_web.py -q $escaped 2>&1";
+    $cmd = "python3 /var/www/html/python/main_web.py -q $escaped -k $top_k -l $top_per_label 2>&1";
     $output = shell_exec($cmd);
 
-    return $output; // return so index.php can display it
+    return $output;
 }

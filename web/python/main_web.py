@@ -52,10 +52,17 @@ def main() -> None:
     )
     parser.add_argument(
         "-k",
-        "--top_k",
+        "--top_entry",
         type=int,
         default=5,
         help="Number of entry nodes"
+    )
+    parser.add_argument(
+        "-l",
+        "--top_per_label",
+        type=int,
+        default=5,
+        help="Number top h neighbors per label",
     )
     args = parser.parse_args()
 
@@ -80,7 +87,7 @@ def main() -> None:
             driver,
             embedding_model,
             q,
-            top_k=args.top_k,
+            top_k=args.top_entry,
         )
 
         if not entry_nodes:
@@ -100,6 +107,7 @@ def main() -> None:
         nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(
             seed_nodes=seed_nodes,
             query_embedding=query_embedding,
+            top_per_label=args.top_per_label
         )
 
         # 4. Strip embeddings (clean for LLM)

@@ -20,7 +20,6 @@ GEMINI_SYSTEM_PROMPT = (
 )
 
 GEMINI_USER_PROMPT = """Question: {question}
-    Search Method: 0-1 BFS with entry nodes from embedding search.
     Results :
     {results}
 

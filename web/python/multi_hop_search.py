@@ -156,6 +156,7 @@ class MultiHopDriver:
         self,
         seed_nodes: List[Dict[str, Any]],
         *,
+        top_per_label: int = 5,                           # keep top-N per node label
         query_embedding: Optional[List[float]] = None
     ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         """
@@ -200,6 +201,7 @@ class MultiHopDriver:
                     hop_kwargs["query_embedding"] = query_embedding
                 # protect the frontier from being pruned by per-label top-k
                 hop_kwargs["always_keep_ids"] = [current_id]
+                hop_kwargs["top_per_label"] = top_per_label
                 # (optional) explicitly whitelist known labels to keep results tight
                 # hop_kwargs.setdefault("label_whitelist", ["Professor", "Course", "Department"])
 
@@ -247,8 +249,8 @@ class MultiHopDriver:
         return 2
 
     def _transition_cost(self, prev_labels: List[str], next_labels: List[str]) -> int:
-        if "Topic" in prev_labels and "Topic" in next_labels:
-            return 0
+        # if "Topic" in prev_labels and "Topic" in next_labels:
+        #     return 0
         return 1
 
     # ---------- existing dedupe helper ----------

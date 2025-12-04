@@ -10,7 +10,8 @@ from embedding_search import (
     build_embedding_model,
     search_entry_nodes,
 )
-from multi_hop_search import MultiHopDriver
+# from multi_hop_search import MultiHopDriver
+from cypher_2hop import MultiHopDriver
 from LLM import (
     build_genai_client,
     strip_embeddings,
@@ -106,6 +107,13 @@ def main() -> None:
         default=5,
         help="Number of entry nodes",
     )
+    parser.add_argument(
+        "-l",
+        "--top_per_label",
+        type=int,
+        default=5,
+        help="Number top h neighbors per label",
+    )
     args = parser.parse_args()
 
     # Connect to Neo4j
@@ -184,6 +192,7 @@ def main() -> None:
             nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(
                 seed_nodes=seed_nodes,
                 query_embedding=query_embedding,
+                top_per_label=args.top_per_label
             )
             print(
                 f"\n[Graph grounding] BFS: nodes={len(nodes_for_llm)}, relationships={len(rels_for_llm)}"
@@ -191,14 +200,14 @@ def main() -> None:
 
             # ---- Common LLM call for BOTH modes ----
             clean_nodes, clean_rels = strip_embeddings(nodes_for_llm, rels_for_llm)
-            # print(clean_rels[0])
-            # print(clean_rels[50])
-            answer = generate_nl_response_from_graph(
-                client,
-                q,
-                clean_nodes,
-                clean_rels,
-            )
+            print(f"Response Time : {str(time.time()-start_time)}s")
+
+            # answer = generate_nl_response_from_graph(
+            #     client,
+            #     q,
+            #     clean_nodes,
+            #     clean_rels,
+            # )
             print("\n--- Answer (Graph-based) ---")
             print(answer)
 

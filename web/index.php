@@ -516,11 +516,25 @@ function openGraphModal(graph) {
 function displayNodeInfo(data) {
     let html = '';
     
-    // Display all properties
+    // Define the order of attributes and which ones to exclude
+    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'courseID', 'departmentID', 'majorID', 'minorID'];
+    
+    // Always display name first if it exists
+    if (data.nodeType) {
+        html += `<div class="info-row"><span class="info-label">NodeType:</span> ${escapeHtml(String(data.nodeType))}</div>`;
+    }
+    if (data.name) {
+        html += `<div class="info-row"><span class="info-label">Name:</span> ${escapeHtml(String(data.name))}</div>`;
+    }
+    
+    // Display all other properties except excluded ones
     for (const [key, value] of Object.entries(data)) {
-        if (key === 'id' || key === 'label') {
-            html += `<div class="info-row"><span class="info-label">${escapeHtml(key)}:</span> ${escapeHtml(String(value))}</div>`;
-        } else if (typeof value === 'object' && value !== null) {
+        // Skip if it's in the exclude list or if it's 'name' (already displayed)
+        if (excludeKeys.includes(key) || key === 'name' || key === 'nodeType') {
+            continue;
+        }
+        
+        if (typeof value === 'object' && value !== null) {
             html += `<div class="info-row"><span class="info-label">${escapeHtml(key)}:</span> ${escapeHtml(JSON.stringify(value, null, 2))}</div>`;
         } else if (value !== undefined && value !== null && value !== '') {
             html += `<div class="info-row"><span class="info-label">${escapeHtml(key)}:</span> ${escapeHtml(String(value))}</div>`;

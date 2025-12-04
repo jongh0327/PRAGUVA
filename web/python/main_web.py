@@ -123,7 +123,21 @@ def main() -> None:
         )
 
         # 6. Convert to JSON-friendly format for frontend (Cytoscape.js compatible)
-        cy_nodes = [{"data": {"id": n["id"], "label": " | ".join(n["labels"]), **n["props"]}} for n in clean_nodes]
+        cy_nodes = []
+        for n in clean_nodes:
+            node_labels = n.get("labels", [])
+            # Remove "Searchable" from labels
+            filtered_labels = [label for label in node_labels if label != "Searchable"]
+            label_str = " | ".join(filtered_labels) if filtered_labels else "Initial Node"
+            
+            cy_nodes.append({
+                "data": {
+                    "id": n["id"],
+                    "label": label_str,
+                    "nodeType": filtered_labels[0] if filtered_labels else "Initial",
+                    **n["props"]
+                }
+            })
 
         cy_edges = []
         for r in clean_rels:

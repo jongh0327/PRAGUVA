@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import argparse
+import json
 from typing import Any, Dict, List
 
 from neo4j import GraphDatabase
@@ -68,7 +69,7 @@ def main() -> None:
 
     q = args.query.strip()
     if not q:
-        print("No query provided.")
+        print(json.dumps({"error": "No query provided"}))
         return
 
     # Connect to Neo4j
@@ -91,19 +92,19 @@ def main() -> None:
         )
 
         if not entry_nodes:
-            print("No entry nodes found.")
+            print(json.dumps({"error": "No entry nodes found"}))
             return
 
         # 2. Convert Neo4j results into GraphRAG seed nodes
         seed_nodes = extract_seed_nodes(entry_nodes)
         if not seed_nodes:
-            print("No seed nodes available.")
+            print(json.dumps({"error": "No seed nodes available"}))
             return
 
         # 3. Encode user query for BFS scoring
         query_embedding = embedding_model.encode(q).tolist()
 
-        # 0–1 BFS multi-hop expansion (same as main.py)
+        # 0–1 BFS multi-hop expansion
         nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(
             seed_nodes=seed_nodes,
             query_embedding=query_embedding,
@@ -121,8 +122,31 @@ def main() -> None:
             clean_rels,
         )
 
-        # Web mode: print only the answer
-        print(answer)
+        # 6. Convert to JSON-friendly format for frontend (Cytoscape.js compatible)
+        cy_nodes = [{"data": {"id": n["id"], "label": " | ".join(n["labels"]), **n["props"]}} for n in clean_nodes]
+
+        cy_edges = []
+        for r in clean_rels:
+            source = r.get("source") or r.get("start") or ""
+            target = r.get("target") or r.get("end") or ""
+            cy_edges.append({
+                "data": {
+                    "id": r.get("id") or f"{source}_{target}",
+                    "source": source,
+                    "target": target,
+                    "type": r.get("type") or r.get("rel_type") or ""
+                }
+            })
+
+        result = {
+            "assistant": answer,
+            "graph": {
+                "nodes": cy_nodes,
+                "edges": cy_edges
+            }
+        }
+
+        print(json.dumps(result))
 
     finally:
         driver.close()

@@ -9,6 +9,7 @@ if (!isset($_SESSION["chat_history"])) {
 
 // Handle AJAX requests
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
+    // plain user query
     $user_input = trim($_POST["user_input"] ?? "");
     $top_k = $_POST["top_k"] ?? 5;
     $top_per_label = $_POST["top_per_label"] ?? 5;
@@ -21,11 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
             $response = run_llm($user_input, $top_k, $top_per_label);
             $duration = round(microtime(true) - $start_time, 2);
 
+            // Save only the plain user query and assistant response
             $_SESSION["chat_history"][] = [
                 "user" => $user_input,
                 "assistant" => $response,
                 "duration" => $duration
             ];
+
+            // Keep only last 10 messages
+            if (count($_SESSION["chat_history"]) > 10) {
+                $_SESSION["chat_history"] = array_slice($_SESSION["chat_history"], -10);
+            }
+
         } catch (Exception $e) {
             $response = "Error: " . $e->getMessage();
         }
@@ -64,7 +72,6 @@ include 'navbar.php';
         .typing-indicator .dot:nth-child(3) { animation-delay:0.4s; }
         @keyframes blink { 0%,80%,100% { opacity:0; } 40% { opacity:1; } }
         .response-time { color:gray; font-size:0.85em; margin-left:10px; }
-        /* Modal styling */
         #settingsModal { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
             background:white; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.3); z-index:1000; width:250px; }
         #settingsModal h3 { margin-top:0; }
@@ -130,17 +137,9 @@ const noMessages = document.getElementById("noMessages");
 let topK = parseInt(topKSlider.value);
 let topPerLabel = parseInt(topPerLabelSlider.value);
 
-// Update slider labels
-topKSlider.addEventListener("input", () => {
-    topK = parseInt(topKSlider.value);
-    topKVal.innerText = topK;
-});
-topPerLabelSlider.addEventListener("input", () => {
-    topPerLabel = parseInt(topPerLabelSlider.value);
-    topPerLabelVal.innerText = topPerLabel;
-});
+topKSlider.addEventListener("input", () => { topK = parseInt(topKSlider.value); topKVal.innerText = topK; });
+topPerLabelSlider.addEventListener("input", () => { topPerLabel = parseInt(topPerLabelSlider.value); topPerLabelVal.innerText = topPerLabel; });
 
-// Open/close modal
 settingsBtn.addEventListener("click", () => { modal.style.display = "block"; });
 closeSettings.addEventListener("click", () => { modal.style.display = "none"; });
 
@@ -153,6 +152,7 @@ function sendMessage() {
     btn.disabled = true;
     if (noMessages) noMessages.remove();
 
+    // Display user message
     container.innerHTML += `
         <div class="chat-message user">
             <strong>You:</strong><pre>${text}</pre>
@@ -177,13 +177,25 @@ function sendMessage() {
         document.getElementById("liveTimer").innerText = `Response time: ${seconds.toFixed(1)}s`;
     }, 100);
 
-    // Send hyperparameters along with the user input
+    // Build payload
+    const payloadObj = { user_input: text };
+    const saved = sessionStorage.getItem("chat_history");
+    const history = saved ? JSON.parse(saved) : [];
+    payloadObj.history = history.slice(-10);
+
+    <?php if (!empty($_SESSION["pdf_text"])): ?>
+        payloadObj.transcript = <?php echo json_encode($_SESSION["pdf_text"]); ?>;
+    <?php endif; ?>
+
     fetch("", {
         method: "POST",
-        headers: {"Content-Type": "application/x-www-form-urlencoded"},
-        body: "ajax=1&user_input=" + encodeURIComponent(text)
-            + "&top_k=" + encodeURIComponent(topK)
-            + "&top_per_label=" + encodeURIComponent(topPerLabel)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body:
+            "ajax=1" +
+            "&user_input=" + encodeURIComponent(text) +  // plain text
+            "&payload=" + encodeURIComponent(JSON.stringify(payloadObj)) +
+            "&top_k=" + encodeURIComponent(topK) +
+            "&top_per_label=" + encodeURIComponent(topPerLabel)
     })
     .then(res => res.json())
     .then(data => {
@@ -192,20 +204,24 @@ function sendMessage() {
 
         const elapsed = data.duration ? data.duration.toFixed(2) : seconds.toFixed(1);
 
-        if (data.assistant) {
-            container.innerHTML += `
-                <div class="chat-message assistant">
-                    <strong>Assistant:</strong><pre>${data.assistant}</pre>
-                    <div class="response-time">Response time: ${elapsed}s</div>
-                </div>
-            `;
-            scrollBottom();
-        }
+        container.innerHTML += `
+            <div class="chat-message assistant">
+                <strong>Assistant:</strong><pre>${data.assistant}</pre>
+                <div class="response-time">Response time: ${elapsed}s</div>
+            </div>
+        `;
+        scrollBottom();
+
+        // Save to sessionStorage (last 10 messages)
+        history.push({ user: text, assistant: data.assistant, duration: elapsed });
+        sessionStorage.setItem("chat_history", JSON.stringify(history.slice(-10)));
+
         btn.disabled = false;
     })
     .catch(err => {
         clearInterval(timerInterval);
         typingIndicator.remove();
+
         container.innerHTML += `
             <div class="chat-message assistant">
                 <strong>Assistant:</strong><pre>Error: ${err.message}</pre>

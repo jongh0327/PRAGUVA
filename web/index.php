@@ -325,7 +325,7 @@ ob_end_flush();
         <input type="range" id="topK" min="1" max="20" value="5" style="width:100%;">
     </div>
     <div style="margin-bottom:10px;">
-        <label for="topPerLabel"># Nodes per Hop:</label>
+        <label for="topPerLabel"># Nodes per Hop per Label:</label>
         <span id="topPerLabelVal" style="display:inline-block; width:35px; text-align:right;">5</span>
         <input type="range" id="topPerLabel" min="0" max="100" value="5" style="width:100%;">
     </div>
@@ -517,12 +517,9 @@ function displayNodeInfo(data) {
     let html = '';
     
     // Define the order of attributes and which ones to exclude
-    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'courseID', 'departmentID', 'majorID', 'minorID'];
+    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'nodeType'];
     
     // Always display name first if it exists
-    if (data.nodeType) {
-        html += `<div class="info-row"><span class="info-label">NodeType:</span> ${escapeHtml(String(data.nodeType))}</div>`;
-    }
     if (data.name) {
         html += `<div class="info-row"><span class="info-label">Name:</span> ${escapeHtml(String(data.name))}</div>`;
     }
@@ -530,7 +527,7 @@ function displayNodeInfo(data) {
     // Display all other properties except excluded ones
     for (const [key, value] of Object.entries(data)) {
         // Skip if it's in the exclude list or if it's 'name' (already displayed)
-        if (excludeKeys.includes(key) || key === 'name' || key === 'nodeType') {
+        if (excludeKeys.includes(key) || key === 'name') {
             continue;
         }
         
@@ -584,6 +581,16 @@ function sendMessage() {
         }
     }, 100);
 
+    // Build payload with history and transcript
+    const payloadObj = { user_input: text };
+    const saved = sessionStorage.getItem("chat_history");
+    const history = saved ? JSON.parse(saved) : [];
+    payloadObj.history = history.slice(-10);
+
+    <?php if (!empty($_SESSION["pdf_text"])): ?>
+        payloadObj.transcript = <?php echo json_encode($_SESSION["pdf_text"]); ?>;
+    <?php endif; ?>
+
     // Send request
     fetch("", {
         method: "POST",
@@ -591,6 +598,7 @@ function sendMessage() {
         body:
             "ajax=1" +
             "&user_input=" + encodeURIComponent(text) +
+            "&payload=" + encodeURIComponent(JSON.stringify(payloadObj)) +
             "&top_k=" + encodeURIComponent(topK) +
             "&top_per_label=" + encodeURIComponent(topPerLabel)
     })
@@ -615,6 +623,10 @@ function sendMessage() {
         `;
         container.appendChild(assistantDiv);
         scrollBottom();
+
+        // Save to sessionStorage (last 10 messages)
+        history.push({ user: text, assistant: assistantText, duration: elapsed });
+        sessionStorage.setItem("chat_history", JSON.stringify(history.slice(-10)));
 
         btn.disabled = false;
     })

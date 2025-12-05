@@ -1,10 +1,31 @@
 <?php
 function run_llm($input, $top_k = 5, $top_per_label = 5) {
-    $escaped = escapeshellarg($input);
+    // Build the payload object
+    $payloadObj = ["user_input" => $input];
+    
+    // Add chat history from sessionStorage (if available via POST)
+    if (isset($_POST["payload"])) {
+        $decodedPayload = json_decode($_POST["payload"], true);
+        if ($decodedPayload) {
+            // Merge the decoded payload (contains history and transcript)
+            $payloadObj = array_merge($payloadObj, $decodedPayload);
+        }
+    }
+    
+    // Add transcript from session if available
+    if (isset($_SESSION["pdf_text"]) && !empty($_SESSION["pdf_text"])) {
+        $payloadObj["transcript"] = $_SESSION["pdf_text"];
+    }
+    
+    // Encode the complete payload as JSON
+    $payload = json_encode($payloadObj);
+    
+    // Escape the payload for shell
+    $escaped = escapeshellarg($payload);
     $top_k = intval($top_k);
     $top_per_label = intval($top_per_label);
 
-    // Run the Python script
+    // Run the Python script - send payload as -q parameter
     $cmd = "python3 /var/www/html/python/main_web.py -q $escaped -k $top_k -l $top_per_label 2>&1";
     $output = shell_exec($cmd);
     

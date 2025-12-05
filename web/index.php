@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
     $top_per_label = intval($_POST["top_per_label"] ?? 5);
     $response = "";
     $duration = 0.0;
-    $graph = [];
+    $raw_nodes = [];
+    $raw_edges = [];
 
     if ($user_input !== "") {
         try {
@@ -37,7 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
 
             if ($decoded && isset($decoded['assistant'])) {
                 $response = $decoded['assistant'];
-                $graph = $decoded['graph'] ?? [];
+                // Store raw nodes and edges instead of full graph
+                $raw_nodes = $decoded['raw_nodes'] ?? [];
+                $raw_edges = $decoded['raw_edges'] ?? [];
             } else {
                 // If JSON decode failed, treat entire output as response
                 $response = $output;
@@ -45,11 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
 
             $duration = round(microtime(true) - $start_time, 2);
 
-            // Save to session chat history
+            // Save to session chat history with raw data
             $_SESSION["chat_history"][] = [
                 "user" => $user_input,
                 "assistant" => $response,
-                "graph" => $graph,
+                "raw_nodes" => $raw_nodes,
+                "raw_edges" => $raw_edges,
                 "duration" => $duration
             ];
 
@@ -67,7 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["ajax"])) {
     header("Content-Type: application/json");
     echo json_encode([
         "assistant" => $response,
-        "graph" => $graph,
+        "raw_nodes" => $raw_nodes,
+        "raw_edges" => $raw_edges,
         "duration" => $duration
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
@@ -296,7 +301,9 @@ ob_end_flush();
                 <strong>You:</strong>
                 <pre><?php echo htmlspecialchars($entry["user"]); ?></pre>
             </div>
-            <div class="chat-message assistant" data-graph='<?php echo htmlspecialchars(json_encode($entry["graph"]), ENT_QUOTES, 'UTF-8'); ?>'>
+            <div class="chat-message assistant" 
+                 data-raw-nodes='<?php echo htmlspecialchars(json_encode($entry["raw_nodes"] ?? []), ENT_QUOTES, 'UTF-8'); ?>'
+                 data-raw-edges='<?php echo htmlspecialchars(json_encode($entry["raw_edges"] ?? []), ENT_QUOTES, 'UTF-8'); ?>'>
                 <strong>Assistant:</strong>
                 <pre><?php echo htmlspecialchars($entry["assistant"]); ?></pre>
                 <button class="graph-btn">Graph</button>
@@ -394,13 +401,55 @@ function scrollBottom() {
     container.scrollTop = container.scrollHeight; 
 }
 
-// Graph button listener (event delegation)
+// Transform raw nodes/edges to Cytoscape format - ONLY when Graph button is clicked
+function transformToCytoscape(rawNodes, rawEdges) {
+    const cy_nodes = [];
+    for (const n of rawNodes) {
+        const node_labels = n.labels || [];
+        // Remove "Searchable" from labels
+        const filtered_labels = node_labels.filter(label => label !== "Searchable");
+        const label_str = filtered_labels.length > 0 ? filtered_labels.join(" | ") : "Initial Node";
+        
+        cy_nodes.push({
+            data: {
+                id: n.id,
+                label: label_str,
+                nodeType: filtered_labels[0] || "Initial",
+                ...n.props
+            }
+        });
+    }
+
+    const cy_edges = [];
+    for (const r of rawEdges) {
+        const source = r.source || r.start || "";
+        const target = r.target || r.end || "";
+        cy_edges.push({
+            data: {
+                id: r.id || `${source}_${target}`,
+                source: source,
+                target: target,
+                type: r.type || r.rel_type || ""
+            }
+        });
+    }
+
+    return { nodes: cy_nodes, edges: cy_edges };
+}
+
+// Graph button listener (event delegation) - Transform data on-demand
 container.addEventListener("click", e => {
     if (e.target.classList.contains("graph-btn")) {
         const assistantDiv = e.target.closest(".chat-message.assistant");
-        const graphDataStr = assistantDiv.getAttribute("data-graph");
+        const rawNodesStr = assistantDiv.getAttribute("data-raw-nodes");
+        const rawEdgesStr = assistantDiv.getAttribute("data-raw-edges");
+        
         try {
-            const graphData = JSON.parse(graphDataStr || "{}");
+            const rawNodes = JSON.parse(rawNodesStr || "[]");
+            const rawEdges = JSON.parse(rawEdgesStr || "[]");
+            
+            // Transform to Cytoscape format NOW (only when button clicked)
+            const graphData = transformToCytoscape(rawNodes, rawEdges);
             openGraphModal(graphData);
         } catch (err) {
             console.error("Failed to parse graph data:", err);
@@ -517,10 +566,10 @@ function displayNodeInfo(data) {
     let html = '';
     
     // Define the order of attributes and which ones to exclude
-    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'courseID', 'departmentID'];
+    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'courseID', 'departmentID', 'majorID', 'minorID'];
 
     if (data.nodeType) {
-        html += `<div class="info-row"><span class="info-label">None Type:</span> ${escapeHtml(String(data.nodeType))}</div>`;
+        html += `<div class="info-row"><span class="info-label">Node Type:</span> ${escapeHtml(String(data.nodeType))}</div>`;
     }
     
     // Always display name first if it exists
@@ -613,13 +662,15 @@ function sendMessage() {
 
         const elapsed = data.duration ? data.duration.toFixed(2) : seconds.toFixed(1);
 
-        // Extract only the assistant text, not the graph data
+        // Extract response - raw nodes/edges not transformed yet
         const assistantText = data.assistant || "";
-        const graphData = data.graph || {};
+        const rawNodes = data.raw_nodes || [];
+        const rawEdges = data.raw_edges || [];
 
         const assistantDiv = document.createElement("div");
         assistantDiv.className = "chat-message assistant";
-        assistantDiv.setAttribute("data-graph", JSON.stringify(graphData));
+        assistantDiv.setAttribute("data-raw-nodes", JSON.stringify(rawNodes));
+        assistantDiv.setAttribute("data-raw-edges", JSON.stringify(rawEdges));
         assistantDiv.innerHTML = `
             <strong>Assistant:</strong><pre>${escapeHtml(assistantText)}</pre>
             <button class="graph-btn">Graph</button>

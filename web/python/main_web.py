@@ -70,7 +70,7 @@ def main() -> None:
     # Parse the query parameter - it could be JSON payload or plain text
     query_input = args.query.strip()
     if not query_input:
-        print(json.dumps({"assistant": "No query provided.", "graph": {"nodes": [], "edges": []}}))
+        print(json.dumps({"assistant": "No query provided.", "raw_nodes": [], "raw_edges": []}))
         return
 
     # Try to parse as JSON payload
@@ -89,7 +89,7 @@ def main() -> None:
         user_query = query_input
 
     if not user_query:
-        print(json.dumps({"assistant": "No user query in payload.", "graph": {"nodes": [], "edges": []}}))
+        print(json.dumps({"assistant": "No user query in payload.", "raw_nodes": [], "raw_edges": []}))
         return
 
     # Connect to Neo4j
@@ -112,13 +112,13 @@ def main() -> None:
         )
 
         if not entry_nodes:
-            print(json.dumps({"assistant": "No entry nodes found.", "graph": {"nodes": [], "edges": []}}))
+            print(json.dumps({"assistant": "No entry nodes found.", "raw_nodes": [], "raw_edges": []}))
             return
 
         # 2. Convert Neo4j results into GraphRAG seed nodes
         seed_nodes = extract_seed_nodes(entry_nodes)
         if not seed_nodes:
-            print(json.dumps({"assistant": "No seed nodes available.", "graph": {"nodes": [], "edges": []}}))
+            print(json.dumps({"assistant": "No seed nodes available.", "raw_nodes": [], "raw_edges": []}))
             return
 
         # 3. Encode user query for BFS scoring
@@ -161,42 +161,12 @@ def main() -> None:
             clean_rels,
         )
 
-        # 6. Convert to JSON-friendly format for frontend (Cytoscape.js compatible)
-        cy_nodes = []
-        for n in clean_nodes:
-            node_labels = n.get("labels", [])
-            # Remove "Searchable" from labels
-            filtered_labels = [label for label in node_labels if label != "Searchable"]
-            label_str = " | ".join(filtered_labels) if filtered_labels else "Initial Node"
-            
-            cy_nodes.append({
-                "data": {
-                    "id": n["id"],
-                    "label": label_str,
-                    "nodeType": filtered_labels[0] if filtered_labels else "Initial",
-                    **n["props"]
-                }
-            })
-
-        cy_edges = []
-        for r in clean_rels:
-            source = r.get("source") or r.get("start") or ""
-            target = r.get("target") or r.get("end") or ""
-            cy_edges.append({
-                "data": {
-                    "id": r.get("id") or f"{source}_{target}",
-                    "source": source,
-                    "target": target,
-                    "type": r.get("type") or r.get("rel_type") or ""
-                }
-            })
-
+        # 6. Return RAW nodes and edges (NO Cytoscape transformation)
+        # Frontend will transform on-demand when Graph button is clicked
         result = {
             "assistant": answer,
-            "graph": {
-                "nodes": cy_nodes,
-                "edges": cy_edges
-            }
+            "raw_nodes": clean_nodes,  # Raw format from Neo4j
+            "raw_edges": clean_rels     # Raw format from Neo4j
         }
 
         print(json.dumps(result))
@@ -204,7 +174,8 @@ def main() -> None:
     except Exception as e:
         print(json.dumps({
             "assistant": f"Error: {str(e)}",
-            "graph": {"nodes": [], "edges": []}
+            "raw_nodes": [],
+            "raw_edges": []
         }))
     finally:
         driver.close()

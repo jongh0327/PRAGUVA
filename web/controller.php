@@ -35,7 +35,8 @@ function run_llm($input, $top_k = 5, $top_per_label = 5) {
     if (empty($output)) {
         return json_encode([
             "assistant" => "Error: Python script returned no output",
-            "graph" => []
+            "raw_nodes" => [],
+            "raw_edges" => []
         ]);
     }
 
@@ -46,7 +47,8 @@ function run_llm($input, $top_k = 5, $top_per_label = 5) {
         error_log("Python script error: " . $clean_error);
         return json_encode([
             "assistant" => "Error: " . $clean_error,
-            "graph" => []
+            "raw_nodes" => [],
+            "raw_edges" => []
         ]);
     }
 
@@ -55,7 +57,8 @@ function run_llm($input, $top_k = 5, $top_per_label = 5) {
     if ($decoded && isset($decoded['assistant'])) {
         return json_encode([
             "assistant" => $decoded['assistant'],
-            "graph" => $decoded['graph'] ?? []
+            "raw_nodes" => $decoded['raw_nodes'] ?? [],
+            "raw_edges" => $decoded['raw_edges'] ?? []
         ]);
     }
 
@@ -66,14 +69,16 @@ function run_llm($input, $top_k = 5, $top_per_label = 5) {
         
         return json_encode([
             "assistant" => "Error: Invalid response from Python script. Check server logs.",
-            "graph" => []
+            "raw_nodes" => [],
+            "raw_edges" => []
         ]);
     }
 
     // Fallback: wrap raw output
     return json_encode([
         "assistant" => $output,
-        "graph" => []
+        "raw_nodes" => [],
+        "raw_edges" => []
     ]);
 }
 ?>

@@ -49,7 +49,7 @@ def main() -> None:
         "-q",
         "--query",
         required=True,
-        help="User question"
+        help="User question or JSON payload"
     )
     parser.add_argument(
         "-k",
@@ -67,9 +67,29 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    q = args.query.strip()
-    if not q:
-        print(json.dumps({"error": "No query provided"}))
+    # Parse the query parameter - it could be JSON payload or plain text
+    query_input = args.query.strip()
+    if not query_input:
+        print(json.dumps({"assistant": "No query provided.", "graph": {"nodes": [], "edges": []}}))
+        return
+
+    # Try to parse as JSON payload
+    user_query = query_input
+    chat_history = []
+    transcript = None
+    
+    try:
+        payload = json.loads(query_input)
+        if isinstance(payload, dict):
+            user_query = payload.get("user_input", query_input)
+            chat_history = payload.get("history", [])
+            transcript = payload.get("transcript", None)
+    except json.JSONDecodeError:
+        # Not JSON, treat as plain text query
+        user_query = query_input
+
+    if not user_query:
+        print(json.dumps({"assistant": "No user query in payload.", "graph": {"nodes": [], "edges": []}}))
         return
 
     # Connect to Neo4j
@@ -87,24 +107,24 @@ def main() -> None:
         entry_nodes = search_entry_nodes(
             driver,
             embedding_model,
-            q,
+            user_query,
             top_k=args.top_entry,
         )
 
         if not entry_nodes:
-            print(json.dumps({"error": "No entry nodes found"}))
+            print(json.dumps({"assistant": "No entry nodes found.", "graph": {"nodes": [], "edges": []}}))
             return
 
         # 2. Convert Neo4j results into GraphRAG seed nodes
         seed_nodes = extract_seed_nodes(entry_nodes)
         if not seed_nodes:
-            print(json.dumps({"error": "No seed nodes available"}))
+            print(json.dumps({"assistant": "No seed nodes available.", "graph": {"nodes": [], "edges": []}}))
             return
 
         # 3. Encode user query for BFS scoring
-        query_embedding = embedding_model.encode(q).tolist()
+        query_embedding = embedding_model.encode(user_query).tolist()
 
-        # 0–1 BFS multi-hop expansion
+        # 0–1 BFS multi-hop expansion (same as main.py)
         nodes_for_llm, rels_for_llm = mh_driver.two_hop_via_python(
             seed_nodes=seed_nodes,
             query_embedding=query_embedding,
@@ -114,10 +134,29 @@ def main() -> None:
         # 4. Strip embeddings (clean for LLM)
         clean_nodes, clean_rels = strip_embeddings(nodes_for_llm, rels_for_llm)
 
-        # 5. Generate answer using Gemini
+        # 5. Generate answer using Gemini with context
+        # Build context string with history and transcript if available
+        context_parts = []
+        
+        if transcript:
+            context_parts.append(f"Reference Document:\n{transcript}\n")
+        
+        if chat_history:
+            context_parts.append("Previous Conversation:")
+            for msg in chat_history[-5:]:  # Last 5 messages
+                context_parts.append(f"User: {msg.get('user', '')}")
+                context_parts.append(f"Assistant: {msg.get('assistant', '')}")
+            context_parts.append("")
+        
+        # Add current query with context
+        full_query = user_query
+        if context_parts:
+            context_str = "\n".join(context_parts)
+            full_query = f"{context_str}\nCurrent Question: {user_query}"
+
         answer = generate_nl_response_from_graph(
             client,
-            q,
+            full_query,
             clean_nodes,
             clean_rels,
         )
@@ -162,6 +201,11 @@ def main() -> None:
 
         print(json.dumps(result))
 
+    except Exception as e:
+        print(json.dumps({
+            "assistant": f"Error: {str(e)}",
+            "graph": {"nodes": [], "edges": []}
+        }))
     finally:
         driver.close()
 

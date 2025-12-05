@@ -517,7 +517,11 @@ function displayNodeInfo(data) {
     let html = '';
     
     // Define the order of attributes and which ones to exclude
-    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'nodeType'];
+    const excludeKeys = ['label', 'id', 'topicID', 'paperID', 'instructorID', 'courseID', 'departmentID'];
+
+    if (data.nodeType) {
+        html += `<div class="info-row"><span class="info-label">None Type:</span> ${escapeHtml(String(data.nodeType))}</div>`;
+    }
     
     // Always display name first if it exists
     if (data.name) {
@@ -527,7 +531,7 @@ function displayNodeInfo(data) {
     // Display all other properties except excluded ones
     for (const [key, value] of Object.entries(data)) {
         // Skip if it's in the exclude list or if it's 'name' (already displayed)
-        if (excludeKeys.includes(key) || key === 'name') {
+        if (excludeKeys.includes(key) || key === 'name' || key === 'nodeType') {
             continue;
         }
         

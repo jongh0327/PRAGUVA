@@ -130,12 +130,12 @@ ob_end_flush();
     <div style="margin-bottom:10px;">
         <label for="topK"># Starting Nodes:</label>
         <span id="topKVal" style="display:inline-block; width:30px; text-align:right;">5</span>
-        <input type="range" id="topK" min="1" max="20" value="5" style="width:100%;">
+        <input type="range" id="topK" min="1" max="0" value="5" style="width:100%;">
     </div>
     <div style="margin-bottom:10px;">
         <label for="topPerLabel"># Nodes per Hop per Label:</label>
         <span id="topPerLabelVal" style="display:inline-block; width:35px; text-align:right;">5</span>
-        <input type="range" id="topPerLabel" min="0" max="100" value="5" style="width:100%;">
+        <input type="range" id="topPerLabel" min="0" max="20" value="5" style="width:100%;">
     </div>
     <button id="closeSettings" style="margin-top:10px; width:100%;">Close</button>
 </div>
@@ -282,7 +282,8 @@ function openGraphModal(graph) {
             ...graph.nodes.map(n => ({ 
                 data: { 
                     id: n.data.id, 
-                    label: n.data.name || n.data.label || n.data.id 
+                    label: n.data.name || n.data.label || n.data.id,
+                    nodeType: n.data.nodeType  // Add nodeType for color styling
                 } 
             })),
             ...graph.edges.map(e => ({ 
@@ -311,12 +312,49 @@ function openGraphModal(graph) {
                     'text-outline-width': 2
                 } 
             },
+            {
+                selector: 'node[nodeType = "Course"]',
+                style: { 
+                    'background-color': '#FFD700',
+                    'shape': 'diamond'
+                }
+            },
+            {
+                selector: 'node[nodeType = "Professor"]',
+                style: { 
+                    'background-color': '#32CD32',
+                    'shape': 'star'
+                }
+            },
+            {
+                selector: 'node[nodeType = "Paper"]',
+                style: { 'background-color': '#1E90FF' }  // Dodger Blue
+            },
+            {
+                selector: 'node[nodeType = "Topic"]',
+                style: { 'background-color': '#9370DB' }  // Medium Purple
+            },
+            {
+                selector: 'node[nodeType = "Department"]',
+                style: { 
+                    'background-color': '#FF8C00',
+                    'shape': 'rectangle'
+                }
+            },
+            {
+                selector: 'node[nodeType = "Major"]',
+                style: { 'background-color': '#DC143C' }  // Crimson
+            },
+            {
+                selector: 'node[nodeType = "Minor"]',
+                style: { 'background-color': '#FF1493' }  // Deep Pink
+            },
             { 
                 selector: 'node:selected', 
                 style: { 
                     'background-color': '#FF6F00',
                     'border-width': 3,
-                    'border-color': '#e65a00'
+                    'border-color': '#FFA500'
                 } 
             },
             { 
@@ -335,12 +373,32 @@ function openGraphModal(graph) {
                     'text-outline-color': '#ffffff',
                     'text-outline-width': 1
                 } 
+            },
+            {
+                selector: 'edge.highlighted',
+                style: {
+                    'width': 4,
+                    'line-color': '#00FF00',
+                    'target-arrow-color': '#00FF00',
+                    'z-index': 999
+                }
             }
         ],
         layout: { 
             name: 'cose', 
             animate: true,
-            padding: 10
+            animationDuration: 10000,  // Animation duration in milliseconds (default: 1000)
+            animationEasing: 'ease-out',
+            padding: 10,
+            nodeRepulsion: 180000,
+            idealEdgeLength: 150,
+            edgeElasticity: 10000,
+            nestingFactor: 1.2,
+            gravity: .25,
+            numIter: 20000,  // Number of iterations (default: 1000, more = better quality but slower)
+            initialTemp: 200,  // Initial temperature for simulated annealing
+            coolingFactor: 0.992,  // How quickly temperature decreases
+            minTemp: .2  // Minimum temperature before stopping
         }
     });
     
@@ -350,15 +408,22 @@ function openGraphModal(graph) {
         const nodeId = node.id();
         const fullData = nodeDataMap[nodeId];
         
+        // Reset all edges to default style first
+        cy.edges().removeClass('highlighted');
+        
+        // Highlight edges connected to this node
+        node.connectedEdges().addClass('highlighted');
+        
         if (fullData) {
             displayNodeInfo(fullData);
         }
     });
     
-    // Hide info panel when clicking on background
+    // Hide info panel and reset edge highlighting when clicking on background
     cy.on('tap', function(evt) {
         if (evt.target === cy) {
             nodeInfo.style.display = "none";
+            cy.edges().removeClass('highlighted');
         }
     });
 }

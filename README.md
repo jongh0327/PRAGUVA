@@ -22,3 +22,10 @@ OPTIONS {
     `vector.similarity_function`: 'cosine'
   }
 };
+
+Instructions to run local website:
+1) download docker desktop
+2) pull from github and add .env to web folder. (might need to add the . back to the file name), .env file contains api keys
+3) run: docker compose -f docker-compose.yml up --build (with docker desktop open)
+4) wait 15-30 mins the first time the website is built
+5) go to http://localhost:8080/

@@ -130,12 +130,12 @@ ob_end_flush();
     <div style="margin-bottom:10px;">
         <label for="topK"># Starting Nodes:</label>
         <span id="topKVal" style="display:inline-block; width:30px; text-align:right;">5</span>
-        <input type="range" id="topK" min="0" max="20" value="5" style="width:100%;">
+        <input type="range" id="topK" min="0" max="10" value="5" style="width:100%;">
     </div>
     <div style="margin-bottom:10px;">
         <label for="topPerLabel"># Nodes per Hop per Label:</label>
         <span id="topPerLabelVal" style="display:inline-block; width:35px; text-align:right;">5</span>
-        <input type="range" id="topPerLabel" min="0" max="20" value="5" style="width:100%;">
+        <input type="range" id="topPerLabel" min="0" max="10" value="5" style="width:100%;">
     </div>
     <button id="closeSettings" style="margin-top:10px; width:100%;">Close</button>
 </div>
